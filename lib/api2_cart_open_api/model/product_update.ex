@@ -86,7 +86,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :is_supply,
     :downloadable,
     :materials,
-    :auto_renew
+    :auto_renew,
+    :on_sale
   ]
 
   @type t :: %__MODULE__{
@@ -168,7 +169,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :is_supply => boolean() | nil,
     :downloadable => boolean() | nil,
     :materials => [String.t] | nil,
-    :auto_renew => boolean() | nil
+    :auto_renew => boolean() | nil,
+    :on_sale => boolean() | nil
   }
 
   alias API2CartOpenAPI.Deserializer
