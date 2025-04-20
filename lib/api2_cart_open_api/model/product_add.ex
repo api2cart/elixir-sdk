@@ -76,10 +76,12 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :specifics,
     :image_url,
     :image_name,
+    :additional_image_urls,
     :reserve_price,
     :buyitnow_price,
     :condition_description,
     :auction_confidentiality_level,
+    :logistic_info,
     :avail_from,
     :tags,
     :clear_cache,
@@ -189,10 +191,12 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :specifics => [API2CartOpenAPI.Model.ProductAddSpecificsInner.t] | nil,
     :image_url => String.t | nil,
     :image_name => String.t | nil,
+    :additional_image_urls => [String.t] | nil,
     :reserve_price => float() | nil,
     :buyitnow_price => float() | nil,
     :condition_description => String.t | nil,
     :auction_confidentiality_level => String.t | nil,
+    :logistic_info => [API2CartOpenAPI.Model.ProductAddLogisticInfoInner.t] | nil,
     :avail_from => String.t | nil,
     :tags => String.t | nil,
     :clear_cache => boolean() | nil,
@@ -245,6 +249,7 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
      |> Deserializer.deserialize(:best_offer, :struct, API2CartOpenAPI.Model.ProductAddBestOffer)
      |> Deserializer.deserialize(:sales_tax, :struct, API2CartOpenAPI.Model.ProductAddSalesTax)
      |> Deserializer.deserialize(:specifics, :list, API2CartOpenAPI.Model.ProductAddSpecificsInner)
+     |> Deserializer.deserialize(:logistic_info, :list, API2CartOpenAPI.Model.ProductAddLogisticInfoInner)
      |> Deserializer.deserialize(:files, :list, API2CartOpenAPI.Model.ProductAddFilesInner)
      |> Deserializer.deserialize(:size_chart, :struct, API2CartOpenAPI.Model.ProductAddSizeChart)
      |> Deserializer.deserialize(:certifications, :list, API2CartOpenAPI.Model.ProductAddCertificationsInner)

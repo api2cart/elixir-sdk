@@ -244,6 +244,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:brand_ids` (String.t): Retrieves brands specified by brand ids
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:category_id` (String.t): Retrieves product brands specified by category id
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
     - `:created_from` (String.t): Retrieve entities from their creation date
@@ -269,6 +270,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :params => :query,
       :brand_ids => :query,
       :exclude => :query,
+      :category_id => :query,
       :store_id => :query,
       :lang_id => :query,
       :created_from => :query,

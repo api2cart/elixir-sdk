@@ -291,6 +291,7 @@ lib/api2_cart_open_api/model/product_add_certifications_inner_files_inner.ex
 lib/api2_cart_open_api/model/product_add_certifications_inner_images_inner.ex
 lib/api2_cart_open_api/model/product_add_files_inner.ex
 lib/api2_cart_open_api/model/product_add_group_prices_inner.ex
+lib/api2_cart_open_api/model/product_add_logistic_info_inner.ex
 lib/api2_cart_open_api/model/product_add_manufacturer_info.ex
 lib/api2_cart_open_api/model/product_add_package_details.ex
 lib/api2_cart_open_api/model/product_add_sales_tax.ex
