@@ -75,12 +75,12 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:ids` (String.t): Retrieves  catalog_price_rules by ids
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -91,12 +91,12 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_catalog_price_rules_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartCatalogPriceRulesList.t} | {:error, Tesla.Env.t}
   def cart_catalog_price_rules_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
       :ids => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -258,10 +258,10 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `operator` (String.t): Defines condition operator
   - `value` (String.t): Defines condition value, can be comma separated according to the operator.
   - `opts` (keyword): Optional parameters
-    - `:store_id` (String.t): Store Id
     - `:target` (String.t): Defines condition operator
     - `:include_tax` (boolean()): Indicates whether to apply a discount for taxes.
     - `:include_shipping` (boolean()): Indicates whether to apply a discount for shipping.
+    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -271,10 +271,10 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_coupon_condition_add(Tesla.Env.client, String.t, String.t, String.t, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceDelete200Response.t} | {:error, Tesla.Env.t}
   def cart_coupon_condition_add(connection, coupon_id, entity, key, operator, value, opts \\ []) do
     optional_params = %{
-      :store_id => :query,
       :target => :query,
       :include_tax => :query,
-      :include_shipping => :query
+      :include_shipping => :query,
+      :store_id => :query
     }
 
     request =
@@ -306,11 +306,11 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:avail` (boolean()): Defines category's visibility status
     - `:date_start_from` (String.t): Filter entity by date_start (greater or equal)
     - `:date_start_to` (String.t): Filter entity by date_start (less or equal)
     - `:date_end_from` (String.t): Filter entity by date_end (greater or equal)
     - `:date_end_to` (String.t): Filter entity by date_end (less or equal)
-    - `:avail` (boolean()): Defines category's visibility status
 
   ### Returns
 
@@ -321,11 +321,11 @@ defmodule API2CartOpenAPI.Api.Cart do
   def cart_coupon_count(connection, opts \\ []) do
     optional_params = %{
       :store_id => :query,
+      :avail => :query,
       :date_start_from => :query,
       :date_start_to => :query,
       :date_end_from => :query,
-      :date_end_to => :query,
-      :avail => :query
+      :date_end_to => :query
     }
 
     request =
@@ -387,19 +387,19 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:coupons_ids` (String.t): Filter coupons by ids
     - `:store_id` (String.t): Filter coupons by store id
+    - `:lang_id` (String.t): Language id
+    - `:avail` (boolean()): Filter coupons by avail status
     - `:date_start_from` (String.t): Filter entity by date_start (greater or equal)
     - `:date_start_to` (String.t): Filter entity by date_start (less or equal)
     - `:date_end_from` (String.t): Filter entity by date_end (greater or equal)
     - `:date_end_to` (String.t): Filter entity by date_end (less or equal)
-    - `:avail` (boolean()): Filter coupons by avail status
-    - `:lang_id` (String.t): Language id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -410,19 +410,19 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_coupon_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartCouponList.t} | {:error, Tesla.Env.t}
   def cart_coupon_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
       :coupons_ids => :query,
       :store_id => :query,
+      :lang_id => :query,
+      :avail => :query,
       :date_start_from => :query,
       :date_start_to => :query,
       :date_end_from => :query,
       :date_end_to => :query,
-      :avail => :query,
-      :lang_id => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -661,12 +661,12 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:store_id` (String.t): Store Id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -677,12 +677,12 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_giftcard_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartGiftCardList.t} | {:error, Tesla.Env.t}
   def cart_giftcard_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
       :store_id => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -708,10 +708,10 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -721,10 +721,10 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_info(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartInfo200Response.t} | {:error, Tesla.Env.t}
   def cart_info(connection, opts \\ []) do
     optional_params = %{
-      :params => :query,
+      :store_id => :query,
       :response_fields => :query,
-      :exclude => :query,
-      :store_id => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -779,14 +779,14 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `entity_id` (String.t): Entity Id
   - `opts` (keyword): Optional parameters
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:entity` (String.t): Entity
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
     - `:key` (String.t): Key
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -797,14 +797,14 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_meta_data_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartMetaDataList.t} | {:error, Tesla.Env.t}
   def cart_meta_data_list(connection, entity_id, opts \\ []) do
     optional_params = %{
+      :count => :query,
+      :page_cursor => :query,
       :entity => :query,
       :store_id => :query,
       :lang_id => :query,
       :key => :query,
-      :count => :query,
-      :page_cursor => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -951,9 +951,9 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:store_id` (String.t): Store Id
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -963,9 +963,9 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_plugin_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartPluginList200Response.t} | {:error, Tesla.Env.t}
   def cart_plugin_list(connection, opts \\ []) do
     optional_params = %{
-      :store_id => :query,
       :start => :query,
-      :count => :query
+      :count => :query,
+      :store_id => :query
     }
 
     request =
@@ -1077,17 +1077,17 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:script_ids` (String.t): Retrieves only scripts with specific ids
+    - `:store_id` (String.t): Store Id
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:script_ids` (String.t): Retrieves only scripts with specific ids
-    - `:store_id` (String.t): Store Id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -1098,17 +1098,17 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_script_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartScriptList.t} | {:error, Tesla.Env.t}
   def cart_script_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
+      :script_ids => :query,
+      :store_id => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :script_ids => :query,
-      :store_id => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -1134,11 +1134,11 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:store_id` (String.t): Store Id
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:store_id` (String.t): Store Id
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -1149,11 +1149,11 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_shipping_zones_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartShippingZonesList.t} | {:error, Tesla.Env.t}
   def cart_shipping_zones_list(connection, opts \\ []) do
     optional_params = %{
-      :store_id => :query,
       :start => :query,
       :count => :query,
-      :params => :query,
+      :store_id => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 

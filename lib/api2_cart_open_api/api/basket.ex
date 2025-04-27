@@ -19,9 +19,9 @@ defmodule API2CartOpenAPI.Api.Basket do
   - `id` (String.t): Entity id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -32,9 +32,9 @@ defmodule API2CartOpenAPI.Api.Basket do
   def basket_info(connection, id, opts \\ []) do
     optional_params = %{
       :store_id => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -175,9 +175,9 @@ defmodule API2CartOpenAPI.Api.Basket do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:store_id` (String.t): Store Id
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -187,9 +187,9 @@ defmodule API2CartOpenAPI.Api.Basket do
   @spec basket_live_shipping_service_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceList200Response.t} | {:error, Tesla.Env.t}
   def basket_live_shipping_service_list(connection, opts \\ []) do
     optional_params = %{
-      :store_id => :query,
       :start => :query,
-      :count => :query
+      :count => :query,
+      :store_id => :query
     }
 
     request =

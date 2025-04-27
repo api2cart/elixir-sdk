@@ -19,11 +19,11 @@ defmodule API2CartOpenAPI.Api.Batch do
   - `opts` (keyword): Optional parameters
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:ids` (String.t): Filter batch jobs by ids
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:processed_from` (String.t): Retrieve entities according to their processing datetime
     - `:processed_to` (String.t): Retrieve entities according to their processing datetime
-    - `:ids` (String.t): Filter batch jobs by ids
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
@@ -36,11 +36,11 @@ defmodule API2CartOpenAPI.Api.Batch do
     optional_params = %{
       :count => :query,
       :page_cursor => :query,
+      :ids => :query,
       :created_from => :query,
       :created_to => :query,
       :processed_from => :query,
       :processed_to => :query,
-      :ids => :query,
       :response_fields => :query
     }
 

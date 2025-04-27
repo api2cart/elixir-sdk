@@ -104,9 +104,9 @@ defmodule API2CartOpenAPI.Api.Return do
   - `opts` (keyword): Optional parameters
     - `:order_id` (String.t): Defines the order id
     - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -118,9 +118,9 @@ defmodule API2CartOpenAPI.Api.Return do
     optional_params = %{
       :order_id => :query,
       :store_id => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -149,9 +149,6 @@ defmodule API2CartOpenAPI.Api.Return do
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:order_id` (String.t): Defines the order id
     - `:order_ids` (String.t): Retrieves return requests specified by order ids
     - `:customer_id` (String.t): Retrieves return requests specified by customer id
@@ -162,6 +159,9 @@ defmodule API2CartOpenAPI.Api.Return do
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
 
@@ -176,9 +176,6 @@ defmodule API2CartOpenAPI.Api.Return do
       :start => :query,
       :count => :query,
       :page_cursor => :query,
-      :params => :query,
-      :exclude => :query,
-      :response_fields => :query,
       :order_id => :query,
       :order_ids => :query,
       :customer_id => :query,
@@ -189,6 +186,9 @@ defmodule API2CartOpenAPI.Api.Return do
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query
     }

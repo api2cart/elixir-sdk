@@ -18,20 +18,20 @@ defmodule API2CartOpenAPI.Api.Category do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `name` (String.t): Defines category's name that has to be added
   - `opts` (keyword): Optional parameters
-    - `:parent_id` (String.t): Adds categories specified by parent id
-    - `:stores_ids` (String.t): Create category in the stores that is specified by comma-separated stores' id
-    - `:store_id` (String.t): Store Id
-    - `:lang_id` (String.t): Language id
-    - `:avail` (boolean()): Defines category's visibility status
-    - `:sort_order` (integer()): Sort number in the list
-    - `:created_time` (String.t): Entity's date creation
-    - `:modified_time` (String.t): Entity's date modification
     - `:description` (String.t): Defines category's description
     - `:short_description` (String.t): Defines short description
+    - `:parent_id` (String.t): Adds categories specified by parent id
+    - `:avail` (boolean()): Defines category's visibility status
+    - `:created_time` (String.t): Entity's date creation
+    - `:modified_time` (String.t): Entity's date modification
+    - `:sort_order` (integer()): Sort number in the list
     - `:meta_title` (String.t): Defines unique meta title for each entity
     - `:meta_description` (String.t): Defines unique meta description of a entity
     - `:meta_keywords` (String.t): Defines unique meta keywords for each entity
     - `:seo_url` (String.t): Defines unique category's URL for SEO
+    - `:store_id` (String.t): Store Id
+    - `:stores_ids` (String.t): Create category in the stores that is specified by comma-separated stores' id
+    - `:lang_id` (String.t): Language id
 
   ### Returns
 
@@ -41,20 +41,20 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_add(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAdd200Response.t} | {:error, Tesla.Env.t}
   def category_add(connection, name, opts \\ []) do
     optional_params = %{
-      :parent_id => :query,
-      :stores_ids => :query,
-      :store_id => :query,
-      :lang_id => :query,
-      :avail => :query,
-      :sort_order => :query,
-      :created_time => :query,
-      :modified_time => :query,
       :description => :query,
       :short_description => :query,
+      :parent_id => :query,
+      :avail => :query,
+      :created_time => :query,
+      :modified_time => :query,
+      :sort_order => :query,
       :meta_title => :query,
       :meta_description => :query,
       :meta_keywords => :query,
-      :seo_url => :query
+      :seo_url => :query,
+      :store_id => :query,
+      :stores_ids => :query,
+      :lang_id => :query
     }
 
     request =
@@ -111,8 +111,8 @@ defmodule API2CartOpenAPI.Api.Category do
   ### Parameters
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `product_id` (String.t): Defines category assign to the product, specified by product id
   - `category_id` (String.t): Defines category assign, specified by category id
+  - `product_id` (String.t): Defines category assign to the product, specified by product id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
 
@@ -122,7 +122,7 @@ defmodule API2CartOpenAPI.Api.Category do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec category_assign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t} | {:error, Tesla.Env.t}
-  def category_assign(connection, product_id, category_id, opts \\ []) do
+  def category_assign(connection, category_id, product_id, opts \\ []) do
     optional_params = %{
       :store_id => :query
     }
@@ -131,8 +131,8 @@ defmodule API2CartOpenAPI.Api.Category do
       %{}
       |> method(:post)
       |> url("/category.assign.json")
-      |> add_param(:query, :product_id, product_id)
       |> add_param(:query, :category_id, category_id)
+      |> add_param(:query, :product_id, product_id)
       |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
@@ -155,11 +155,11 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:parent_id` (String.t): Counts categories specified by parent id
     - `:store_id` (String.t): Counts category specified by store id
     - `:lang_id` (String.t): Counts category specified by language id
+    - `:avail` (boolean()): Defines category's visibility status
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:avail` (boolean()): Defines category's visibility status
     - `:product_type` (String.t): A categorization for the product
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Counts categories that are searched specified by field
@@ -177,11 +177,11 @@ defmodule API2CartOpenAPI.Api.Category do
       :parent_id => :query,
       :store_id => :query,
       :lang_id => :query,
+      :avail => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :avail => :query,
       :product_type => :query,
       :find_value => :query,
       :find_where => :query,
@@ -295,10 +295,10 @@ defmodule API2CartOpenAPI.Api.Category do
   - `url` (String.t): Defines URL of the image that has to be added
   - `type` (String.t): Defines image's types that are specified by comma-separated list
   - `opts` (keyword): Optional parameters
+    - `:store_id` (String.t): Store Id
     - `:label` (String.t): Defines alternative text that has to be attached to the picture
     - `:mime` (String.t): Mime type of image http://en.wikipedia.org/wiki/Internet_media_type.
     - `:position` (integer()): Defines image’s position in the list
-    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -308,10 +308,10 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_image_add(Tesla.Env.client, String.t, String.t, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryImageAdd200Response.t} | {:error, Tesla.Env.t}
   def category_image_add(connection, category_id, image_name, url, type, opts \\ []) do
     optional_params = %{
+      :store_id => :query,
       :label => :query,
       :mime => :query,
-      :position => :query,
-      :store_id => :query
+      :position => :query
     }
 
     request =
@@ -381,12 +381,12 @@ defmodule API2CartOpenAPI.Api.Category do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Retrieves category's info specified by category id
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Retrieves category info  specified by store id
     - `:lang_id` (String.t): Retrieves category info  specified by language id
     - `:schema_type` (String.t): The name of the requirements set for the provided schema.
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
 
@@ -398,12 +398,12 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_info(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryInfo200Response.t} | {:error, Tesla.Env.t}
   def category_info(connection, id, opts \\ []) do
     optional_params = %{
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
       :store_id => :query,
       :lang_id => :query,
       :schema_type => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query
     }
@@ -434,20 +434,20 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:parent_id` (String.t): Retrieves categories specified by parent id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Retrieves categories specified by store id
     - `:lang_id` (String.t): Retrieves categorys specified by language id
+    - `:parent_id` (String.t): Retrieves categories specified by parent id
+    - `:avail` (boolean()): Defines category's visibility status
+    - `:product_type` (String.t): A categorization for the product
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:avail` (boolean()): Defines category's visibility status
-    - `:product_type` (String.t): A categorization for the product
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Category search that is specified by field
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:disable_cache` (boolean()): Disable cache for current request
@@ -463,20 +463,20 @@ defmodule API2CartOpenAPI.Api.Category do
       :start => :query,
       :count => :query,
       :page_cursor => :query,
-      :parent_id => :query,
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
       :store_id => :query,
       :lang_id => :query,
+      :parent_id => :query,
+      :avail => :query,
+      :product_type => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :avail => :query,
-      :product_type => :query,
       :find_value => :query,
       :find_where => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query,
       :disable_cache => :query
@@ -546,19 +546,19 @@ defmodule API2CartOpenAPI.Api.Category do
   - `id` (String.t): Defines category update specified by category id
   - `opts` (keyword): Optional parameters
     - `:name` (String.t): Defines new category’s name
+    - `:description` (String.t): Defines new category's description
+    - `:short_description` (String.t): Defines short description
     - `:parent_id` (String.t): Defines new parent category id
-    - `:stores_ids` (String.t): Update category in the stores that is specified by comma-separated stores' id
     - `:avail` (boolean()): Defines category's visibility status
     - `:sort_order` (integer()): Sort number in the list
     - `:modified_time` (String.t): Entity's date modification
-    - `:description` (String.t): Defines new category's description
-    - `:short_description` (String.t): Defines short description
     - `:meta_title` (String.t): Defines unique meta title for each entity
     - `:meta_description` (String.t): Defines unique meta description of a entity
     - `:meta_keywords` (String.t): Defines unique meta keywords for each entity
     - `:seo_url` (String.t): Defines unique category's URL for SEO
-    - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Store Id
+    - `:stores_ids` (String.t): Update category in the stores that is specified by comma-separated stores' id
+    - `:lang_id` (String.t): Language id
 
   ### Returns
 
@@ -569,19 +569,19 @@ defmodule API2CartOpenAPI.Api.Category do
   def category_update(connection, id, opts \\ []) do
     optional_params = %{
       :name => :query,
+      :description => :query,
+      :short_description => :query,
       :parent_id => :query,
-      :stores_ids => :query,
       :avail => :query,
       :sort_order => :query,
       :modified_time => :query,
-      :description => :query,
-      :short_description => :query,
       :meta_title => :query,
       :meta_description => :query,
       :meta_keywords => :query,
       :seo_url => :query,
-      :lang_id => :query,
-      :store_id => :query
+      :store_id => :query,
+      :stores_ids => :query,
+      :lang_id => :query
     }
 
     request =

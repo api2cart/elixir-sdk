@@ -80,19 +80,19 @@ defmodule API2CartOpenAPI.Api.Product do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `product_id` (String.t): Retrieves attributes specified by product id
   - `opts` (keyword): Optional parameters
-    - `:attribute_id` (String.t): Retrieves info for specified attribute_id
-    - `:variant_id` (String.t): Defines product's variants specified by variant id
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:attribute_id` (String.t): Retrieves info for specified attribute_id
+    - `:variant_id` (String.t): Defines product's variants specified by variant id
     - `:attribute_group_id` (String.t): Filter by attribute_group_id
-    - `:set_name` (String.t): Retrieves attributes specified by set_name in Magento
     - `:lang_id` (String.t): Retrieves attributes specified by language id
     - `:store_id` (String.t): Retrieves attributes specified by store id
+    - `:set_name` (String.t): Retrieves attributes specified by set_name in Magento
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -103,19 +103,19 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_attribute_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductAttributeList.t} | {:error, Tesla.Env.t}
   def product_attribute_list(connection, product_id, opts \\ []) do
     optional_params = %{
-      :attribute_id => :query,
-      :variant_id => :query,
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
+      :attribute_id => :query,
+      :variant_id => :query,
       :attribute_group_id => :query,
-      :set_name => :query,
       :lang_id => :query,
       :store_id => :query,
+      :set_name => :query,
       :sort_by => :query,
       :sort_direction => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -241,20 +241,20 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:brand_ids` (String.t): Retrieves brands specified by brand ids
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:category_id` (String.t): Retrieves product brands specified by category id
+    - `:parent_id` (String.t): Retrieves brands specified by parent id
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:find_where` (String.t): Entity search that is specified by the comma-separated unique fields
+    - `:find_value` (String.t): Entity search that is specified by some value
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:parent_id` (String.t): Retrieves brands specified by parent id
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:find_where` (String.t): Entity search that is specified by the comma-separated unique fields
-    - `:find_value` (String.t): Entity search that is specified by some value
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -267,20 +267,20 @@ defmodule API2CartOpenAPI.Api.Product do
       :start => :query,
       :count => :query,
       :page_cursor => :query,
-      :params => :query,
       :brand_ids => :query,
-      :exclude => :query,
       :category_id => :query,
+      :parent_id => :query,
       :store_id => :query,
       :lang_id => :query,
+      :find_where => :query,
+      :find_value => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :parent_id => :query,
       :response_fields => :query,
-      :find_where => :query,
-      :find_value => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -348,12 +348,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `product_id` (String.t): Filter by parent product id
   - `id` (String.t): Entity id
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
     - `:currency_id` (String.t): Currency Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
@@ -364,12 +364,12 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_child_item_info(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductChildItemInfo200Response.t} | {:error, Tesla.Env.t}
   def product_child_item_info(connection, product_id, id, opts \\ []) do
     optional_params = %{
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
       :store_id => :query,
       :lang_id => :query,
       :currency_id => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :use_latest_api_version => :query
     }
 
@@ -397,16 +397,9 @@ defmodule API2CartOpenAPI.Api.Product do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve products child items via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:page_cursor` (String.t): Used to retrieve products child items via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:product_id` (String.t): Filter by parent product id
     - `:product_ids` (String.t): Filter by parent product ids
     - `:sku` (String.t): Filter by products variant's sku
@@ -416,10 +409,17 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Child products search that is specified by field
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:modified_from` (String.t): Retrieve entities from their modification date
+    - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
-    - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
 
   ### Returns
 
@@ -429,16 +429,9 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_child_item_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductChildItemList.t} | {:error, Tesla.Env.t}
   def product_child_item_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
-      :created_from => :query,
-      :created_to => :query,
-      :modified_from => :query,
-      :modified_to => :query,
+      :page_cursor => :query,
       :product_id => :query,
       :product_ids => :query,
       :sku => :query,
@@ -448,10 +441,17 @@ defmodule API2CartOpenAPI.Api.Product do
       :avail_sale => :query,
       :find_value => :query,
       :find_where => :query,
+      :created_from => :query,
+      :created_to => :query,
+      :modified_from => :query,
+      :modified_to => :query,
+      :return_global => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query,
-      :use_latest_api_version => :query,
-      :return_global => :query
+      :use_latest_api_version => :query
     }
 
     request =
@@ -476,28 +476,28 @@ defmodule API2CartOpenAPI.Api.Product do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:product_ids` (String.t): Counts products specified by product ids
+    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:categories_ids` (String.t): Defines product add that is specified by comma-separated categories id
     - `:category_id` (String.t): Counts products specified by category id
+    - `:store_id` (String.t): Counts products specified by store id
+    - `:lang_id` (String.t): Counts products specified by language id
+    - `:avail_view` (boolean()): Specifies the set of visible/invisible products
+    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:avail_view` (boolean()): Specifies the set of visible/invisible products
-    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
-    - `:store_id` (String.t): Counts products specified by store id
-    - `:lang_id` (String.t): Counts products specified by language id
-    - `:product_ids` (String.t): Counts products specified by product ids
-    - `:since_id` (String.t): Retrieve entities starting from the specified id.
-    - `:report_request_id` (String.t): Report request id
-    - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:brand_name` (String.t): Retrieves brands specified by brand name
     - `:product_attributes` ([String.t]): Defines product attributes
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Counts products that are searched specified by field
-    - `:use_latest_api_version` (boolean()): Use the latest platform API version
+    - `:report_request_id` (String.t): Report request id
     - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
-    - `:categories_ids` (String.t): Defines product add that is specified by comma-separated categories id
+    - `:disable_report_cache` (boolean()): Disable report cache for current request
+    - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
 
@@ -507,28 +507,28 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductCount200Response.t} | {:error, Tesla.Env.t}
   def product_count(connection, opts \\ []) do
     optional_params = %{
+      :product_ids => :query,
+      :since_id => :query,
+      :categories_ids => :query,
       :category_id => :query,
+      :store_id => :query,
+      :lang_id => :query,
+      :avail_view => :query,
+      :avail_sale => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :avail_view => :query,
-      :avail_sale => :query,
-      :store_id => :query,
-      :lang_id => :query,
-      :product_ids => :query,
-      :since_id => :query,
-      :report_request_id => :query,
-      :disable_report_cache => :query,
       :brand_name => :query,
       :product_attributes => :query,
       :status => :query,
       :type => :query,
       :find_value => :query,
       :find_where => :query,
-      :use_latest_api_version => :query,
+      :report_request_id => :query,
       :return_global => :query,
-      :categories_ids => :query
+      :disable_report_cache => :query,
+      :use_latest_api_version => :query
     }
 
     request =
@@ -603,12 +603,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:default` (boolean()): Specifies the set of default/not default currencies
     - `:avail` (boolean()): Specifies the set of available/not available currencies
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -620,12 +620,12 @@ defmodule API2CartOpenAPI.Api.Product do
     optional_params = %{
       :start => :query,
       :count => :query,
-      :params => :query,
       :page_cursor => :query,
-      :exclude => :query,
-      :response_fields => :query,
       :default => :query,
-      :avail => :query
+      :avail => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -865,12 +865,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `id` (String.t): Defines image update specified by image id
   - `opts` (keyword): Optional parameters
     - `:variant_ids` (String.t): Defines product's variants ids
+    - `:store_id` (String.t): Store Id
+    - `:lang_id` (String.t): Language id
     - `:image_name` (String.t): Defines image's name
     - `:type` (String.t): Defines image's types that are specified by comma-separated list
     - `:label` (String.t): Defines alternative text that has to be attached to the picture
     - `:position` (integer()): Defines image’s position in the list
-    - `:store_id` (String.t): Store Id
-    - `:lang_id` (String.t): Language id
     - `:hidden` (boolean()): Define is hide image
 
   ### Returns
@@ -882,12 +882,12 @@ defmodule API2CartOpenAPI.Api.Product do
   def product_image_update(connection, product_id, id, opts \\ []) do
     optional_params = %{
       :variant_ids => :query,
+      :store_id => :query,
+      :lang_id => :query,
       :image_name => :query,
       :type => :query,
       :label => :query,
       :position => :query,
-      :store_id => :query,
-      :lang_id => :query,
       :hidden => :query
     }
 
@@ -917,12 +917,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Retrieves product's info specified by product id
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Retrieves product info specified by store id
     - `:lang_id` (String.t): Retrieves product info specified by language id
     - `:currency_id` (String.t): Currency Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
@@ -935,12 +935,12 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_info(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductInfo200Response.t} | {:error, Tesla.Env.t}
   def product_info(connection, id, opts \\ []) do
     optional_params = %{
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
       :store_id => :query,
       :lang_id => :query,
       :currency_id => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query,
       :use_latest_api_version => :query
@@ -969,39 +969,39 @@ defmodule API2CartOpenAPI.Api.Product do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve products via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:page_cursor` (String.t): Used to retrieve products via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:product_ids` (String.t): Retrieves products specified by product ids
+    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:categories_ids` (String.t): Retrieves products specified by categories ids
     - `:category_id` (String.t): Retrieves products specified by category id
+    - `:store_id` (String.t): Retrieves products specified by store id
+    - `:lang_id` (String.t): Retrieves products specified by language id
+    - `:currency_id` (String.t): Currency Id
+    - `:avail_view` (boolean()): Specifies the set of visible/invisible products
+    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:avail_view` (boolean()): Specifies the set of visible/invisible products
-    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
-    - `:store_id` (String.t): Retrieves products specified by store id
-    - `:lang_id` (String.t): Retrieves products specified by language id
-    - `:currency_id` (String.t): Currency Id
-    - `:product_ids` (String.t): Retrieves products specified by product ids
-    - `:since_id` (String.t): Retrieve entities starting from the specified id.
-    - `:report_request_id` (String.t): Report request id
-    - `:disable_report_cache` (boolean()): Disable report cache for current request
-    - `:sort_by` (String.t): Set field to sort by
-    - `:sort_direction` (String.t): Set sorting direction
     - `:sku` (String.t): Filter by product's sku
-    - `:disable_cache` (boolean()): Disable cache for current request
     - `:brand_name` (String.t): Retrieves brands specified by brand name
     - `:product_attributes` ([String.t]): Defines product attributes
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Product search that is specified by field
-    - `:use_latest_api_version` (boolean()): Use the latest platform API version
     - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
-    - `:categories_ids` (String.t): Retrieves products specified by categories ids
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:sort_by` (String.t): Set field to sort by
+    - `:sort_direction` (String.t): Set sorting direction
+    - `:report_request_id` (String.t): Report request id
+    - `:disable_cache` (boolean()): Disable cache for current request
+    - `:disable_report_cache` (boolean()): Disable report cache for current request
+    - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
 
@@ -1011,39 +1011,39 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductList.t} | {:error, Tesla.Env.t}
   def product_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
+      :page_cursor => :query,
+      :product_ids => :query,
+      :since_id => :query,
+      :categories_ids => :query,
       :category_id => :query,
+      :store_id => :query,
+      :lang_id => :query,
+      :currency_id => :query,
+      :avail_view => :query,
+      :avail_sale => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :avail_view => :query,
-      :avail_sale => :query,
-      :store_id => :query,
-      :lang_id => :query,
-      :currency_id => :query,
-      :product_ids => :query,
-      :since_id => :query,
-      :report_request_id => :query,
-      :disable_report_cache => :query,
-      :sort_by => :query,
-      :sort_direction => :query,
       :sku => :query,
-      :disable_cache => :query,
       :brand_name => :query,
       :product_attributes => :query,
       :status => :query,
       :type => :query,
       :find_value => :query,
       :find_where => :query,
-      :use_latest_api_version => :query,
       :return_global => :query,
-      :categories_ids => :query
+      :params => :query,
+      :response_fields => :query,
+      :exclude => :query,
+      :sort_by => :query,
+      :sort_direction => :query,
+      :report_request_id => :query,
+      :disable_cache => :query,
+      :disable_report_cache => :query,
+      :use_latest_api_version => :query
     }
 
     request =
@@ -1226,12 +1226,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:product_id` (String.t): Retrieves products' options specified by product id
     - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -1243,12 +1243,12 @@ defmodule API2CartOpenAPI.Api.Product do
     optional_params = %{
       :start => :query,
       :count => :query,
-      :params => :query,
-      :exclude => :query,
-      :response_fields => :query,
       :product_id => :query,
       :lang_id => :query,
-      :store_id => :query
+      :store_id => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -1555,14 +1555,14 @@ defmodule API2CartOpenAPI.Api.Product do
   - `product_id` (String.t): Product id
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:ids` (String.t): Retrieves reviews specified by ids
     - `:store_id` (String.t): Store Id
     - `:status` (String.t): Defines status
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -1573,14 +1573,14 @@ defmodule API2CartOpenAPI.Api.Product do
   def product_review_list(connection, product_id, opts \\ []) do
     optional_params = %{
       :start => :query,
-      :page_cursor => :query,
       :count => :query,
+      :page_cursor => :query,
       :ids => :query,
       :store_id => :query,
       :status => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -1796,12 +1796,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `product_id` (String.t): Retrieves products' variants specified by product id
   - `opts` (keyword): Optional parameters
+    - `:category_id` (String.t): Counts products’ variants specified by category id
+    - `:store_id` (String.t): Retrieves variants specified by store id
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:category_id` (String.t): Counts products’ variants specified by category id
-    - `:store_id` (String.t): Retrieves variants specified by store id
 
   ### Returns
 
@@ -1811,12 +1811,12 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_variant_count(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductVariantCount200Response.t} | {:error, Tesla.Env.t}
   def product_variant_count(connection, product_id, opts \\ []) do
     optional_params = %{
+      :category_id => :query,
+      :store_id => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
-      :modified_to => :query,
-      :category_id => :query,
-      :store_id => :query
+      :modified_to => :query
     }
 
     request =
@@ -1985,9 +1985,9 @@ defmodule API2CartOpenAPI.Api.Product do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Retrieves variant's info specified by variant id
   - `opts` (keyword): Optional parameters
+    - `:store_id` (String.t): Retrieves variant info specified by store id
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:store_id` (String.t): Retrieves variant info specified by store id
 
   ### Returns
 
@@ -1997,9 +1997,9 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_variant_info(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductInfo200Response.t} | {:error, Tesla.Env.t}
   def product_variant_info(connection, id, opts \\ []) do
     optional_params = %{
+      :store_id => :query,
       :params => :query,
-      :exclude => :query,
-      :store_id => :query
+      :exclude => :query
     }
 
     request =
@@ -2027,15 +2027,15 @@ defmodule API2CartOpenAPI.Api.Product do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:product_id` (String.t): Retrieves products' variants specified by product id
+    - `:category_id` (String.t): Retrieves products’ variants specified by category id
+    - `:store_id` (String.t): Retrieves variants specified by store id
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:category_id` (String.t): Retrieves products’ variants specified by category id
-    - `:product_id` (String.t): Retrieves products' variants specified by product id
-    - `:store_id` (String.t): Retrieves variants specified by store id
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -2047,15 +2047,15 @@ defmodule API2CartOpenAPI.Api.Product do
     optional_params = %{
       :start => :query,
       :count => :query,
-      :params => :query,
-      :exclude => :query,
+      :product_id => :query,
+      :category_id => :query,
+      :store_id => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :category_id => :query,
-      :product_id => :query,
-      :store_id => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =

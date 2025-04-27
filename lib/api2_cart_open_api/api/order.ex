@@ -17,19 +17,19 @@ defmodule API2CartOpenAPI.Api.Order do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:start` (integer()): This parameter sets the number from which you want to get entities
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:customer_id` (String.t): Retrieves orders specified by customer id
     - `:customer_email` (String.t): Retrieves orders specified by customer email
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:skip_empty_email` (boolean()): Filter empty emails
     - `:store_id` (String.t): Store Id
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:modified_from` (String.t): Retrieve entities from their modification date
+    - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:skip_empty_email` (boolean()): Filter empty emails
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -40,19 +40,19 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_abandoned_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderAbandonedList.t} | {:error, Tesla.Env.t}
   def order_abandoned_list(connection, opts \\ []) do
     optional_params = %{
+      :start => :query,
+      :count => :query,
+      :page_cursor => :query,
       :customer_id => :query,
       :customer_email => :query,
-      :created_to => :query,
-      :created_from => :query,
-      :modified_to => :query,
-      :modified_from => :query,
-      :skip_empty_email => :query,
       :store_id => :query,
-      :page_cursor => :query,
-      :count => :query,
-      :start => :query,
-      :params => :query,
+      :created_from => :query,
+      :created_to => :query,
+      :modified_from => :query,
+      :modified_to => :query,
+      :skip_empty_email => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -109,17 +109,13 @@ defmodule API2CartOpenAPI.Api.Order do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:order_ids` (String.t): Counts orders specified by order ids
+    - `:ids` (String.t): Counts orders specified by ids
     - `:customer_id` (String.t): Counts orders quantity specified by customer id
+    - `:store_id` (String.t): Counts orders quantity specified by store id
     - `:customer_email` (String.t): Counts orders quantity specified by customer email
     - `:order_status` (String.t): Counts orders quantity specified by order status
     - `:order_status_ids` ([String.t]): Retrieves orders specified by order statuses
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:store_id` (String.t): Counts orders quantity specified by store id
-    - `:ids` (String.t): Counts orders specified by ids
-    - `:order_ids` (String.t): Counts orders specified by order ids
     - `:ebay_order_status` (String.t): Counts orders quantity specified by order status
     - `:financial_status` (String.t): Counts orders quantity specified by financial status
     - `:financial_status_ids` ([String.t]): Retrieves orders count specified by financial status ids
@@ -129,6 +125,10 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:delivery_method` (String.t): Retrieves order with delivery method
     - `:tags` (String.t): Order tags
     - `:ship_node_type` (String.t): Retrieves order with ship node type
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:modified_from` (String.t): Retrieve entities from their modification date
+    - `:modified_to` (String.t): Retrieve entities to their modification date
 
   ### Returns
 
@@ -138,17 +138,13 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderCount200Response.t} | {:error, Tesla.Env.t}
   def order_count(connection, opts \\ []) do
     optional_params = %{
+      :order_ids => :query,
+      :ids => :query,
       :customer_id => :query,
+      :store_id => :query,
       :customer_email => :query,
       :order_status => :query,
       :order_status_ids => :query,
-      :created_to => :query,
-      :created_from => :query,
-      :modified_to => :query,
-      :modified_from => :query,
-      :store_id => :query,
-      :ids => :query,
-      :order_ids => :query,
       :ebay_order_status => :query,
       :financial_status => :query,
       :financial_status_ids => :query,
@@ -157,7 +153,11 @@ defmodule API2CartOpenAPI.Api.Order do
       :shipping_method => :query,
       :delivery_method => :query,
       :tags => :query,
-      :ship_node_type => :query
+      :ship_node_type => :query,
+      :created_from => :query,
+      :created_to => :query,
+      :modified_from => :query,
+      :modified_to => :query
     }
 
     request =
@@ -211,18 +211,18 @@ defmodule API2CartOpenAPI.Api.Order do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:start` (integer()): This parameter sets the number from which you want to get entities
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:customer_id` (String.t): Retrieves orders specified by customer id
     - `:customer_email` (String.t): Retrieves orders specified by customer email
     - `:order_status` (String.t): Retrieves orders specified by order status
-    - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:financial_status` (String.t): Retrieves orders specified by financial status
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:financial_status` (String.t): Retrieves orders specified by financial status
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -232,18 +232,18 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_find(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderFind200Response.t} | {:error, Tesla.Env.t}
   def order_find(connection, opts \\ []) do
     optional_params = %{
+      :start => :query,
+      :count => :query,
       :customer_id => :query,
       :customer_email => :query,
       :order_status => :query,
-      :start => :query,
-      :count => :query,
-      :params => :query,
-      :exclude => :query,
+      :financial_status => :query,
       :created_to => :query,
       :created_from => :query,
       :modified_to => :query,
       :modified_from => :query,
-      :financial_status => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -303,12 +303,12 @@ defmodule API2CartOpenAPI.Api.Order do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:order_id` (String.t): Retrieves order’s info specified by order id
     - `:id` (String.t): Retrieves order info specified by id
+    - `:order_id` (String.t): Retrieves order’s info specified by order id
+    - `:store_id` (String.t): Defines store id where the order should be found
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:store_id` (String.t): Defines store id where the order should be found
     - `:enable_cache` (boolean()): If the value is 'true' and order exist in our cache, we will return order.info response from cache
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
@@ -320,12 +320,12 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_info(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderInfo200Response.t} | {:error, Tesla.Env.t}
   def order_info(connection, opts \\ []) do
     optional_params = %{
-      :order_id => :query,
       :id => :query,
+      :order_id => :query,
+      :store_id => :query,
       :params => :query,
       :response_fields => :query,
       :exclude => :query,
-      :store_id => :query,
       :enable_cache => :query,
       :use_latest_api_version => :query
     }
@@ -352,43 +352,43 @@ defmodule API2CartOpenAPI.Api.Order do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:customer_id` (String.t): Retrieves orders specified by customer id
-    - `:customer_email` (String.t): Retrieves orders specified by customer email
-    - `:phone` (String.t): Filter orders by customer's phone number
-    - `:order_status` (String.t): Retrieves orders specified by order status
-    - `:order_status_ids` ([String.t]): Retrieves orders specified by order statuses
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve orders via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:ids` (String.t): Retrieves orders specified by ids
+    - `:order_ids` (String.t): Retrieves orders specified by order ids
+    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:store_id` (String.t): Store Id
+    - `:customer_id` (String.t): Retrieves orders specified by customer id
+    - `:customer_email` (String.t): Retrieves orders specified by customer email
+    - `:basket_id` (String.t): Retrieves order’s info specified by basket id.
+    - `:currency_id` (String.t): Currency Id
+    - `:phone` (String.t): Filter orders by customer's phone number
+    - `:order_status` (String.t): Retrieves orders specified by order status
+    - `:order_status_ids` ([String.t]): Retrieves orders specified by order statuses
+    - `:ebay_order_status` (String.t): Retrieves orders specified by order status
+    - `:financial_status` (String.t): Retrieves orders specified by financial status
+    - `:financial_status_ids` ([String.t]): Retrieves orders specified by financial status ids
+    - `:fulfillment_status` (String.t): Create order with fulfillment status
+    - `:return_status` (String.t): Retrieves orders specified by return status
+    - `:fulfillment_channel` (String.t): Retrieves order with a fulfillment channel
+    - `:shipping_method` (String.t): Retrieve entities according to shipping method
+    - `:skip_order_ids` (String.t): Skipped orders by ids
+    - `:is_deleted` (boolean()): Filter deleted orders
+    - `:shipping_country_iso3` (String.t): Retrieve entities according to shipping country
+    - `:delivery_method` (String.t): Retrieves order with delivery method
+    - `:ship_node_type` (String.t): Retrieves order with ship node type
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:modified_from` (String.t): Retrieve entities from their modification date
+    - `:tags` (String.t): Order tags
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:store_id` (String.t): Store Id
-    - `:ids` (String.t): Retrieves orders specified by ids
-    - `:order_ids` (String.t): Retrieves orders specified by order ids
-    - `:ebay_order_status` (String.t): Retrieves orders specified by order status
-    - `:basket_id` (String.t): Retrieves order’s info specified by basket id.
-    - `:financial_status` (String.t): Retrieves orders specified by financial status
-    - `:financial_status_ids` ([String.t]): Retrieves orders specified by financial status ids
-    - `:fulfillment_status` (String.t): Create order with fulfillment status
-    - `:fulfillment_channel` (String.t): Retrieves order with a fulfillment channel
-    - `:shipping_method` (String.t): Retrieve entities according to shipping method
-    - `:skip_order_ids` (String.t): Skipped orders by ids
-    - `:since_id` (String.t): Retrieve entities starting from the specified id.
-    - `:is_deleted` (boolean()): Filter deleted orders
-    - `:shipping_country_iso3` (String.t): Retrieve entities according to shipping country
     - `:enable_cache` (boolean()): If the value is 'true', we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add)
-    - `:delivery_method` (String.t): Retrieves order with delivery method
-    - `:tags` (String.t): Order tags
-    - `:ship_node_type` (String.t): Retrieves order with ship node type
-    - `:currency_id` (String.t): Currency Id
-    - `:return_status` (String.t): Retrieves orders specified by return status
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
@@ -399,43 +399,43 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderList.t} | {:error, Tesla.Env.t}
   def order_list(connection, opts \\ []) do
     optional_params = %{
-      :customer_id => :query,
-      :customer_email => :query,
-      :phone => :query,
-      :order_status => :query,
-      :order_status_ids => :query,
       :start => :query,
       :count => :query,
       :page_cursor => :query,
+      :ids => :query,
+      :order_ids => :query,
+      :since_id => :query,
+      :store_id => :query,
+      :customer_id => :query,
+      :customer_email => :query,
+      :basket_id => :query,
+      :currency_id => :query,
+      :phone => :query,
+      :order_status => :query,
+      :order_status_ids => :query,
+      :ebay_order_status => :query,
+      :financial_status => :query,
+      :financial_status_ids => :query,
+      :fulfillment_status => :query,
+      :return_status => :query,
+      :fulfillment_channel => :query,
+      :shipping_method => :query,
+      :skip_order_ids => :query,
+      :is_deleted => :query,
+      :shipping_country_iso3 => :query,
+      :delivery_method => :query,
+      :ship_node_type => :query,
+      :created_to => :query,
+      :created_from => :query,
+      :modified_to => :query,
+      :modified_from => :query,
+      :tags => :query,
       :sort_by => :query,
       :sort_direction => :query,
       :params => :query,
       :response_fields => :query,
       :exclude => :query,
-      :created_to => :query,
-      :created_from => :query,
-      :modified_to => :query,
-      :modified_from => :query,
-      :store_id => :query,
-      :ids => :query,
-      :order_ids => :query,
-      :ebay_order_status => :query,
-      :basket_id => :query,
-      :financial_status => :query,
-      :financial_status_ids => :query,
-      :fulfillment_status => :query,
-      :fulfillment_channel => :query,
-      :shipping_method => :query,
-      :skip_order_ids => :query,
-      :since_id => :query,
-      :is_deleted => :query,
-      :shipping_country_iso3 => :query,
       :enable_cache => :query,
-      :delivery_method => :query,
-      :tags => :query,
-      :ship_node_type => :query,
-      :currency_id => :query,
-      :return_status => :query,
       :use_latest_api_version => :query
     }
 
@@ -728,10 +728,10 @@ defmodule API2CartOpenAPI.Api.Order do
   - `order_id` (String.t): Defines the order id
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -742,10 +742,10 @@ defmodule API2CartOpenAPI.Api.Order do
   def order_shipment_info(connection, id, order_id, opts \\ []) do
     optional_params = %{
       :start => :query,
-      :params => :query,
+      :store_id => :query,
       :response_fields => :query,
-      :exclude => :query,
-      :store_id => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -773,17 +773,17 @@ defmodule API2CartOpenAPI.Api.Order do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `order_id` (String.t): Retrieves shipments specified by order id
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:store_id` (String.t): Store Id
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:store_id` (String.t): Store Id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -793,17 +793,17 @@ defmodule API2CartOpenAPI.Api.Order do
   @spec order_shipment_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderShipmentList.t} | {:error, Tesla.Env.t}
   def order_shipment_list(connection, order_id, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
+      :page_cursor => :query,
+      :store_id => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :store_id => :query
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -932,11 +932,11 @@ defmodule API2CartOpenAPI.Api.Order do
   - `order_ids` (String.t): Retrieves order transactions specified by order ids
   - `opts` (keyword): Optional parameters
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:store_id` (String.t): Store Id
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
 
   ### Returns
 
@@ -947,11 +947,11 @@ defmodule API2CartOpenAPI.Api.Order do
   def order_transaction_list(connection, order_ids, opts \\ []) do
     optional_params = %{
       :count => :query,
+      :page_cursor => :query,
       :store_id => :query,
       :params => :query,
       :response_fields => :query,
-      :exclude => :query,
-      :page_cursor => :query
+      :exclude => :query
     }
 
     request =
@@ -980,19 +980,19 @@ defmodule API2CartOpenAPI.Api.Order do
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Defines store id where the order should be found
     - `:order_status` (String.t): Defines new order's status
+    - `:financial_status` (String.t): Update order financial status to specified
+    - `:fulfillment_status` (String.t): Create order with fulfillment status
     - `:cancellation_reason` (String.t): Defines the cancellation reason when the order will be canceled
+    - `:order_payment_method` (String.t): Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid'
     - `:comment` (String.t): Specifies order comment
     - `:admin_comment` (String.t): Specifies admin's order comment
     - `:admin_private_comment` (String.t): Specifies private admin's order comment
+    - `:invoice_admin_comment` (String.t): Specifies admin's order invoice comment
     - `:date_modified` (String.t): Specifies order's  modification date
     - `:date_finished` (String.t): Specifies order's  finished date
-    - `:financial_status` (String.t): Update order financial status to specified
-    - `:fulfillment_status` (String.t): Create order with fulfillment status
-    - `:order_payment_method` (String.t): Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid'
     - `:send_notifications` (boolean()): Send notifications to customer after order was created
-    - `:origin` (String.t): The source of the order
     - `:create_invoice` (boolean()): Determines whether an invoice should be created if it has not already been created
-    - `:invoice_admin_comment` (String.t): Specifies admin's order invoice comment
+    - `:origin` (String.t): The source of the order
 
   ### Returns
 
@@ -1004,19 +1004,19 @@ defmodule API2CartOpenAPI.Api.Order do
     optional_params = %{
       :store_id => :query,
       :order_status => :query,
+      :financial_status => :query,
+      :fulfillment_status => :query,
       :cancellation_reason => :query,
+      :order_payment_method => :query,
       :comment => :query,
       :admin_comment => :query,
       :admin_private_comment => :query,
+      :invoice_admin_comment => :query,
       :date_modified => :query,
       :date_finished => :query,
-      :financial_status => :query,
-      :fulfillment_status => :query,
-      :order_payment_method => :query,
       :send_notifications => :query,
-      :origin => :query,
       :create_invoice => :query,
-      :invoice_admin_comment => :query
+      :origin => :query
     }
 
     request =

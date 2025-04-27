@@ -164,13 +164,13 @@ defmodule API2CartOpenAPI.Api.Webhook do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:entity` (String.t): The entity you want to filter webhooks by (e.g. order or product)
     - `:action` (String.t): The action you want to filter webhooks by (e.g. add, update, or delete)
     - `:active` (boolean()): The webhook status you want to filter webhooks by
     - `:ids` (String.t): List of сomma-separated webhook ids
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -180,13 +180,13 @@ defmodule API2CartOpenAPI.Api.Webhook do
   @spec webhook_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.WebhookList200Response.t} | {:error, Tesla.Env.t}
   def webhook_list(connection, opts \\ []) do
     optional_params = %{
-      :params => :query,
       :start => :query,
       :count => :query,
       :entity => :query,
       :action => :query,
       :active => :query,
-      :ids => :query
+      :ids => :query,
+      :params => :query
     }
 
     request =

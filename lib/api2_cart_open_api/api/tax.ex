@@ -20,8 +20,8 @@ defmodule API2CartOpenAPI.Api.Tax do
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
@@ -34,8 +34,8 @@ defmodule API2CartOpenAPI.Api.Tax do
     optional_params = %{
       :store_id => :query,
       :lang_id => :query,
-      :params => :query,
       :response_fields => :query,
+      :params => :query,
       :exclude => :query
     }
 
@@ -62,15 +62,15 @@ defmodule API2CartOpenAPI.Api.Tax do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:store_id` (String.t): Store Id
+    - `:find_value` (String.t): Entity search that is specified by some value
+    - `:find_where` (String.t): Tax class search that is specified by field
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:find_value` (String.t): Entity search that is specified by some value
-    - `:find_where` (String.t): Tax class search that is specified by field
-    - `:store_id` (String.t): Store Id
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
@@ -81,15 +81,15 @@ defmodule API2CartOpenAPI.Api.Tax do
   @spec tax_class_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseTaxClassList.t} | {:error, Tesla.Env.t}
   def tax_class_list(connection, opts \\ []) do
     optional_params = %{
+      :count => :query,
+      :page_cursor => :query,
+      :store_id => :query,
+      :find_value => :query,
+      :find_where => :query,
       :created_to => :query,
       :created_from => :query,
       :modified_to => :query,
       :modified_from => :query,
-      :find_value => :query,
-      :find_where => :query,
-      :store_id => :query,
-      :count => :query,
-      :page_cursor => :query,
       :response_fields => :query
     }
 

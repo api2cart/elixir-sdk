@@ -8,10 +8,10 @@ defmodule API2CartOpenAPI.Model.OrderPreestimateShippingList do
 
   @derive Jason.Encoder
   defstruct [
-    :store_id,
     :warehouse_id,
-    :customer_email,
     :customer_id,
+    :customer_email,
+    :store_id,
     :shipp_address_1,
     :shipp_city,
     :shipp_postcode,
@@ -23,10 +23,10 @@ defmodule API2CartOpenAPI.Model.OrderPreestimateShippingList do
   ]
 
   @type t :: %__MODULE__{
-    :store_id => String.t | nil,
     :warehouse_id => String.t | nil,
-    :customer_email => String.t | nil,
     :customer_id => String.t | nil,
+    :customer_email => String.t | nil,
+    :store_id => String.t | nil,
     :shipp_address_1 => String.t | nil,
     :shipp_city => String.t | nil,
     :shipp_postcode => String.t | nil,

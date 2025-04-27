@@ -8,14 +8,13 @@ defmodule API2CartOpenAPI.Model.CartCouponAdd do
 
   @derive Jason.Encoder
   defstruct [
-    :store_id,
     :code,
-    :name,
-    :codes,
     :action_type,
     :action_apply_to,
     :action_scope,
     :action_amount,
+    :codes,
+    :name,
     :date_start,
     :date_end,
     :usage_limit,
@@ -24,18 +23,18 @@ defmodule API2CartOpenAPI.Model.CartCouponAdd do
     :action_condition_key,
     :action_condition_operator,
     :action_condition_value,
-    :include_tax
+    :include_tax,
+    :store_id
   ]
 
   @type t :: %__MODULE__{
-    :store_id => String.t | nil,
     :code => String.t,
-    :name => String.t | nil,
-    :codes => [String.t] | nil,
     :action_type => String.t,
     :action_apply_to => String.t,
     :action_scope => String.t,
     :action_amount => float(),
+    :codes => [String.t] | nil,
+    :name => String.t | nil,
     :date_start => String.t | nil,
     :date_end => String.t | nil,
     :usage_limit => integer() | nil,
@@ -44,7 +43,8 @@ defmodule API2CartOpenAPI.Model.CartCouponAdd do
     :action_condition_key => String.t | nil,
     :action_condition_operator => String.t | nil,
     :action_condition_value => String.t | nil,
-    :include_tax => boolean() | nil
+    :include_tax => boolean() | nil,
+    :store_id => String.t | nil
   }
 
   def decode(value) do

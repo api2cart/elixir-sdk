@@ -21,9 +21,9 @@ defmodule API2CartOpenAPI.Model.CustomerUpdate do
     :consents,
     :tags,
     :gender,
-    :store_id,
     :note,
     :status,
+    :store_id,
     :address
   ]
 
@@ -41,9 +41,9 @@ defmodule API2CartOpenAPI.Model.CustomerUpdate do
     :consents => [API2CartOpenAPI.Model.CustomerAddConsentsInner.t] | nil,
     :tags => String.t | nil,
     :gender => String.t | nil,
-    :store_id => String.t | nil,
     :note => String.t | nil,
     :status => String.t | nil,
+    :store_id => String.t | nil,
     :address => [API2CartOpenAPI.Model.CustomerUpdateAddressInner.t] | nil
   }
 

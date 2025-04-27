@@ -175,9 +175,9 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -189,9 +189,9 @@ defmodule API2CartOpenAPI.Api.Attribute do
     optional_params = %{
       :start => :query,
       :count => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -302,11 +302,11 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:attribute_set_id` (String.t): Attribute set id
     - `:lang_id` (String.t): Language id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:attribute_set_id` (String.t): Attribute set id
 
   ### Returns
 
@@ -318,11 +318,11 @@ defmodule API2CartOpenAPI.Api.Attribute do
     optional_params = %{
       :start => :query,
       :count => :query,
+      :attribute_set_id => :query,
       :lang_id => :query,
-      :params => :query,
-      :exclude => :query,
       :response_fields => :query,
-      :attribute_set_id => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -351,9 +351,9 @@ defmodule API2CartOpenAPI.Api.Attribute do
     - `:attribute_set_id` (String.t): Attribute set id
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -366,9 +366,9 @@ defmodule API2CartOpenAPI.Api.Attribute do
       :attribute_set_id => :query,
       :store_id => :query,
       :lang_id => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -396,17 +396,17 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:type` (String.t): Defines attribute's type
     - `:attribute_ids` (String.t): Filter attributes by ids
     - `:attribute_set_id` (String.t): Filter items by attribute set id
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Retrieves attributes on specified language id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:type` (String.t): Defines attribute's type
     - `:visible` (boolean()): Filter items by visibility status
     - `:required` (boolean()): Defines if the option is required
     - `:system` (boolean()): True if attribute is system
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -418,17 +418,17 @@ defmodule API2CartOpenAPI.Api.Attribute do
     optional_params = %{
       :start => :query,
       :count => :query,
-      :type => :query,
       :attribute_ids => :query,
       :attribute_set_id => :query,
       :store_id => :query,
       :lang_id => :query,
-      :params => :query,
-      :exclude => :query,
-      :response_fields => :query,
+      :type => :query,
       :visible => :query,
       :required => :query,
-      :system => :query
+      :system => :query,
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =

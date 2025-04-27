@@ -10,6 +10,7 @@ defmodule API2CartOpenAPI.Model.ProductVariantImageAdd do
   defstruct [
     :product_id,
     :product_variant_id,
+    :store_id,
     :image_name,
     :type,
     :url,
@@ -17,13 +18,13 @@ defmodule API2CartOpenAPI.Model.ProductVariantImageAdd do
     :label,
     :mime,
     :position,
-    :store_id,
     :option_id
   ]
 
   @type t :: %__MODULE__{
     :product_id => String.t | nil,
     :product_variant_id => String.t,
+    :store_id => String.t | nil,
     :image_name => String.t,
     :type => String.t,
     :url => String.t | nil,
@@ -31,7 +32,6 @@ defmodule API2CartOpenAPI.Model.ProductVariantImageAdd do
     :label => String.t | nil,
     :mime => String.t | nil,
     :position => integer() | nil,
-    :store_id => String.t | nil,
     :option_id => String.t | nil
   }
 

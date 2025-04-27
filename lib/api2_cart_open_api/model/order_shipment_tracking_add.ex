@@ -8,10 +8,10 @@ defmodule API2CartOpenAPI.Model.OrderShipmentTrackingAdd do
 
   @derive Jason.Encoder
   defstruct [
-    :store_id,
     :order_id,
     :shipment_id,
     :carrier_id,
+    :store_id,
     :tracking_provider,
     :tracking_number,
     :tracking_link,
@@ -19,10 +19,10 @@ defmodule API2CartOpenAPI.Model.OrderShipmentTrackingAdd do
   ]
 
   @type t :: %__MODULE__{
-    :store_id => String.t | nil,
     :order_id => String.t | nil,
     :shipment_id => String.t,
     :carrier_id => String.t | nil,
+    :store_id => String.t | nil,
     :tracking_provider => String.t | nil,
     :tracking_number => String.t,
     :tracking_link => String.t | nil,

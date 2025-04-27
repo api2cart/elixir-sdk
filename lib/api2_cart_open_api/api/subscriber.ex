@@ -19,17 +19,17 @@ defmodule API2CartOpenAPI.Api.Subscriber do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:subscribed` (boolean()): Filter by subscription status
     - `:store_id` (String.t): Store Id
     - `:email` (String.t): Filter subscribers by email
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -41,17 +41,17 @@ defmodule API2CartOpenAPI.Api.Subscriber do
     optional_params = %{
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
       :subscribed => :query,
       :store_id => :query,
       :email => :query,
-      :params => :query,
-      :exclude => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :page_cursor => :query,
-      :response_fields => :query
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =

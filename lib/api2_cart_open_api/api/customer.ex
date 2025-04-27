@@ -84,9 +84,9 @@ defmodule API2CartOpenAPI.Api.Customer do
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 
@@ -100,9 +100,9 @@ defmodule API2CartOpenAPI.Api.Customer do
       :page_cursor => :query,
       :store_id => :query,
       :lang_id => :query,
+      :response_fields => :query,
       :params => :query,
-      :exclude => :query,
-      :response_fields => :query
+      :exclude => :query
     }
 
     request =
@@ -128,18 +128,18 @@ defmodule API2CartOpenAPI.Api.Customer do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:ids` (String.t): Counts customers specified by ids
+    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:customer_list_id` (String.t): The numeric ID of the customer list in Demandware.
     - `:group_id` (String.t): Customer group_id
+    - `:store_id` (String.t): Counts customer specified by store id
+    - `:avail` (boolean()): Defines category's visibility status
+    - `:find_value` (String.t): Entity search that is specified by some value
+    - `:find_where` (String.t): Counts customers that are searched specified by field
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:store_id` (String.t): Counts customer specified by store id
-    - `:customer_list_id` (String.t): The numeric ID of the customer list in Demandware.
-    - `:avail` (boolean()): Defines category's visibility status
-    - `:find_value` (String.t): Entity search that is specified by some value
-    - `:find_where` (String.t): Counts customers that are searched specified by field
-    - `:ids` (String.t): Counts customers specified by ids
-    - `:since_id` (String.t): Retrieve entities starting from the specified id.
 
   ### Returns
 
@@ -149,18 +149,18 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CustomerCount200Response.t} | {:error, Tesla.Env.t}
   def customer_count(connection, opts \\ []) do
     optional_params = %{
-      :group_id => :query,
-      :created_from => :query,
-      :created_to => :query,
-      :modified_from => :query,
-      :modified_to => :query,
-      :store_id => :query,
+      :ids => :query,
+      :since_id => :query,
       :customer_list_id => :query,
+      :group_id => :query,
+      :store_id => :query,
       :avail => :query,
       :find_value => :query,
       :find_where => :query,
-      :ids => :query,
-      :since_id => :query
+      :created_from => :query,
+      :created_to => :query,
+      :modified_from => :query,
+      :modified_to => :query
     }
 
     request =
@@ -297,16 +297,16 @@ defmodule API2CartOpenAPI.Api.Customer do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:disable_cache` (boolean()): Disable cache for current request
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:group_ids` (String.t): Groups that will be assigned to a customer
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
-    - `:group_ids` (String.t): Groups that will be assigned to a customer
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:disable_cache` (boolean()): Disable cache for current request
 
   ### Returns
 
@@ -316,16 +316,16 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_group_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerGroupList.t} | {:error, Tesla.Env.t}
   def customer_group_list(connection, opts \\ []) do
     optional_params = %{
-      :disable_cache => :query,
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
+      :group_ids => :query,
       :store_id => :query,
       :lang_id => :query,
-      :group_ids => :query,
+      :response_fields => :query,
       :params => :query,
       :exclude => :query,
-      :response_fields => :query
+      :disable_cache => :query
     }
 
     request =
@@ -351,10 +351,10 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Retrieves customer's info specified by customer id
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:store_id` (String.t): Retrieves customer info specified by store id
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -364,10 +364,10 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_info(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CustomerInfo200Response.t} | {:error, Tesla.Env.t}
   def customer_info(connection, id, opts \\ []) do
     optional_params = %{
-      :params => :query,
+      :store_id => :query,
       :response_fields => :query,
-      :exclude => :query,
-      :store_id => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -393,26 +393,26 @@ defmodule API2CartOpenAPI.Api.Customer do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:ids` (String.t): Retrieves customers specified by ids
+    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:customer_list_id` (String.t): The numeric ID of the customer list in Demandware.
+    - `:group_id` (String.t): Customer group_id
+    - `:store_id` (String.t): Retrieves customers specified by store id
+    - `:avail` (boolean()): Defines category's visibility status
+    - `:find_value` (String.t): Entity search that is specified by some value
+    - `:find_where` (String.t): Customer search that is specified by field
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:group_id` (String.t): Customer group_id
-    - `:store_id` (String.t): Retrieves customers specified by store id
-    - `:customer_list_id` (String.t): The numeric ID of the customer list in Demandware.
-    - `:avail` (boolean()): Defines category's visibility status
-    - `:find_value` (String.t): Entity search that is specified by some value
-    - `:find_where` (String.t): Customer search that is specified by field
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
-    - `:ids` (String.t): Retrieves customers specified by ids
-    - `:since_id` (String.t): Retrieve entities starting from the specified id.
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -422,26 +422,26 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerList.t} | {:error, Tesla.Env.t}
   def customer_list(connection, opts \\ []) do
     optional_params = %{
-      :page_cursor => :query,
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
+      :ids => :query,
+      :since_id => :query,
+      :customer_list_id => :query,
+      :group_id => :query,
+      :store_id => :query,
+      :avail => :query,
+      :find_value => :query,
+      :find_where => :query,
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :params => :query,
-      :response_fields => :query,
-      :exclude => :query,
-      :group_id => :query,
-      :store_id => :query,
-      :customer_list_id => :query,
-      :avail => :query,
-      :find_value => :query,
-      :find_where => :query,
       :sort_by => :query,
       :sort_direction => :query,
-      :ids => :query,
-      :since_id => :query
+      :response_fields => :query,
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -498,11 +498,11 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `customer_id` (String.t): Retrieves orders specified by customer id
   - `opts` (keyword): Optional parameters
-    - `:id` (String.t): Entity id
-    - `:store_id` (String.t): Store Id
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:id` (String.t): Entity id
+    - `:store_id` (String.t): Store Id
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
@@ -513,11 +513,11 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_wishlist_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerWishlistList.t} | {:error, Tesla.Env.t}
   def customer_wishlist_list(connection, customer_id, opts \\ []) do
     optional_params = %{
-      :id => :query,
-      :store_id => :query,
       :start => :query,
       :count => :query,
       :page_cursor => :query,
+      :id => :query,
+      :store_id => :query,
       :response_fields => :query
     }
 

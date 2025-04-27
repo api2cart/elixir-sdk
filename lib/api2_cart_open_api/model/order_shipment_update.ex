@@ -8,27 +8,27 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
 
   @derive Jason.Encoder
   defstruct [
-    :store_id,
     :shipment_id,
     :order_id,
+    :store_id,
+    :shipment_provider,
     :tracking_numbers,
-    :replace,
-    :is_shipped,
     :tracking_link,
+    :is_shipped,
     :delivered_at,
-    :shipment_provider
+    :replace
   ]
 
   @type t :: %__MODULE__{
-    :store_id => String.t | nil,
     :shipment_id => String.t,
     :order_id => String.t | nil,
+    :store_id => String.t | nil,
+    :shipment_provider => String.t | nil,
     :tracking_numbers => [API2CartOpenAPI.Model.OrderShipmentAddTrackingNumbersInner.t] | nil,
-    :replace => boolean() | nil,
-    :is_shipped => boolean() | nil,
     :tracking_link => String.t | nil,
+    :is_shipped => boolean() | nil,
     :delivered_at => String.t | nil,
-    :shipment_provider => String.t | nil
+    :replace => boolean() | nil
   }
 
   alias API2CartOpenAPI.Deserializer

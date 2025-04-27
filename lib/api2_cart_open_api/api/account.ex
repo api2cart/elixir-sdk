@@ -48,12 +48,12 @@ defmodule API2CartOpenAPI.Api.Account do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-    - `:request_from_date` (String.t): Retrieve entities from their creation date
-    - `:request_to_date` (String.t): Retrieve entities to their creation date
     - `:store_url` (String.t): A web address of a store
     - `:store_key` (String.t): Find store by store key
+    - `:request_from_date` (String.t): Retrieve entities from their creation date
+    - `:request_to_date` (String.t): Retrieve entities to their creation date
+    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -63,12 +63,12 @@ defmodule API2CartOpenAPI.Api.Account do
   @spec account_cart_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AccountCartList200Response.t} | {:error, Tesla.Env.t}
   def account_cart_list(connection, opts \\ []) do
     optional_params = %{
-      :params => :query,
-      :exclude => :query,
+      :store_url => :query,
+      :store_key => :query,
       :request_from_date => :query,
       :request_to_date => :query,
-      :store_url => :query,
-      :store_key => :query
+      :params => :query,
+      :exclude => :query
     }
 
     request =
@@ -152,6 +152,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:shopline_access_token` (String.t): Shopline APP Key
     - `:shopline_app_key` (String.t): Shopline APP Key
     - `:shopline_app_secret` (String.t): Shopline App Secret
+    - `:shopline_shared_secret` (String.t): Shopline Shared Secret
     - `:shopify_access_token` (String.t): Access token authorizing the app to access resources on behalf of a user
     - `:shopify_api_key` (String.t): Shopify API Key
     - `:shopify_api_password` (String.t): Shopify API Password
@@ -302,6 +303,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :shopline_access_token => :query,
       :shopline_app_key => :query,
       :shopline_app_secret => :query,
+      :shopline_shared_secret => :query,
       :shopify_access_token => :query,
       :shopify_api_key => :query,
       :shopify_api_password => :query,
@@ -409,8 +411,8 @@ defmodule API2CartOpenAPI.Api.Account do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:start` (integer()): This parameter sets the number from which you want to get entities
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:ids` (String.t): List of сomma-separated webhook ids
 
   ### Returns
@@ -421,8 +423,8 @@ defmodule API2CartOpenAPI.Api.Account do
   @spec account_failed_webhooks(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AccountFailedWebhooks200Response.t} | {:error, Tesla.Env.t}
   def account_failed_webhooks(connection, opts \\ []) do
     optional_params = %{
-      :count => :query,
       :start => :query,
+      :count => :query,
       :ids => :query
     }
 

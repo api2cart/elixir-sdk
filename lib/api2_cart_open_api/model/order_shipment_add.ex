@@ -9,34 +9,34 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
   @derive Jason.Encoder
   defstruct [
     :order_id,
-    :store_id,
     :warehouse_id,
+    :store_id,
     :shipment_provider,
     :shipping_method,
     :items,
-    :send_notifications,
     :tracking_numbers,
-    :adjust_stock,
-    :enable_cache,
     :tracking_link,
     :is_shipped,
+    :send_notifications,
+    :adjust_stock,
+    :enable_cache,
     :check_process_status,
     :use_latest_api_version
   ]
 
   @type t :: %__MODULE__{
     :order_id => String.t | nil,
-    :store_id => String.t | nil,
     :warehouse_id => String.t | nil,
+    :store_id => String.t | nil,
     :shipment_provider => String.t | nil,
     :shipping_method => String.t | nil,
     :items => [API2CartOpenAPI.Model.OrderShipmentAddItemsInner.t] | nil,
-    :send_notifications => boolean() | nil,
     :tracking_numbers => [API2CartOpenAPI.Model.OrderShipmentAddTrackingNumbersInner.t] | nil,
-    :adjust_stock => boolean() | nil,
-    :enable_cache => boolean() | nil,
     :tracking_link => String.t | nil,
     :is_shipped => boolean() | nil,
+    :send_notifications => boolean() | nil,
+    :adjust_stock => boolean() | nil,
+    :enable_cache => boolean() | nil,
     :check_process_status => boolean() | nil,
     :use_latest_api_version => boolean() | nil
   }

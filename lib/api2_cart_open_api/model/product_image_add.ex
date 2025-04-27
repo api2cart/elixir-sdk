@@ -8,36 +8,36 @@ defmodule API2CartOpenAPI.Model.ProductImageAdd do
 
   @derive Jason.Encoder
   defstruct [
-    :product_id,
-    :image_name,
     :type,
-    :url,
-    :label,
-    :mime,
-    :position,
-    :content,
+    :image_name,
+    :product_id,
     :product_variant_id,
     :variant_ids,
     :option_value_ids,
     :store_id,
     :lang_id,
+    :url,
+    :content,
+    :label,
+    :mime,
+    :position,
     :use_latest_api_version
   ]
 
   @type t :: %__MODULE__{
-    :product_id => String.t | nil,
-    :image_name => String.t,
     :type => String.t,
-    :url => String.t | nil,
-    :label => String.t | nil,
-    :mime => String.t | nil,
-    :position => integer() | nil,
-    :content => String.t | nil,
+    :image_name => String.t,
+    :product_id => String.t | nil,
     :product_variant_id => String.t | nil,
     :variant_ids => String.t | nil,
     :option_value_ids => String.t | nil,
     :store_id => String.t | nil,
     :lang_id => String.t | nil,
+    :url => String.t | nil,
+    :content => String.t | nil,
+    :label => String.t | nil,
+    :mime => String.t | nil,
+    :position => integer() | nil,
     :use_latest_api_version => boolean() | nil
   }
 
