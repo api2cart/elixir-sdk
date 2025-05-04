@@ -21,6 +21,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :adjust_stock,
     :enable_cache,
     :check_process_status,
+    :tracking_provider,
     :use_latest_api_version
   ]
 
@@ -38,6 +39,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :adjust_stock => boolean() | nil,
     :enable_cache => boolean() | nil,
     :check_process_status => boolean() | nil,
+    :tracking_provider => String.t | nil,
     :use_latest_api_version => boolean() | nil
   }
 

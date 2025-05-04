@@ -16,7 +16,10 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :tracking_link,
     :is_shipped,
     :delivered_at,
-    :replace
+    :replace,
+    :send_notifications,
+    :tracking_provider,
+    :items
   ]
 
   @type t :: %__MODULE__{
@@ -28,7 +31,10 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :tracking_link => String.t | nil,
     :is_shipped => boolean() | nil,
     :delivered_at => String.t | nil,
-    :replace => boolean() | nil
+    :replace => boolean() | nil,
+    :send_notifications => boolean() | nil,
+    :tracking_provider => String.t | nil,
+    :items => [API2CartOpenAPI.Model.OrderShipmentAddItemsInner.t] | nil
   }
 
   alias API2CartOpenAPI.Deserializer
@@ -36,6 +42,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
   def decode(value) do
     value
      |> Deserializer.deserialize(:tracking_numbers, :list, API2CartOpenAPI.Model.OrderShipmentAddTrackingNumbersInner)
+     |> Deserializer.deserialize(:items, :list, API2CartOpenAPI.Model.OrderShipmentAddItemsInner)
   end
 end
 
