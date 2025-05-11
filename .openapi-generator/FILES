@@ -294,6 +294,7 @@ lib/api2_cart_open_api/model/product_add_group_prices_inner.ex
 lib/api2_cart_open_api/model/product_add_logistic_info_inner.ex
 lib/api2_cart_open_api/model/product_add_manufacturer_info.ex
 lib/api2_cart_open_api/model/product_add_package_details.ex
+lib/api2_cart_open_api/model/product_add_personalization_details.ex
 lib/api2_cart_open_api/model/product_add_sales_tax.ex
 lib/api2_cart_open_api/model/product_add_seller_profiles.ex
 lib/api2_cart_open_api/model/product_add_shipping_details_inner.ex

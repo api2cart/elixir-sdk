@@ -17,6 +17,7 @@ defmodule API2CartOpenAPI.Api.Subscriber do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:ids` (String.t): Retrieves subscribers specified by ids
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
@@ -39,6 +40,7 @@ defmodule API2CartOpenAPI.Api.Subscriber do
   @spec subscriber_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseSubscriberList.t} | {:error, Tesla.Env.t}
   def subscriber_list(connection, opts \\ []) do
     optional_params = %{
+      :ids => :query,
       :start => :query,
       :count => :query,
       :page_cursor => :query,

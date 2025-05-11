@@ -89,7 +89,10 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :disable_report_cache,
     :reindex,
     :clear_cache,
-    :check_process_status
+    :check_process_status,
+    :specifics,
+    :shop_section_id,
+    :personalization_details
   ]
 
   @type t :: %__MODULE__{
@@ -174,7 +177,10 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :disable_report_cache => boolean() | nil,
     :reindex => boolean() | nil,
     :clear_cache => boolean() | nil,
-    :check_process_status => boolean() | nil
+    :check_process_status => boolean() | nil,
+    :specifics => [API2CartOpenAPI.Model.ProductAddSpecificsInner.t] | nil,
+    :shop_section_id => integer() | nil,
+    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer
@@ -184,6 +190,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
      |> Deserializer.deserialize(:tier_prices, :list, API2CartOpenAPI.Model.ProductAddTierPricesInner)
      |> Deserializer.deserialize(:package_details, :struct, API2CartOpenAPI.Model.ProductAddPackageDetails)
      |> Deserializer.deserialize(:manufacturer_info, :struct, API2CartOpenAPI.Model.ProductAddManufacturerInfo)
+     |> Deserializer.deserialize(:specifics, :list, API2CartOpenAPI.Model.ProductAddSpecificsInner)
+     |> Deserializer.deserialize(:personalization_details, :struct, API2CartOpenAPI.Model.ProductAddPersonalizationDetails)
   end
 end
 

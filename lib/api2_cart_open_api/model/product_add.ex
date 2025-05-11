@@ -119,7 +119,10 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :marketplace_item_properties,
     :clear_cache,
     :viewed_count,
-    :ordered_count
+    :ordered_count,
+    :shop_section_id,
+    :return_policy_id,
+    :personalization_details
   ]
 
   @type t :: %__MODULE__{
@@ -234,7 +237,10 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :marketplace_item_properties => String.t | nil,
     :clear_cache => boolean() | nil,
     :viewed_count => integer() | nil,
-    :ordered_count => integer() | nil
+    :ordered_count => integer() | nil,
+    :shop_section_id => integer() | nil,
+    :return_policy_id => integer() | nil,
+    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer
@@ -254,6 +260,7 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
      |> Deserializer.deserialize(:logistic_info, :list, API2CartOpenAPI.Model.ProductAddLogisticInfoInner)
      |> Deserializer.deserialize(:seller_profiles, :struct, API2CartOpenAPI.Model.ProductAddSellerProfiles)
      |> Deserializer.deserialize(:best_offer, :struct, API2CartOpenAPI.Model.ProductAddBestOffer)
+     |> Deserializer.deserialize(:personalization_details, :struct, API2CartOpenAPI.Model.ProductAddPersonalizationDetails)
   end
 end
 
