@@ -993,6 +993,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:send_notifications` (boolean()): Send notifications to customer after order was created
     - `:create_invoice` (boolean()): Determines whether an invoice should be created if it has not already been created
     - `:origin` (String.t): The source of the order
+    - `:tags` (String.t): Order tags
 
   ### Returns
 
@@ -1016,7 +1017,8 @@ defmodule API2CartOpenAPI.Api.Order do
       :date_finished => :query,
       :send_notifications => :query,
       :create_invoice => :query,
-      :origin => :query
+      :origin => :query,
+      :tags => :query
     }
 
     request =
