@@ -88,6 +88,12 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :shopify_api_key,
     :shopify_api_password,
     :shopify_shared_secret,
+    :shopee_partner_id,
+    :shopee_partner_key,
+    :shopee_shop_id,
+    :shopee_refresh_token,
+    :shopee_region,
+    :shopee_environment,
     :shoplazza_access_token,
     :shoplazza_shared_secret,
     :shopware_access_key,
@@ -158,7 +164,11 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :salla_client_id,
     :salla_client_secret,
     :salla_refresh_token,
-    :salla_access_token
+    :salla_access_token,
+    :temu_app_key,
+    :temu_app_secret,
+    :temu_access_token,
+    :temu_region
   ]
 
   @type t :: %__MODULE__{
@@ -242,6 +252,12 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :shopify_api_key => String.t | nil,
     :shopify_api_password => String.t | nil,
     :shopify_shared_secret => String.t | nil,
+    :shopee_partner_id => String.t | nil,
+    :shopee_partner_key => String.t | nil,
+    :shopee_shop_id => String.t | nil,
+    :shopee_refresh_token => String.t | nil,
+    :shopee_region => String.t | nil,
+    :shopee_environment => String.t | nil,
     :shoplazza_access_token => String.t | nil,
     :shoplazza_shared_secret => String.t | nil,
     :shopware_access_key => String.t | nil,
@@ -312,7 +328,11 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :salla_client_id => String.t | nil,
     :salla_client_secret => String.t | nil,
     :salla_refresh_token => String.t | nil,
-    :salla_access_token => String.t | nil
+    :salla_access_token => String.t | nil,
+    :temu_app_key => String.t | nil,
+    :temu_app_secret => String.t | nil,
+    :temu_access_token => String.t,
+    :temu_region => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

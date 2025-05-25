@@ -157,6 +157,12 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:shopify_api_key` (String.t): Shopify API Key
     - `:shopify_api_password` (String.t): Shopify API Password
     - `:shopify_shared_secret` (String.t): Shared secret
+    - `:shopee_partner_id` (String.t): Shopee Partner ID
+    - `:shopee_partner_key` (String.t): Shopee Partner Key
+    - `:shopee_shop_id` (String.t): Shopee SHOP ID
+    - `:shopee_refresh_token` (String.t): Shopee Refresh Token
+    - `:shopee_region` (String.t): Shopee API endpoint Region. Use for Chinese Mainland or Brazil.
+    - `:shopee_environment` (String.t): Shopee Environment
     - `:shoplazza_access_token` (String.t): Access token authorizing the app to access resources on behalf of a user
     - `:shoplazza_shared_secret` (String.t): Shared secret
     - `:miva_access_token` (String.t): Miva access token
@@ -237,6 +243,10 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:salla_client_secret` (String.t): Salla Client Secret
     - `:salla_refresh_token` (String.t): Salla Refresh Token
     - `:salla_access_token` (String.t): Salla Access Token
+    - `:temu_app_key` (String.t): Temu App Key
+    - `:temu_app_secret` (String.t): Temu App Secret
+    - `:temu_access_token` (String.t): Temu Access Token
+    - `:temu_region` (String.t): Temu API endpoint Region.
 
   ### Returns
 
@@ -310,6 +320,12 @@ defmodule API2CartOpenAPI.Api.Account do
       :shopify_api_key => :query,
       :shopify_api_password => :query,
       :shopify_shared_secret => :query,
+      :shopee_partner_id => :query,
+      :shopee_partner_key => :query,
+      :shopee_shop_id => :query,
+      :shopee_refresh_token => :query,
+      :shopee_region => :query,
+      :shopee_environment => :query,
       :shoplazza_access_token => :query,
       :shoplazza_shared_secret => :query,
       :miva_access_token => :query,
@@ -389,7 +405,11 @@ defmodule API2CartOpenAPI.Api.Account do
       :salla_client_id => :query,
       :salla_client_secret => :query,
       :salla_refresh_token => :query,
-      :salla_access_token => :query
+      :salla_access_token => :query,
+      :temu_app_key => :query,
+      :temu_app_secret => :query,
+      :temu_access_token => :query,
+      :temu_region => :query
     }
 
     request =
