@@ -332,7 +332,7 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :temu_app_key => String.t | nil,
     :temu_app_secret => String.t | nil,
     :temu_access_token => String.t,
-    :temu_region => String.t | nil
+    :temu_region => String.t
   }
 
   alias API2CartOpenAPI.Deserializer
