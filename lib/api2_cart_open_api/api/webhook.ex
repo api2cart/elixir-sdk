@@ -62,6 +62,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:label` (String.t): The name you give to the webhook
     - `:fields` (String.t): Fields the webhook should send
     - `:active` (boolean()): Webhook status
+    - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Defines store id where the webhook should be assigned
 
   ### Returns
@@ -76,6 +77,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :label => :query,
       :fields => :query,
       :active => :query,
+      :lang_id => :query,
       :store_id => :query
     }
 
@@ -216,6 +218,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:label` (String.t): The name you give to the webhook
     - `:fields` (String.t): Fields the webhook should send
     - `:active` (boolean()): Webhook status
+    - `:lang_id` (String.t): Language id
 
   ### Returns
 
@@ -228,7 +231,8 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :callback => :query,
       :label => :query,
       :fields => :query,
-      :active => :query
+      :active => :query,
+      :lang_id => :query
     }
 
     request =
