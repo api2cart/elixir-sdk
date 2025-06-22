@@ -61,6 +61,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:callback` (String.t): Callback url that returns shipping rates. It should be able to accept POST requests with json data.
     - `:label` (String.t): The name you give to the webhook
     - `:fields` (String.t): Fields the webhook should send
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:active` (boolean()): Webhook status
     - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Defines store id where the webhook should be assigned
@@ -76,6 +77,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :callback => :query,
       :label => :query,
       :fields => :query,
+      :response_fields => :query,
       :active => :query,
       :lang_id => :query,
       :store_id => :query
@@ -217,6 +219,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:callback` (String.t): Callback url that returns shipping rates. It should be able to accept POST requests with json data.
     - `:label` (String.t): The name you give to the webhook
     - `:fields` (String.t): Fields the webhook should send
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:active` (boolean()): Webhook status
     - `:lang_id` (String.t): Language id
 
@@ -231,6 +234,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :callback => :query,
       :label => :query,
       :fields => :query,
+      :response_fields => :query,
       :active => :query,
       :lang_id => :query
     }
