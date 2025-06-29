@@ -13,6 +13,7 @@ defmodule API2CartOpenAPI.Model.ProductAddSpecificsInner do
     :values,
     :used_for_variations,
     :scale_id,
+    :input_value,
     :food_details,
     :group_products_details,
     :booking_details
@@ -24,6 +25,7 @@ defmodule API2CartOpenAPI.Model.ProductAddSpecificsInner do
     :values => [String.t] | nil,
     :used_for_variations => boolean() | nil,
     :scale_id => integer() | nil,
+    :input_value => String.t | nil,
     :food_details => API2CartOpenAPI.Model.ProductAddSpecificsInnerFoodDetails.t | nil,
     :group_products_details => [API2CartOpenAPI.Model.ProductAddSpecificsInnerGroupProductsDetailsInner.t] | nil,
     :booking_details => API2CartOpenAPI.Model.ProductAddSpecificsInnerBookingDetails.t | nil

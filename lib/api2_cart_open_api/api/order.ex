@@ -766,7 +766,7 @@ defmodule API2CartOpenAPI.Api.Order do
 
   @doc """
   order.shipment.list
-  Get list of shipments by orders.
+  Get list of shipments per order.
 
   ### Parameters
 

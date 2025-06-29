@@ -492,6 +492,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:product_attributes` ([String.t]): Defines product attributes
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
+    - `:visible` (String.t): Filter items by visibility status
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Counts products that are searched specified by field
     - `:report_request_id` (String.t): Report request id
@@ -523,6 +524,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :product_attributes => :query,
       :status => :query,
       :type => :query,
+      :visible => :query,
       :find_value => :query,
       :find_where => :query,
       :report_request_id => :query,
@@ -990,6 +992,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:product_attributes` ([String.t]): Defines product attributes
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
+    - `:visible` (String.t): Filter items by visibility status
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Product search that is specified by field
     - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
@@ -1032,6 +1035,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :product_attributes => :query,
       :status => :query,
       :type => :query,
+      :visible => :query,
       :find_value => :query,
       :find_where => :query,
       :return_global => :query,
