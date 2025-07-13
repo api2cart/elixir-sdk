@@ -134,6 +134,7 @@ defmodule API2CartOpenAPI.Api.Customer do
     - `:group_id` (String.t): Customer group_id
     - `:store_id` (String.t): Counts customer specified by store id
     - `:avail` (boolean()): Defines category's visibility status
+    - `:include_guests` (boolean()): Indicates whether to include guest customers in the total count.
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Counts customers that are searched specified by field
     - `:created_from` (String.t): Retrieve entities from their creation date
@@ -155,6 +156,7 @@ defmodule API2CartOpenAPI.Api.Customer do
       :group_id => :query,
       :store_id => :query,
       :avail => :query,
+      :include_guests => :query,
       :find_value => :query,
       :find_where => :query,
       :created_from => :query,
@@ -220,6 +222,7 @@ defmodule API2CartOpenAPI.Api.Customer do
     - `:find_where` (String.t): Entity search that is specified by the comma-separated unique fields
     - `:find_params` (String.t): Entity search that is specified by comma-separated parameters
     - `:store_id` (String.t): Store Id
+    - `:include_guests` (boolean()): Indicates whether to search among guest customers when looking up a customer.
 
   ### Returns
 
@@ -231,7 +234,8 @@ defmodule API2CartOpenAPI.Api.Customer do
     optional_params = %{
       :find_where => :query,
       :find_params => :query,
-      :store_id => :query
+      :store_id => :query,
+      :include_guests => :query
     }
 
     request =
@@ -402,6 +406,7 @@ defmodule API2CartOpenAPI.Api.Customer do
     - `:group_id` (String.t): Customer group_id
     - `:store_id` (String.t): Retrieves customers specified by store id
     - `:avail` (boolean()): Defines category's visibility status
+    - `:include_guests` (boolean()): Indicates whether to include guest customers in the list results.
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Customer search that is specified by field
     - `:created_from` (String.t): Retrieve entities from their creation date
@@ -431,6 +436,7 @@ defmodule API2CartOpenAPI.Api.Customer do
       :group_id => :query,
       :store_id => :query,
       :avail => :query,
+      :include_guests => :query,
       :find_value => :query,
       :find_where => :query,
       :created_from => :query,
