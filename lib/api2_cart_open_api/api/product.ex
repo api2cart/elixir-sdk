@@ -713,35 +713,6 @@ defmodule API2CartOpenAPI.Api.Product do
   end
 
   @doc """
-  product.fields
-  Retrieve all available fields for product item in store.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec product_fields(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t} | {:error, Tesla.Env.t}
-  def product_fields(connection, _opts \\ []) do
-    request =
-      %{}
-      |> method(:get)
-      |> url("/product.fields.json")
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartConfigUpdate200Response}
-    ])
-  end
-
-  @doc """
   product.find
   Search product in store catalog. \"Apple\" is specified here by default.
 
@@ -1792,53 +1763,6 @@ defmodule API2CartOpenAPI.Api.Product do
   end
 
   @doc """
-  product.variant.count
-  Get count variants.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `product_id` (String.t): Retrieves products' variants specified by product id
-  - `opts` (keyword): Optional parameters
-    - `:category_id` (String.t): Counts products’ variants specified by category id
-    - `:store_id` (String.t): Retrieves variants specified by store id
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.ProductVariantCount200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec product_variant_count(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductVariantCount200Response.t} | {:error, Tesla.Env.t}
-  def product_variant_count(connection, product_id, opts \\ []) do
-    optional_params = %{
-      :category_id => :query,
-      :store_id => :query,
-      :created_from => :query,
-      :created_to => :query,
-      :modified_from => :query,
-      :modified_to => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/product.variant.count.json")
-      |> add_param(:query, :product_id, product_id)
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductVariantCount200Response}
-    ])
-  end
-
-  @doc """
   product.variant.delete
   Delete variant.
 
@@ -1977,102 +1901,6 @@ defmodule API2CartOpenAPI.Api.Product do
     |> Connection.request(request)
     |> evaluate_response([
       {200, API2CartOpenAPI.Model.AttributeDelete200Response}
-    ])
-  end
-
-  @doc """
-  product.variant.info
-  Get variant info. This method is deprecated, and its development is stopped. Please use \"product.child_item.info\" instead.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `id` (String.t): Retrieves variant's info specified by variant id
-  - `opts` (keyword): Optional parameters
-    - `:store_id` (String.t): Retrieves variant info specified by store id
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.ProductInfo200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec product_variant_info(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductInfo200Response.t} | {:error, Tesla.Env.t}
-  def product_variant_info(connection, id, opts \\ []) do
-    optional_params = %{
-      :store_id => :query,
-      :params => :query,
-      :exclude => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/product.variant.info.json")
-      |> add_param(:query, :id, id)
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductInfo200Response}
-    ])
-  end
-
-  @doc """
-  product.variant.list
-  Get a list of variants. This method is deprecated, and its development is stopped. Please use \"product.child_item.list\" instead.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-    - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:product_id` (String.t): Retrieves products' variants specified by product id
-    - `:category_id` (String.t): Retrieves products’ variants specified by category id
-    - `:store_id` (String.t): Retrieves variants specified by store id
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.ProductVariantList200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec product_variant_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductVariantList200Response.t} | {:error, Tesla.Env.t}
-  def product_variant_list(connection, opts \\ []) do
-    optional_params = %{
-      :start => :query,
-      :count => :query,
-      :product_id => :query,
-      :category_id => :query,
-      :store_id => :query,
-      :created_from => :query,
-      :created_to => :query,
-      :modified_from => :query,
-      :modified_to => :query,
-      :params => :query,
-      :exclude => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/product.variant.list.json")
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductVariantList200Response}
     ])
   end
 

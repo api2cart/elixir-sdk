@@ -8,19 +8,19 @@ defmodule API2CartOpenAPI.Connection do
   Additional middleware can be set in the compile-time or runtime configuration:
 
       config :tesla, API2CartOpenAPI.Connection,
-        base_url: "https://api.api2cart.com/v1.1",
+        base_url: "https://api.api2cart.local.com/v1.1",
         adapter: Tesla.Adapter.Hackney
 
   The default base URL can also be set as:
 
       config :api2_cart_open_api,
-        :base_url, "https://api.api2cart.com/v1.1"
+        :base_url, "https://api.api2cart.local.com/v1.1"
   """
 
   @default_base_url Application.compile_env(
                       :api2_cart_open_api,
                       :base_url,
-                      "https://api.api2cart.com/v1.1"
+                      "https://api.api2cart.local.com/v1.1"
                     )
 
 

@@ -31,14 +31,14 @@ You can override the URL of your server (e.g. if you have a separate development
 configuration files).
 
 ```elixir
-config :api2_cart_open_api, base_url: "https://api.api2cart.com/v1.1"
+config :api2_cart_open_api, base_url: "https://api.api2cart.local.com/v1.1"
 ```
 
 Multiple clients for the same API with different URLs can be created passing different `base_url`s when calling
 `API2CartOpenAPI.Connection.new/1`:
 
 ```elixir
-client = API2CartOpenAPI.Connection.new(base_url: "https://api.api2cart.com/v1.1")
+client = API2CartOpenAPI.Connection.new(base_url: "https://api.api2cart.local.com/v1.1")
 ```
 
 [exdoc]: https://github.com/elixir-lang/ex_doc

@@ -118,10 +118,10 @@ defmodule API2CartOpenAPI.Api.Category do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec category_assign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t} | {:error, Tesla.Env.t}
+  @spec category_assign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t} | {:error, Tesla.Env.t}
   def category_assign(connection, category_id, product_id, opts \\ []) do
     optional_params = %{
       :store_id => :query
@@ -140,7 +140,7 @@ defmodule API2CartOpenAPI.Api.Category do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartConfigUpdate200Response}
+      {200, API2CartOpenAPI.Model.CategoryAssign200Response}
     ])
   end
 
@@ -510,10 +510,10 @@ defmodule API2CartOpenAPI.Api.Category do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec category_unassign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t} | {:error, Tesla.Env.t}
+  @spec category_unassign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t} | {:error, Tesla.Env.t}
   def category_unassign(connection, category_id, product_id, opts \\ []) do
     optional_params = %{
       :store_id => :query
@@ -532,7 +532,7 @@ defmodule API2CartOpenAPI.Api.Category do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartConfigUpdate200Response}
+      {200, API2CartOpenAPI.Model.CategoryAssign200Response}
     ])
   end
 

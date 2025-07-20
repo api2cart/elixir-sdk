@@ -10,35 +10,6 @@ defmodule API2CartOpenAPI.Api.Cart do
   import API2CartOpenAPI.RequestBuilder
 
   @doc """
-  cart.bridge
-  Get bridge key and store key
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartBridge200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_bridge(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartBridge200Response.t} | {:error, Tesla.Env.t}
-  def cart_bridge(connection, _opts \\ []) do
-    request =
-      %{}
-      |> method(:get)
-      |> url("/cart.bridge.json")
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartBridge200Response}
-    ])
-  end
-
-  @doc """
   cart.catalog_price_rules.count
   Get count of cart catalog price rules discounts.
 
@@ -111,106 +82,6 @@ defmodule API2CartOpenAPI.Api.Cart do
     |> Connection.request(request)
     |> evaluate_response([
       {200, API2CartOpenAPI.Model.ModelResponseCartCatalogPriceRulesList}
-    ])
-  end
-
-  @doc """
-  cart.clear_cache
-  Clear cache on store.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `cache_type` (String.t): Defines which cache should be cleared.
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartClearCache200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_clear_cache(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CartClearCache200Response.t} | {:error, Tesla.Env.t}
-  def cart_clear_cache(connection, cache_type, _opts \\ []) do
-    request =
-      %{}
-      |> method(:post)
-      |> url("/cart.clear_cache.json")
-      |> add_param(:query, :cache_type, cache_type)
-      |> ensure_body()
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartClearCache200Response}
-    ])
-  end
-
-  @doc """
-  cart.config
-  Get list of cart configs
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartConfig200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_config(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfig200Response.t} | {:error, Tesla.Env.t}
-  def cart_config(connection, opts \\ []) do
-    optional_params = %{
-      :params => :query,
-      :exclude => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/cart.config.json")
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartConfig200Response}
-    ])
-  end
-
-  @doc """
-  cart.config.update
-  Use this API method to update custom data in client database.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `cart_config_update` (CartConfigUpdate): 
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_config_update(Tesla.Env.client, API2CartOpenAPI.Model.CartConfigUpdate.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CartConfigUpdate200Response.t} | {:error, Tesla.Env.t}
-  def cart_config_update(connection, cart_config_update, _opts \\ []) do
-    request =
-      %{}
-      |> method(:put)
-      |> url("/cart.config.update.json")
-      |> add_param(:body, :body, cart_config_update)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartConfigUpdate200Response}
     ])
   end
 
@@ -441,37 +312,6 @@ defmodule API2CartOpenAPI.Api.Cart do
   end
 
   @doc """
-  cart.create
-  Add store to the account
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `cart_create` (CartCreate): 
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.AccountCartAdd200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_create(Tesla.Env.client, API2CartOpenAPI.Model.CartCreate.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AccountCartAdd200Response.t} | {:error, Tesla.Env.t}
-  def cart_create(connection, cart_create, _opts \\ []) do
-    request =
-      %{}
-      |> method(:post)
-      |> url("/cart.create.json")
-      |> add_param(:body, :body, cart_create)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.AccountCartAdd200Response}
-    ])
-  end
-
-  @doc """
   cart.delete
   Remove store from API2Cart
 
@@ -503,41 +343,6 @@ defmodule API2CartOpenAPI.Api.Cart do
     |> Connection.request(request)
     |> evaluate_response([
       {200, API2CartOpenAPI.Model.CartDelete200Response}
-    ])
-  end
-
-  @doc """
-  cart.disconnect
-  Disconnect with the store and clear store session data.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-    - `:delete_bridge` (boolean()): Identifies if there is a necessity to delete bridge
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartDisconnect200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_disconnect(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartDisconnect200Response.t} | {:error, Tesla.Env.t}
-  def cart_disconnect(connection, opts \\ []) do
-    optional_params = %{
-      :delete_bridge => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/cart.disconnect.json")
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartDisconnect200Response}
     ])
   end
 
@@ -738,35 +543,6 @@ defmodule API2CartOpenAPI.Api.Cart do
     |> Connection.request(request)
     |> evaluate_response([
       {200, API2CartOpenAPI.Model.CartInfo200Response}
-    ])
-  end
-
-  @doc """
-  cart.list
-  Get list of supported carts
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.CartList200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec cart_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartList200Response.t} | {:error, Tesla.Env.t}
-  def cart_list(connection, _opts \\ []) do
-    request =
-      %{}
-      |> method(:get)
-      |> url("/cart.list.json")
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartList200Response}
     ])
   end
 

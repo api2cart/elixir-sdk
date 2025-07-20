@@ -204,63 +204,6 @@ defmodule API2CartOpenAPI.Api.Order do
   end
 
   @doc """
-  order.find
-  This method is deprecated and won't be supported in the future. Please use \"order.list\" instead.
-
-  ### Parameters
-
-  - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `opts` (keyword): Optional parameters
-    - `:start` (integer()): This parameter sets the number from which you want to get entities
-    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
-    - `:customer_id` (String.t): Retrieves orders specified by customer id
-    - `:customer_email` (String.t): Retrieves orders specified by customer email
-    - `:order_status` (String.t): Retrieves orders specified by order status
-    - `:financial_status` (String.t): Retrieves orders specified by financial status
-    - `:created_to` (String.t): Retrieve entities to their creation date
-    - `:created_from` (String.t): Retrieve entities from their creation date
-    - `:modified_to` (String.t): Retrieve entities to their modification date
-    - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
-
-  ### Returns
-
-  - `{:ok, API2CartOpenAPI.Model.OrderFind200Response.t}` on success
-  - `{:error, Tesla.Env.t}` on failure
-  """
-  @spec order_find(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderFind200Response.t} | {:error, Tesla.Env.t}
-  def order_find(connection, opts \\ []) do
-    optional_params = %{
-      :start => :query,
-      :count => :query,
-      :customer_id => :query,
-      :customer_email => :query,
-      :order_status => :query,
-      :financial_status => :query,
-      :created_to => :query,
-      :created_from => :query,
-      :modified_to => :query,
-      :modified_from => :query,
-      :params => :query,
-      :exclude => :query
-    }
-
-    request =
-      %{}
-      |> method(:get)
-      |> url("/order.find.json")
-      |> add_optional_params(optional_params, opts)
-      |> Enum.into([])
-
-    connection
-    |> Connection.request(request)
-    |> evaluate_response([
-      {200, API2CartOpenAPI.Model.OrderFind200Response}
-    ])
-  end
-
-  @doc """
   order.fulfillment_status.list
   Retrieve list of fulfillment statuses
 

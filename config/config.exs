@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-config :api2_cart_open_api, base_url: "https://api.api2cart.com/v1.1"
+config :api2_cart_open_api, base_url: "https://api.api2cart.local.com/v1.1"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -172,6 +172,10 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:shopware_api_secret` (String.t): Shopware client secret access key
     - `:bigcartel_user_name` (String.t): Subdomain of store
     - `:bigcartel_password` (String.t): BigCartel account password
+    - `:bricklink_consumer_key` (String.t): Bricklink Consumer Key
+    - `:bricklink_consumer_secret` (String.t): Bricklink Consumer Secret
+    - `:bricklink_token` (String.t): Bricklink Access Token
+    - `:bricklink_token_secret` (String.t): Bricklink Access Token Secret
     - `:volusion_login` (String.t): It's a Volusion account for which API is enabled
     - `:volusion_password` (String.t): Volusion API Password
     - `:walmart_client_id` (String.t): Walmart client ID. For the region 'ca' use Consumer ID
@@ -335,6 +339,10 @@ defmodule API2CartOpenAPI.Api.Account do
       :shopware_api_secret => :query,
       :bigcartel_user_name => :query,
       :bigcartel_password => :query,
+      :bricklink_consumer_key => :query,
+      :bricklink_consumer_secret => :query,
+      :bricklink_token => :query,
+      :bricklink_token_secret => :query,
       :volusion_login => :query,
       :volusion_password => :query,
       :walmart_client_id => :query,
