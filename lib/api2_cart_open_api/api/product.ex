@@ -976,6 +976,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:disable_cache` (boolean()): Disable cache for current request
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
+    - `:product_type` (String.t): A categorization for the product
 
   ### Returns
 
@@ -1018,7 +1019,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :report_request_id => :query,
       :disable_cache => :query,
       :disable_report_cache => :query,
-      :use_latest_api_version => :query
+      :use_latest_api_version => :query,
+      :product_type => :query
     }
 
     request =
