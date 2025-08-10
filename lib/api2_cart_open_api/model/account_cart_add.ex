@@ -210,12 +210,12 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :bol_api_key => String.t | nil,
     :bol_api_secret => String.t | nil,
     :bol_retailer_id => integer() | nil,
-    :bigcartel_user_name => String.t,
-    :bigcartel_password => String.t,
-    :bricklink_consumer_key => String.t,
-    :bricklink_consumer_secret => String.t,
-    :bricklink_token => String.t,
-    :bricklink_token_secret => String.t,
+    :bigcartel_user_name => String.t | nil,
+    :bigcartel_password => String.t | nil,
+    :bricklink_consumer_key => String.t | nil,
+    :bricklink_consumer_secret => String.t | nil,
+    :bricklink_token => String.t | nil,
+    :bricklink_token_secret => String.t | nil,
     :demandware_client_id => String.t | nil,
     :demandware_api_password => String.t | nil,
     :demandware_user_name => String.t | nil,
@@ -300,8 +300,8 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :magento_access_token => String.t | nil,
     :magento_token_secret => String.t | nil,
     :prestashop_webservice_key => String.t | nil,
-    :wix_app_id => String.t,
-    :wix_app_secret_key => String.t,
+    :wix_app_id => String.t | nil,
+    :wix_app_secret_key => String.t | nil,
     :wix_instance_id => String.t | nil,
     :wix_refresh_token => String.t | nil,
     :mercado_libre_app_id => String.t | nil,
@@ -339,8 +339,8 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :salla_access_token => String.t | nil,
     :temu_app_key => String.t | nil,
     :temu_app_secret => String.t | nil,
-    :temu_access_token => String.t,
-    :temu_region => String.t
+    :temu_access_token => String.t | nil,
+    :temu_region => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

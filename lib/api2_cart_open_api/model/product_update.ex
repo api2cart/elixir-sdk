@@ -93,7 +93,9 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :check_process_status,
     :specifics,
     :shop_section_id,
-    :personalization_details
+    :personalization_details,
+    :marketplace_item_properties,
+    :min_order_quantity
   ]
 
   @type t :: %__MODULE__{
@@ -182,7 +184,9 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :check_process_status => boolean() | nil,
     :specifics => [API2CartOpenAPI.Model.ProductAddSpecificsInner.t] | nil,
     :shop_section_id => integer() | nil,
-    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil
+    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
+    :marketplace_item_properties => String.t | nil,
+    :min_order_quantity => float() | nil
   }
 
   alias API2CartOpenAPI.Deserializer
