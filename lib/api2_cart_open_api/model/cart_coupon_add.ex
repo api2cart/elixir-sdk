@@ -25,7 +25,8 @@ defmodule API2CartOpenAPI.Model.CartCouponAdd do
     :action_condition_value,
     :include_tax,
     :store_id,
-    :free_cash_on_delivery
+    :free_cash_on_delivery,
+    :customer_id
   ]
 
   @type t :: %__MODULE__{
@@ -46,7 +47,8 @@ defmodule API2CartOpenAPI.Model.CartCouponAdd do
     :action_condition_value => String.t | nil,
     :include_tax => boolean() | nil,
     :store_id => String.t | nil,
-    :free_cash_on_delivery => boolean() | nil
+    :free_cash_on_delivery => boolean() | nil,
+    :customer_id => String.t | nil
   }
 
   def decode(value) do

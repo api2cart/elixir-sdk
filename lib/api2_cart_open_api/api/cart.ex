@@ -265,6 +265,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     - `:store_id` (String.t): Filter coupons by store id
     - `:lang_id` (String.t): Language id
     - `:avail` (boolean()): Filter coupons by avail status
+    - `:status` (String.t): Defines coupon's status
     - `:date_start_from` (String.t): Filter entity by date_start (greater or equal)
     - `:date_start_to` (String.t): Filter entity by date_start (less or equal)
     - `:date_end_from` (String.t): Filter entity by date_end (greater or equal)
@@ -288,6 +289,7 @@ defmodule API2CartOpenAPI.Api.Cart do
       :store_id => :query,
       :lang_id => :query,
       :avail => :query,
+      :status => :query,
       :date_start_from => :query,
       :date_start_to => :query,
       :date_end_from => :query,
