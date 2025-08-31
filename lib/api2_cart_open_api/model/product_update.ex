@@ -94,6 +94,7 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :specifics,
     :shop_section_id,
     :personalization_details,
+    :external_product_link,
     :marketplace_item_properties,
     :min_order_quantity
   ]
@@ -185,6 +186,7 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :specifics => [API2CartOpenAPI.Model.ProductAddSpecificsInner.t] | nil,
     :shop_section_id => integer() | nil,
     :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
+    :external_product_link => String.t | nil,
     :marketplace_item_properties => String.t | nil,
     :min_order_quantity => float() | nil
   }
