@@ -19,6 +19,7 @@ defmodule API2CartOpenAPI.Model.ProductReview do
     :ratings,
     :status,
     :created_time,
+    :modified_time,
     :medias,
     :additional_fields,
     :custom_fields
@@ -36,6 +37,7 @@ defmodule API2CartOpenAPI.Model.ProductReview do
     :ratings => [API2CartOpenAPI.Model.ProductReviewRating.t] | nil,
     :status => String.t | nil,
     :created_time => API2CartOpenAPI.Model.A2CDateTime.t | nil,
+    :modified_time => API2CartOpenAPI.Model.A2CDateTime.t | nil,
     :medias => [API2CartOpenAPI.Model.Media.t] | nil,
     :additional_fields => map() | nil,
     :custom_fields => map() | nil
@@ -47,6 +49,7 @@ defmodule API2CartOpenAPI.Model.ProductReview do
     value
      |> Deserializer.deserialize(:ratings, :list, API2CartOpenAPI.Model.ProductReviewRating)
      |> Deserializer.deserialize(:created_time, :struct, API2CartOpenAPI.Model.A2CDateTime)
+     |> Deserializer.deserialize(:modified_time, :struct, API2CartOpenAPI.Model.A2CDateTime)
      |> Deserializer.deserialize(:medias, :list, API2CartOpenAPI.Model.Media)
   end
 end

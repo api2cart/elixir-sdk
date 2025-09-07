@@ -102,6 +102,37 @@ defmodule API2CartOpenAPI.Api.Order do
   end
 
   @doc """
+  order.calculate
+  <p>Calculates the total cost of an order for a given customer and a set of products, as well as the available shipping methods based on the specified address. The calculation takes into account store product prices, discounts, taxes, shipping costs, and other store settings. The result includes a detailed breakdown of the final order cost by its components.</p> <p>Note that the final totals, taxes, and other amounts must include the corresponding values for the selected shipping method.</p><p>The result of this method can be used when creating an order using the <strong>order.add</strong> method.</p>
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `order_calculate` (OrderCalculate): 
+  - `opts` (keyword): Optional parameters
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.OrderCalculate200Response.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec order_calculate(Tesla.Env.client, API2CartOpenAPI.Model.OrderCalculate.t, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderCalculate200Response.t} | {:error, Tesla.Env.t}
+  def order_calculate(connection, order_calculate, _opts \\ []) do
+    request =
+      %{}
+      |> method(:post)
+      |> url("/order.calculate.json")
+      |> add_param(:body, :body, order_calculate)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.OrderCalculate200Response}
+    ])
+  end
+
+  @doc """
   order.count
   Count orders in store
 

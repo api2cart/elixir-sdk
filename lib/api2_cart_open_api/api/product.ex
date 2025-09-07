@@ -1048,6 +1048,12 @@ defmodule API2CartOpenAPI.Api.Product do
   - `manufacturer` (String.t): Defines product’s manufacturer's name
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:meta_title` (String.t): Defines unique meta title for each entity
+    - `:meta_keywords` (String.t): Defines unique meta keywords for each entity
+    - `:meta_description` (String.t): Defines unique meta description of a entity
+    - `:search_keywords` (String.t): Defines unique search keywords
+    - `:image_url` (String.t): Image Url
+    - `:seo_url` (String.t): Defines unique URL for SEO
 
   ### Returns
 
@@ -1057,7 +1063,13 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_manufacturer_add(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductManufacturerAdd200Response.t} | {:error, Tesla.Env.t}
   def product_manufacturer_add(connection, product_id, manufacturer, opts \\ []) do
     optional_params = %{
-      :store_id => :query
+      :store_id => :query,
+      :meta_title => :query,
+      :meta_keywords => :query,
+      :meta_description => :query,
+      :search_keywords => :query,
+      :image_url => :query,
+      :seo_url => :query
     }
 
     request =
@@ -1536,7 +1548,13 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:ids` (String.t): Retrieves reviews specified by ids
     - `:store_id` (String.t): Store Id
+    - `:lang_id` (String.t): Language id
     - `:status` (String.t): Defines status
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:customer_id` (String.t): Retrieves orders specified by customer id
+    - `:sort_by` (String.t): Set field to sort by
+    - `:sort_direction` (String.t): Set sorting direction
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
@@ -1554,7 +1572,13 @@ defmodule API2CartOpenAPI.Api.Product do
       :page_cursor => :query,
       :ids => :query,
       :store_id => :query,
+      :lang_id => :query,
       :status => :query,
+      :created_from => :query,
+      :created_to => :query,
+      :customer_id => :query,
+      :sort_by => :query,
+      :sort_direction => :query,
       :response_fields => :query,
       :params => :query,
       :exclude => :query
