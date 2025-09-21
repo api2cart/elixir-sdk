@@ -60,6 +60,7 @@ defmodule API2CartOpenAPI.Model.ProductVariantUpdate do
     :meta_title,
     :meta_description,
     :meta_keywords,
+    :manufacturer,
     :reindex,
     :clear_cache
   ]
@@ -117,6 +118,7 @@ defmodule API2CartOpenAPI.Model.ProductVariantUpdate do
     :meta_title => String.t | nil,
     :meta_description => String.t | nil,
     :meta_keywords => String.t | nil,
+    :manufacturer => String.t | nil,
     :reindex => boolean() | nil,
     :clear_cache => boolean() | nil
   }
