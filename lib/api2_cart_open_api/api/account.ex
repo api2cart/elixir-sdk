@@ -168,6 +168,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:miva_access_token` (String.t): Miva access token
     - `:miva_signature` (String.t): Miva signature
     - `:shopware_access_key` (String.t): Shopware access key
+    - `:unas_api_key` (String.t): UNAS API Key
     - `:shopware_api_key` (String.t): Shopware api key
     - `:shopware_api_secret` (String.t): Shopware client secret access key
     - `:bigcartel_user_name` (String.t): Subdomain of store
@@ -335,6 +336,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :miva_access_token => :query,
       :miva_signature => :query,
       :shopware_access_key => :query,
+      :unas_api_key => :query,
       :shopware_api_key => :query,
       :shopware_api_secret => :query,
       :bigcartel_user_name => :query,

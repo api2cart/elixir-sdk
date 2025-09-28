@@ -211,6 +211,7 @@ lib/api2_cart_open_api/model/order_add_order_item_inner_order_item_option_inner.
 lib/api2_cart_open_api/model/order_add_order_item_inner_order_item_property_inner.ex
 lib/api2_cart_open_api/model/order_calculate.ex
 lib/api2_cart_open_api/model/order_calculate_200_response.ex
+lib/api2_cart_open_api/model/order_calculate_bundle.ex
 lib/api2_cart_open_api/model/order_calculate_discount.ex
 lib/api2_cart_open_api/model/order_calculate_item.ex
 lib/api2_cart_open_api/model/order_calculate_order_item_inner.ex
@@ -279,6 +280,7 @@ lib/api2_cart_open_api/model/product_add_batch.ex
 lib/api2_cart_open_api/model/product_add_batch_payload_inner.ex
 lib/api2_cart_open_api/model/product_add_batch_payload_inner_advanced_prices_inner.ex
 lib/api2_cart_open_api/model/product_add_batch_payload_inner_images_inner.ex
+lib/api2_cart_open_api/model/product_add_batch_payload_inner_sales_tax.ex
 lib/api2_cart_open_api/model/product_add_best_offer.ex
 lib/api2_cart_open_api/model/product_add_certifications_inner.ex
 lib/api2_cart_open_api/model/product_add_certifications_inner_files_inner.ex

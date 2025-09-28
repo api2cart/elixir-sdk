@@ -11,6 +11,8 @@ defmodule API2CartOpenAPI.Model.OrderCalculateOrderItemInner do
     :order_item_id,
     :order_item_quantity,
     :order_item_variant_id,
+    :order_item_parent,
+    :order_item_parent_option_name,
     :order_item_option
   ]
 
@@ -18,6 +20,8 @@ defmodule API2CartOpenAPI.Model.OrderCalculateOrderItemInner do
     :order_item_id => String.t,
     :order_item_quantity => integer(),
     :order_item_variant_id => String.t | nil,
+    :order_item_parent => integer() | nil,
+    :order_item_parent_option_name => String.t | nil,
     :order_item_option => [API2CartOpenAPI.Model.OrderCalculateOrderItemInnerOrderItemOptionInner.t] | nil
   }
 
