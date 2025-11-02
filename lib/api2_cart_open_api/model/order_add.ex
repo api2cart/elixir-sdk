@@ -77,6 +77,7 @@ defmodule API2CartOpenAPI.Model.OrderAdd do
     :note_attributes,
     :clear_cache,
     :origin,
+    :fee_price,
     :order_item
   ]
 
@@ -150,6 +151,7 @@ defmodule API2CartOpenAPI.Model.OrderAdd do
     :note_attributes => [API2CartOpenAPI.Model.OrderAddNoteAttributesInner.t] | nil,
     :clear_cache => boolean() | nil,
     :origin => String.t | nil,
+    :fee_price => float() | nil,
     :order_item => [API2CartOpenAPI.Model.OrderAddOrderItemInner.t]
   }
 

@@ -476,6 +476,7 @@ defmodule API2CartOpenAPI.Api.Product do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:sku` (String.t): Filter by product's sku
     - `:product_ids` (String.t): Counts products specified by product ids
     - `:since_id` (String.t): Retrieve entities starting from the specified id.
     - `:categories_ids` (String.t): Defines product add that is specified by comma-separated categories id
@@ -489,6 +490,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:brand_name` (String.t): Retrieves brands specified by brand name
+    - `:manufacturer_id` (String.t): Defines product's manufacturer by manufacturer_id
     - `:product_attributes` ([String.t]): Defines product attributes
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
@@ -508,6 +510,7 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductCount200Response.t} | {:error, Tesla.Env.t}
   def product_count(connection, opts \\ []) do
     optional_params = %{
+      :sku => :query,
       :product_ids => :query,
       :since_id => :query,
       :categories_ids => :query,
@@ -521,6 +524,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :modified_from => :query,
       :modified_to => :query,
       :brand_name => :query,
+      :manufacturer_id => :query,
       :product_attributes => :query,
       :status => :query,
       :type => :query,
@@ -961,6 +965,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:sku` (String.t): Filter by product's sku
     - `:brand_name` (String.t): Retrieves brands specified by brand name
     - `:product_attributes` ([String.t]): Defines product attributes
+    - `:manufacturer_id` (String.t): Defines product's manufacturer by manufacturer_id
     - `:status` (String.t): Defines product's status
     - `:type` (String.t): Defines products's type
     - `:visible` (String.t): Filter items by visibility status
@@ -1005,6 +1010,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :sku => :query,
       :brand_name => :query,
       :product_attributes => :query,
+      :manufacturer_id => :query,
       :status => :query,
       :type => :query,
       :visible => :query,
