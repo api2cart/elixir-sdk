@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.ProductPriceUpdateGroupPricesInner do
   defstruct [
     :id,
     :group_id,
-    :price
+    :price,
+    :qty
   ]
 
   @type t :: %__MODULE__{
     :id => integer() | nil,
     :group_id => String.t | nil,
-    :price => float() | nil
+    :price => float() | nil,
+    :qty => integer() | nil
   }
 
   def decode(value) do

@@ -9,12 +9,14 @@ defmodule API2CartOpenAPI.Model.ProductAddGroupPricesInner do
   @derive Jason.Encoder
   defstruct [
     :group_id,
-    :price
+    :price,
+    :qty
   ]
 
   @type t :: %__MODULE__{
     :group_id => String.t | nil,
-    :price => float() | nil
+    :price => float() | nil,
+    :qty => integer() | nil
   }
 
   def decode(value) do

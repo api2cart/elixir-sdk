@@ -111,6 +111,10 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:amazon_seller_id` (String.t): Amazon Seller ID (Merchant token)
     - `:aspdotnetstorefront_api_user` (String.t): It's a AspDotNetStorefront account for which API is available
     - `:aspdotnetstorefront_api_pass` (String.t): AspDotNetStorefront API Password
+    - `:americommerce_app_id` (String.t): Americommerce App ID
+    - `:americommerce_app_secret` (String.t): Americommerce App Secret
+    - `:americommerce_access_token` (String.t): Americommerce Access Token
+    - `:americommerce_refresh_token` (String.t): Americommerce Refresh Token
     - `:bigcommerceapi_admin_account` (String.t): It's a BigCommerce account for which API is enabled
     - `:bigcommerceapi_api_path` (String.t): BigCommerce API URL
     - `:bigcommerceapi_api_key` (String.t): Bigcommerce API Key
@@ -279,6 +283,10 @@ defmodule API2CartOpenAPI.Api.Account do
       :amazon_seller_id => :query,
       :aspdotnetstorefront_api_user => :query,
       :aspdotnetstorefront_api_pass => :query,
+      :americommerce_app_id => :query,
+      :americommerce_app_secret => :query,
+      :americommerce_access_token => :query,
+      :americommerce_refresh_token => :query,
       :bigcommerceapi_admin_account => :query,
       :bigcommerceapi_api_path => :query,
       :bigcommerceapi_api_key => :query,
