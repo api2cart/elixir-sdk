@@ -177,7 +177,12 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :temu_app_key,
     :temu_app_secret,
     :temu_access_token,
-    :temu_region
+    :temu_region,
+    :scapi_client_id,
+    :scapi_client_secret,
+    :scapi_organization_id,
+    :scapi_short_code,
+    :scapi_scopes
   ]
 
   @type t :: %__MODULE__{
@@ -350,7 +355,12 @@ defmodule API2CartOpenAPI.Model.AccountCartAdd do
     :temu_app_key => String.t | nil,
     :temu_app_secret => String.t | nil,
     :temu_access_token => String.t | nil,
-    :temu_region => String.t | nil
+    :temu_region => String.t | nil,
+    :scapi_client_id => String.t | nil,
+    :scapi_client_secret => String.t | nil,
+    :scapi_organization_id => String.t | nil,
+    :scapi_short_code => String.t | nil,
+    :scapi_scopes => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

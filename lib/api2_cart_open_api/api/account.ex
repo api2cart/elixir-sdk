@@ -256,6 +256,11 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:temu_app_secret` (String.t): Temu App Secret
     - `:temu_access_token` (String.t): Temu Access Token
     - `:temu_region` (String.t): Temu API endpoint Region.
+    - `:scapi_client_id` (String.t): Salesforce Commerce API Client ID
+    - `:scapi_client_secret` (String.t): Salesforce Commerce API Client Secret
+    - `:scapi_organization_id` (String.t): Salesforce Commerce Organization ID
+    - `:scapi_short_code` (String.t): Salesforce Commerce Short Code
+    - `:scapi_scopes` (String.t): Salesforce Commerce API Scopes
 
   ### Returns
 
@@ -427,7 +432,12 @@ defmodule API2CartOpenAPI.Api.Account do
       :temu_app_key => :query,
       :temu_app_secret => :query,
       :temu_access_token => :query,
-      :temu_region => :query
+      :temu_region => :query,
+      :scapi_client_id => :query,
+      :scapi_client_secret => :query,
+      :scapi_organization_id => :query,
+      :scapi_short_code => :query,
+      :scapi_scopes => :query
     }
 
     request =
