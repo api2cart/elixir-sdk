@@ -61,6 +61,7 @@ defmodule API2CartOpenAPI.Model.ProductVariantAdd do
     :is_free_shipping,
     :country_of_origin,
     :harmonized_system_code,
+    :processing_profile_id,
     :marketplace_item_properties,
     :clear_cache
   ]
@@ -119,6 +120,7 @@ defmodule API2CartOpenAPI.Model.ProductVariantAdd do
     :is_free_shipping => boolean() | nil,
     :country_of_origin => String.t | nil,
     :harmonized_system_code => String.t | nil,
+    :processing_profile_id => integer() | nil,
     :marketplace_item_properties => String.t | nil,
     :clear_cache => boolean() | nil
   }
