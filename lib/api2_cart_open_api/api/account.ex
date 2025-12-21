@@ -158,6 +158,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:shopline_app_secret` (String.t): Shopline App Secret
     - `:shopline_shared_secret` (String.t): Shopline Shared Secret
     - `:shopify_access_token` (String.t): Access token authorizing the app to access resources on behalf of a user
+    - `:shopify_client_id` (String.t): Shopify Client ID
     - `:shopify_api_key` (String.t): Shopify API Key
     - `:shopify_api_password` (String.t): Shopify API Password
     - `:shopify_shared_secret` (String.t): Shared secret
@@ -335,6 +336,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :shopline_app_secret => :query,
       :shopline_shared_secret => :query,
       :shopify_access_token => :query,
+      :shopify_client_id => :query,
       :shopify_api_key => :query,
       :shopify_api_password => :query,
       :shopify_shared_secret => :query,
