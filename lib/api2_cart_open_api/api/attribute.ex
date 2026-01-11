@@ -38,6 +38,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     - `:used_in_product_listing` (boolean()): Used in Product Listing
     - `:used_for_sort_by` (boolean()): Used for Sorting in Product Listing
     - `:apply_to` (String.t): Types of products which can have this attribute
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -65,7 +66,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
       :is_used_for_promo_rules => :query,
       :used_in_product_listing => :query,
       :used_for_sort_by => :query,
-      :apply_to => :query
+      :apply_to => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -96,6 +98,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `group_id` (String.t): Attribute group_id
   - `opts` (keyword): Optional parameters
     - `:attribute_set_id` (String.t): Attribute set id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -105,7 +108,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
   @spec attribute_assign_group(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeAssignGroup200Response.t} | {:error, Tesla.Env.t}
   def attribute_assign_group(connection, id, group_id, opts \\ []) do
     optional_params = %{
-      :attribute_set_id => :query
+      :attribute_set_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -136,6 +140,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `attribute_set_id` (String.t): Attribute set id
   - `opts` (keyword): Optional parameters
     - `:group_id` (String.t): Attribute group_id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -145,7 +150,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
   @spec attribute_assign_set(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeAssignGroup200Response.t} | {:error, Tesla.Env.t}
   def attribute_assign_set(connection, id, attribute_set_id, opts \\ []) do
     optional_params = %{
-      :group_id => :query
+      :group_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -484,6 +490,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `id` (String.t): Entity id
   - `group_id` (String.t): Customer group_id
   - `opts` (keyword): Optional parameters
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -491,13 +498,18 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec attribute_unassign_group(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeUnassignGroup200Response.t} | {:error, Tesla.Env.t}
-  def attribute_unassign_group(connection, id, group_id, _opts \\ []) do
+  def attribute_unassign_group(connection, id, group_id, opts \\ []) do
+    optional_params = %{
+      :idempotency_key => :query
+    }
+
     request =
       %{}
       |> method(:post)
       |> url("/attribute.unassign.group.json")
       |> add_param(:query, :id, id)
       |> add_param(:query, :group_id, group_id)
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 
@@ -518,6 +530,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `id` (String.t): Entity id
   - `attribute_set_id` (String.t): Attribute set id
   - `opts` (keyword): Optional parameters
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -525,13 +538,18 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec attribute_unassign_set(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeUnassignGroup200Response.t} | {:error, Tesla.Env.t}
-  def attribute_unassign_set(connection, id, attribute_set_id, _opts \\ []) do
+  def attribute_unassign_set(connection, id, attribute_set_id, opts \\ []) do
+    optional_params = %{
+      :idempotency_key => :query
+    }
+
     request =
       %{}
       |> method(:post)
       |> url("/attribute.unassign.set.json")
       |> add_param(:query, :id, id)
       |> add_param(:query, :attribute_set_id, attribute_set_id)
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 
@@ -554,6 +572,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -564,7 +583,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
   def attribute_update(connection, id, name, opts \\ []) do
     optional_params = %{
       :store_id => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -598,6 +618,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     - `:description` (String.t): Defines attribute value's description
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -610,7 +631,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
       :code => :query,
       :description => :query,
       :store_id => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -684,6 +706,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     - `:code` (String.t): Entity code
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -697,7 +720,8 @@ defmodule API2CartOpenAPI.Api.Attribute do
       :description => :query,
       :code => :query,
       :store_id => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =

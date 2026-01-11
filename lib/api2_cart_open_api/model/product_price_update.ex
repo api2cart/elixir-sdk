@@ -9,12 +9,14 @@ defmodule API2CartOpenAPI.Model.ProductPriceUpdate do
   @derive Jason.Encoder
   defstruct [
     :product_id,
-    :group_prices
+    :group_prices,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
     :product_id => String.t | nil,
-    :group_prices => [API2CartOpenAPI.Model.ProductPriceUpdateGroupPricesInner.t] | nil
+    :group_prices => [API2CartOpenAPI.Model.ProductPriceUpdateGroupPricesInner.t] | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

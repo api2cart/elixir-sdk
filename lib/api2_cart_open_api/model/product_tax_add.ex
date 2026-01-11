@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.ProductTaxAdd do
   defstruct [
     :product_id,
     :name,
-    :tax_rates
+    :tax_rates,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
     :product_id => String.t | nil,
     :name => String.t,
-    :tax_rates => [API2CartOpenAPI.Model.ProductTaxAddTaxRatesInner.t]
+    :tax_rates => [API2CartOpenAPI.Model.ProductTaxAddTaxRatesInner.t],
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

@@ -15,7 +15,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentTrackingAdd do
     :tracking_provider,
     :tracking_number,
     :tracking_link,
-    :send_notifications
+    :send_notifications,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -26,7 +27,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentTrackingAdd do
     :tracking_provider => String.t | nil,
     :tracking_number => String.t,
     :tracking_link => String.t | nil,
-    :send_notifications => boolean() | nil
+    :send_notifications => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   def decode(value) do

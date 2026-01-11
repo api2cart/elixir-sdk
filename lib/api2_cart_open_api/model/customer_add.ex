@@ -31,6 +31,7 @@ defmodule API2CartOpenAPI.Model.CustomerAdd do
     :note,
     :country,
     :store_id,
+    :idempotency_key,
     :address
   ]
 
@@ -58,6 +59,7 @@ defmodule API2CartOpenAPI.Model.CustomerAdd do
     :note => String.t | nil,
     :country => String.t | nil,
     :store_id => String.t | nil,
+    :idempotency_key => String.t | nil,
     :address => [API2CartOpenAPI.Model.CustomerAddAddressInner.t] | nil
   }
 

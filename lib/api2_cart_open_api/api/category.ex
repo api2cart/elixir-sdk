@@ -32,6 +32,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:store_id` (String.t): Store Id
     - `:stores_ids` (String.t): Create category in the stores that is specified by comma-separated stores' id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -54,7 +55,8 @@ defmodule API2CartOpenAPI.Api.Category do
       :seo_url => :query,
       :store_id => :query,
       :stores_ids => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -115,6 +117,7 @@ defmodule API2CartOpenAPI.Api.Category do
   - `product_id` (String.t): Defines category assign to the product, specified by product id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -124,7 +127,8 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_assign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t} | {:error, Tesla.Env.t}
   def category_assign(connection, category_id, product_id, opts \\ []) do
     optional_params = %{
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -241,6 +245,37 @@ defmodule API2CartOpenAPI.Api.Category do
   end
 
   @doc """
+  category.delete.batch
+  Delete categories from the store.
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `category_delete_batch` (CategoryDeleteBatch): 
+  - `opts` (keyword): Optional parameters
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.CategoryAddBatch200Response.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec category_delete_batch(Tesla.Env.client, API2CartOpenAPI.Model.CategoryDeleteBatch.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAddBatch200Response.t} | {:error, Tesla.Env.t}
+  def category_delete_batch(connection, category_delete_batch, _opts \\ []) do
+    request =
+      %{}
+      |> method(:post)
+      |> url("/category.delete.batch.json")
+      |> add_param(:body, :body, category_delete_batch)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.CategoryAddBatch200Response}
+    ])
+  end
+
+  @doc """
   category.find
   Search category in store. \"Laptop\" is specified here by default.
 
@@ -299,6 +334,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:label` (String.t): Defines alternative text that has to be attached to the picture
     - `:mime` (String.t): Mime type of image http://en.wikipedia.org/wiki/Internet_media_type.
     - `:position` (integer()): Defines image’s position in the list
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -311,7 +347,8 @@ defmodule API2CartOpenAPI.Api.Category do
       :store_id => :query,
       :label => :query,
       :mime => :query,
-      :position => :query
+      :position => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -507,6 +544,7 @@ defmodule API2CartOpenAPI.Api.Category do
   - `product_id` (String.t): Defines category unassign to the product, specified by product id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -516,7 +554,8 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_unassign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CategoryAssign200Response.t} | {:error, Tesla.Env.t}
   def category_unassign(connection, category_id, product_id, opts \\ []) do
     optional_params = %{
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -559,6 +598,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:store_id` (String.t): Store Id
     - `:stores_ids` (String.t): Update category in the stores that is specified by comma-separated stores' id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -581,7 +621,8 @@ defmodule API2CartOpenAPI.Api.Category do
       :seo_url => :query,
       :store_id => :query,
       :stores_ids => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =

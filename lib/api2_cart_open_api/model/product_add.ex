@@ -128,7 +128,8 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :ordered_count,
     :shop_section_id,
     :return_policy_id,
-    :personalization_details
+    :personalization_details,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -252,7 +253,8 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :ordered_count => integer() | nil,
     :shop_section_id => integer() | nil,
     :return_policy_id => integer() | nil,
-    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil
+    :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

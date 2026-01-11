@@ -22,7 +22,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :enable_cache,
     :check_process_status,
     :tracking_provider,
-    :use_latest_api_version
+    :use_latest_api_version,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -40,7 +41,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :enable_cache => boolean() | nil,
     :check_process_status => boolean() | nil,
     :tracking_provider => String.t | nil,
-    :use_latest_api_version => boolean() | nil
+    :use_latest_api_version => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

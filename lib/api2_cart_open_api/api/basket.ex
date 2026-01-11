@@ -65,6 +65,7 @@ defmodule API2CartOpenAPI.Api.Basket do
     - `:variant_id` (String.t): Defines product's variants specified by variant id
     - `:quantity` (float()): Defines new items quantity
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -76,7 +77,8 @@ defmodule API2CartOpenAPI.Api.Basket do
     optional_params = %{
       :variant_id => :query,
       :quantity => :query,
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -107,6 +109,7 @@ defmodule API2CartOpenAPI.Api.Basket do
   - `callback` (String.t): Callback url that returns shipping rates. It should be able to accept POST requests with json data.
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -116,7 +119,8 @@ defmodule API2CartOpenAPI.Api.Basket do
   @spec basket_live_shipping_service_create(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceCreate200Response.t} | {:error, Tesla.Env.t}
   def basket_live_shipping_service_create(connection, name, callback, opts \\ []) do
     optional_params = %{
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =

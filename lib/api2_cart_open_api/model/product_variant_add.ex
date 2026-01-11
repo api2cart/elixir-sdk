@@ -65,7 +65,8 @@ defmodule API2CartOpenAPI.Model.ProductVariantAdd do
     :harmonized_system_code,
     :processing_profile_id,
     :marketplace_item_properties,
-    :clear_cache
+    :clear_cache,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -126,7 +127,8 @@ defmodule API2CartOpenAPI.Model.ProductVariantAdd do
     :harmonized_system_code => String.t | nil,
     :processing_profile_id => integer() | nil,
     :marketplace_item_properties => String.t | nil,
-    :clear_cache => boolean() | nil
+    :clear_cache => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

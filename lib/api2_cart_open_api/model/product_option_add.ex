@@ -18,7 +18,8 @@ defmodule API2CartOpenAPI.Model.ProductOptionAdd do
     :sort_order,
     :required,
     :values,
-    :clear_cache
+    :clear_cache,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -32,7 +33,8 @@ defmodule API2CartOpenAPI.Model.ProductOptionAdd do
     :sort_order => integer() | nil,
     :required => boolean() | nil,
     :values => [API2CartOpenAPI.Model.ProductOptionAddValuesInner.t] | nil,
-    :clear_cache => boolean() | nil
+    :clear_cache => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

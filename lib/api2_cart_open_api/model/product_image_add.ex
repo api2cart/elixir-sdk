@@ -21,7 +21,8 @@ defmodule API2CartOpenAPI.Model.ProductImageAdd do
     :label,
     :mime,
     :position,
-    :use_latest_api_version
+    :use_latest_api_version,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -38,7 +39,8 @@ defmodule API2CartOpenAPI.Model.ProductImageAdd do
     :label => String.t | nil,
     :mime => String.t | nil,
     :position => integer() | nil,
-    :use_latest_api_version => boolean() | nil
+    :use_latest_api_version => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   def decode(value) do

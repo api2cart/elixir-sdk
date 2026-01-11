@@ -11,14 +11,16 @@ defmodule API2CartOpenAPI.Model.ProductUpdateBatch do
     :nested_items_update_behaviour,
     :clear_cache,
     :reindex,
-    :payload
+    :payload,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
     :nested_items_update_behaviour => String.t | nil,
     :clear_cache => boolean() | nil,
     :reindex => boolean() | nil,
-    :payload => [API2CartOpenAPI.Model.ProductUpdateBatchPayloadInner.t]
+    :payload => [API2CartOpenAPI.Model.ProductUpdateBatchPayloadInner.t],
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

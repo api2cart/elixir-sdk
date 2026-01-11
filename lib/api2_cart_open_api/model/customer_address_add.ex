@@ -28,7 +28,8 @@ defmodule API2CartOpenAPI.Model.CustomerAddressAdd do
     :website,
     :gender,
     :tax_id,
-    :alias
+    :alias,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -52,7 +53,8 @@ defmodule API2CartOpenAPI.Model.CustomerAddressAdd do
     :website => String.t | nil,
     :gender => String.t | nil,
     :tax_id => String.t | nil,
-    :alias => String.t | nil
+    :alias => String.t | nil,
+    :idempotency_key => String.t | nil
   }
 
   def decode(value) do

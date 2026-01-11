@@ -121,6 +121,8 @@ lib/api2_cart_open_api/model/category_count_200_response.ex
 lib/api2_cart_open_api/model/category_count_200_response_result.ex
 lib/api2_cart_open_api/model/category_delete_200_response.ex
 lib/api2_cart_open_api/model/category_delete_200_response_result.ex
+lib/api2_cart_open_api/model/category_delete_batch.ex
+lib/api2_cart_open_api/model/category_delete_batch_payload_inner.ex
 lib/api2_cart_open_api/model/category_find_200_response.ex
 lib/api2_cart_open_api/model/category_find_200_response_result.ex
 lib/api2_cart_open_api/model/category_find_200_response_result_category_inner.ex

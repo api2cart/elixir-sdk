@@ -262,6 +262,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:scapi_organization_id` (String.t): Salesforce Commerce Organization ID
     - `:scapi_short_code` (String.t): Salesforce Commerce Short Code
     - `:scapi_scopes` (String.t): Salesforce Commerce API Scopes
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -439,7 +440,8 @@ defmodule API2CartOpenAPI.Api.Account do
       :scapi_client_secret => :query,
       :scapi_organization_id => :query,
       :scapi_short_code => :query,
-      :scapi_scopes => :query
+      :scapi_scopes => :query,
+      :idempotency_key => :query
     }
 
     request =

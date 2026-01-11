@@ -17,7 +17,8 @@ defmodule API2CartOpenAPI.Model.OrderRefundAdd do
     :item_restock,
     :send_notifications,
     :date,
-    :is_online
+    :is_online,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -30,7 +31,8 @@ defmodule API2CartOpenAPI.Model.OrderRefundAdd do
     :item_restock => boolean() | nil,
     :send_notifications => boolean() | nil,
     :date => String.t | nil,
-    :is_online => boolean() | nil
+    :is_online => boolean() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

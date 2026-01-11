@@ -19,7 +19,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :replace,
     :send_notifications,
     :tracking_provider,
-    :items
+    :items,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -34,7 +35,8 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :replace => boolean() | nil,
     :send_notifications => boolean() | nil,
     :tracking_provider => String.t | nil,
-    :items => [API2CartOpenAPI.Model.OrderShipmentAddItemsInner.t] | nil
+    :items => [API2CartOpenAPI.Model.OrderShipmentAddItemsInner.t] | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

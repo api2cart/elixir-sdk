@@ -65,7 +65,8 @@ defmodule API2CartOpenAPI.Model.ProductVariantUpdate do
     :manufacturer,
     :reindex,
     :clear_cache,
-    :processing_profile_id
+    :processing_profile_id,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -126,7 +127,8 @@ defmodule API2CartOpenAPI.Model.ProductVariantUpdate do
     :manufacturer => String.t | nil,
     :reindex => boolean() | nil,
     :clear_cache => boolean() | nil,
-    :processing_profile_id => integer() | nil
+    :processing_profile_id => integer() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

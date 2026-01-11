@@ -978,6 +978,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:create_invoice` (boolean()): Determines whether an invoice should be created if it has not already been created
     - `:origin` (String.t): The source of the order
     - `:tags` (String.t): Order tags
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1002,7 +1003,8 @@ defmodule API2CartOpenAPI.Api.Order do
       :send_notifications => :query,
       :create_invoice => :query,
       :origin => :query,
-      :tags => :query
+      :tags => :query,
+      :idempotency_key => :query
     }
 
     request =

@@ -100,7 +100,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :personalization_details,
     :external_product_link,
     :marketplace_item_properties,
-    :min_order_quantity
+    :min_order_quantity,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
@@ -196,7 +197,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
     :external_product_link => String.t | nil,
     :marketplace_item_properties => String.t | nil,
-    :min_order_quantity => float() | nil
+    :min_order_quantity => float() | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

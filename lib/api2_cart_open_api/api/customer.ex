@@ -188,6 +188,7 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Identifies customer specified by the id
   - `opts` (keyword): Optional parameters
+    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -195,12 +196,17 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec customer_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CustomerDelete200Response.t} | {:error, Tesla.Env.t}
-  def customer_delete(connection, id, _opts \\ []) do
+  def customer_delete(connection, id, opts \\ []) do
+    optional_params = %{
+      :store_id => :query
+    }
+
     request =
       %{}
       |> method(:delete)
       |> url("/customer.delete.json")
       |> add_param(:query, :id, id)
+      |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
     connection
@@ -264,6 +270,7 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
     - `:stores_ids` (String.t): Assign customer group to the stores that is specified by comma-separated stores' id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -274,7 +281,8 @@ defmodule API2CartOpenAPI.Api.Customer do
   def customer_group_add(connection, name, opts \\ []) do
     optional_params = %{
       :store_id => :query,
-      :stores_ids => :query
+      :stores_ids => :query,
+      :idempotency_key => :query
     }
 
     request =

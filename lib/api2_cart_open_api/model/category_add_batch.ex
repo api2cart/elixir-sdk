@@ -8,11 +8,13 @@ defmodule API2CartOpenAPI.Model.CategoryAddBatch do
 
   @derive Jason.Encoder
   defstruct [
-    :payload
+    :payload,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
-    :payload => [API2CartOpenAPI.Model.CategoryAddBatchPayloadInner.t]
+    :payload => [API2CartOpenAPI.Model.CategoryAddBatchPayloadInner.t],
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

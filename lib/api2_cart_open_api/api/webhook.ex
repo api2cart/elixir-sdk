@@ -65,6 +65,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:active` (boolean()): Webhook status
     - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Defines store id where the webhook should be assigned
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -80,7 +81,8 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :response_fields => :query,
       :active => :query,
       :lang_id => :query,
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -222,6 +224,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:active` (boolean()): Webhook status
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -236,7 +239,8 @@ defmodule API2CartOpenAPI.Api.Webhook do
       :fields => :query,
       :response_fields => :query,
       :active => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =

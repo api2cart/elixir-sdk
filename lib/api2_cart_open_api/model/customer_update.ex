@@ -24,6 +24,7 @@ defmodule API2CartOpenAPI.Model.CustomerUpdate do
     :note,
     :status,
     :store_id,
+    :idempotency_key,
     :address
   ]
 
@@ -44,6 +45,7 @@ defmodule API2CartOpenAPI.Model.CustomerUpdate do
     :note => String.t | nil,
     :status => String.t | nil,
     :store_id => String.t | nil,
+    :idempotency_key => String.t | nil,
     :address => [API2CartOpenAPI.Model.CustomerUpdateAddressInner.t] | nil
   }
 

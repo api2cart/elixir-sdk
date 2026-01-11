@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.ProductVariantAddBatch do
   defstruct [
     :clear_cache,
     :reindex,
-    :payload
+    :payload,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
     :clear_cache => boolean() | nil,
     :reindex => boolean() | nil,
-    :payload => [API2CartOpenAPI.Model.ProductVariantAddBatchPayloadInner.t]
+    :payload => [API2CartOpenAPI.Model.ProductVariantAddBatchPayloadInner.t],
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

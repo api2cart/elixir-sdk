@@ -133,6 +133,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     - `:include_tax` (boolean()): Indicates whether to apply a discount for taxes.
     - `:include_shipping` (boolean()): Indicates whether to apply a discount for shipping.
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -145,7 +146,8 @@ defmodule API2CartOpenAPI.Api.Cart do
       :target => :query,
       :include_tax => :query,
       :include_shipping => :query,
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -362,6 +364,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     - `:recipient_email` (String.t): Gift card recipient email
     - `:recipient_name` (String.t): Gift card recipient name
     - `:owner_name` (String.t): Gift card owner name
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -375,7 +378,8 @@ defmodule API2CartOpenAPI.Api.Cart do
       :owner_email => :query,
       :recipient_email => :query,
       :recipient_name => :query,
-      :owner_name => :query
+      :owner_name => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -616,6 +620,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     - `:entity` (String.t): Entity
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -627,7 +632,8 @@ defmodule API2CartOpenAPI.Api.Cart do
     optional_params = %{
       :entity => :query,
       :store_id => :query,
-      :lang_id => :query
+      :lang_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -776,6 +782,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     - `:scope` (String.t): The page or pages on the online store where the script should be included
     - `:events` (String.t): Event for run scripts
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -792,7 +799,8 @@ defmodule API2CartOpenAPI.Api.Cart do
       :load_method => :query,
       :scope => :query,
       :events => :query,
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =

@@ -19,6 +19,7 @@ defmodule API2CartOpenAPI.Model.OrderPreestimateShippingList do
     :shipp_country,
     :params,
     :exclude,
+    :idempotency_key,
     :order_item
   ]
 
@@ -34,6 +35,7 @@ defmodule API2CartOpenAPI.Model.OrderPreestimateShippingList do
     :shipp_country => String.t,
     :params => String.t | nil,
     :exclude => String.t | nil,
+    :idempotency_key => String.t | nil,
     :order_item => [API2CartOpenAPI.Model.OrderPreestimateShippingListOrderItemInner.t]
   }
 

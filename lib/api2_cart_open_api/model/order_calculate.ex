@@ -34,6 +34,7 @@ defmodule API2CartOpenAPI.Model.OrderCalculate do
     :bill_company,
     :bill_phone,
     :response_fields,
+    :idempotency_key,
     :order_item
   ]
 
@@ -64,6 +65,7 @@ defmodule API2CartOpenAPI.Model.OrderCalculate do
     :bill_company => String.t | nil,
     :bill_phone => String.t | nil,
     :response_fields => String.t | nil,
+    :idempotency_key => String.t | nil,
     :order_item => [API2CartOpenAPI.Model.OrderCalculateOrderItemInner.t]
   }
 

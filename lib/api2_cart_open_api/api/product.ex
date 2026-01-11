@@ -150,6 +150,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:value_id` (integer()): Define attribute value id
     - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Store Id
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -165,7 +166,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :value => :query,
       :value_id => :query,
       :lang_id => :query,
-      :store_id => :query
+      :store_id => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -198,6 +200,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:include_default` (boolean()): Boolean, whether or not to unset default value of the attribute, if applicable
     - `:reindex` (boolean()): Is reindex required
     - `:clear_cache` (boolean()): Is cache clear required
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -210,7 +213,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :store_id => :query,
       :include_default => :query,
       :reindex => :query,
-      :clear_cache => :query
+      :clear_cache => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -566,6 +570,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:symbol_left` (String.t): Defines the symbol that is located before the currency
     - `:symbol_right` (String.t): Defines the symbol that is located after the currency
     - `:default` (boolean()): Specifies currency's default meaning
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -579,7 +584,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :avail => :query,
       :symbol_left => :query,
       :symbol_right => :query,
-      :default => :query
+      :default => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -849,6 +855,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:label` (String.t): Defines alternative text that has to be attached to the picture
     - `:position` (integer()): Defines image’s position in the list
     - `:hidden` (boolean()): Define is hide image
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -865,7 +872,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :type => :query,
       :label => :query,
       :position => :query,
-      :hidden => :query
+      :hidden => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1060,6 +1068,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:search_keywords` (String.t): Defines unique search keywords
     - `:image_url` (String.t): Image Url
     - `:seo_url` (String.t): Defines unique URL for SEO
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1075,7 +1084,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :meta_description => :query,
       :search_keywords => :query,
       :image_url => :query,
-      :seo_url => :query
+      :seo_url => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1140,6 +1150,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:sort_order` (integer()): Sort number in the list
     - `:option_values` (String.t): Defines option values that has to be assigned
     - `:clear_cache` (boolean()): Is cache clear required
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1152,7 +1163,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :required => :query,
       :sort_order => :query,
       :option_values => :query,
-      :clear_cache => :query
+      :clear_cache => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1275,6 +1287,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:display_value` (String.t): Defines the value that will be displayed for the option value
     - `:is_default` (boolean()): Defines as a default
     - `:clear_cache` (boolean()): Is cache clear required
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1288,7 +1301,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :sort_order => :query,
       :display_value => :query,
       :is_default => :query,
-      :clear_cache => :query
+      :clear_cache => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1319,6 +1333,7 @@ defmodule API2CartOpenAPI.Api.Product do
   - `option_value_id` (String.t): Defines value id that has to be assigned
   - `opts` (keyword): Optional parameters
     - `:clear_cache` (boolean()): Is cache clear required
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1328,7 +1343,8 @@ defmodule API2CartOpenAPI.Api.Product do
   @spec product_option_value_assign(Tesla.Env.client, integer(), String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductOptionValueAssign200Response.t} | {:error, Tesla.Env.t}
   def product_option_value_assign(connection, product_option_id, option_value_id, opts \\ []) do
     optional_params = %{
-      :clear_cache => :query
+      :clear_cache => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1405,6 +1421,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:quantity` (float()): Defines new products' options quantity
     - `:display_value` (String.t): Defines the value that will be displayed for the option value
     - `:clear_cache` (boolean()): Is cache clear required
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1418,7 +1435,8 @@ defmodule API2CartOpenAPI.Api.Product do
       :price => :query,
       :quantity => :query,
       :display_value => :query,
-      :clear_cache => :query
+      :clear_cache => :query,
+      :idempotency_key => :query
     }
 
     request =
@@ -1615,6 +1633,7 @@ defmodule API2CartOpenAPI.Api.Product do
   - `product_id` (String.t): Defines id of the product which should be assigned to a store
   - `store_id` (String.t): Defines id of the store product should be assigned to
   - `opts` (keyword): Optional parameters
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -1622,13 +1641,18 @@ defmodule API2CartOpenAPI.Api.Product do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec product_store_assign(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AccountConfigUpdate200Response.t} | {:error, Tesla.Env.t}
-  def product_store_assign(connection, product_id, store_id, _opts \\ []) do
+  def product_store_assign(connection, product_id, store_id, opts \\ []) do
+    optional_params = %{
+      :idempotency_key => :query
+    }
+
     request =
       %{}
       |> method(:post)
       |> url("/product.store.assign.json")
       |> add_param(:query, :product_id, product_id)
       |> add_param(:query, :store_id, store_id)
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 

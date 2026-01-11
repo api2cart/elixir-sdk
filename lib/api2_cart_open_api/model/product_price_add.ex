@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.ProductPriceAdd do
   defstruct [
     :product_id,
     :group_prices,
-    :store_id
+    :store_id,
+    :idempotency_key
   ]
 
   @type t :: %__MODULE__{
     :product_id => String.t | nil,
     :group_prices => [API2CartOpenAPI.Model.ProductAddGroupPricesInner.t] | nil,
-    :store_id => String.t | nil
+    :store_id => String.t | nil,
+    :idempotency_key => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer
