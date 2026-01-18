@@ -26,6 +26,7 @@ defmodule API2CartOpenAPI.Model.CartStoreInfo do
     :store_owner_info,
     :default_warehouse_id,
     :channels,
+    :pickup_locations,
     :additional_fields,
     :custom_fields
   ]
@@ -49,6 +50,7 @@ defmodule API2CartOpenAPI.Model.CartStoreInfo do
     :store_owner_info => API2CartOpenAPI.Model.Info.t | nil,
     :default_warehouse_id => String.t | nil,
     :channels => [API2CartOpenAPI.Model.CartChannel.t] | nil,
+    :pickup_locations => [API2CartOpenAPI.Model.CartPickupLocation.t] | nil,
     :additional_fields => map() | nil,
     :custom_fields => map() | nil
   }
@@ -63,6 +65,7 @@ defmodule API2CartOpenAPI.Model.CartStoreInfo do
      |> Deserializer.deserialize(:carrier_info, :list, API2CartOpenAPI.Model.Carrier)
      |> Deserializer.deserialize(:store_owner_info, :struct, API2CartOpenAPI.Model.Info)
      |> Deserializer.deserialize(:channels, :list, API2CartOpenAPI.Model.CartChannel)
+     |> Deserializer.deserialize(:pickup_locations, :list, API2CartOpenAPI.Model.CartPickupLocation)
   end
 end
 

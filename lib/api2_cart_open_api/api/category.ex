@@ -426,6 +426,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
+    - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
 
@@ -442,7 +443,8 @@ defmodule API2CartOpenAPI.Api.Category do
       :params => :query,
       :exclude => :query,
       :report_request_id => :query,
-      :disable_report_cache => :query
+      :disable_report_cache => :query,
+      :use_latest_api_version => :query
     }
 
     request =
@@ -488,6 +490,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:disable_cache` (boolean()): Disable cache for current request
+    - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
 
@@ -516,7 +519,8 @@ defmodule API2CartOpenAPI.Api.Category do
       :exclude => :query,
       :report_request_id => :query,
       :disable_report_cache => :query,
-      :disable_cache => :query
+      :disable_cache => :query,
+      :use_latest_api_version => :query
     }
 
     request =

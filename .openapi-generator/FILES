@@ -94,6 +94,7 @@ lib/api2_cart_open_api/model/cart_info_200_response.ex
 lib/api2_cart_open_api/model/cart_meta_data.ex
 lib/api2_cart_open_api/model/cart_methods_200_response.ex
 lib/api2_cart_open_api/model/cart_methods_200_response_result.ex
+lib/api2_cart_open_api/model/cart_pickup_location.ex
 lib/api2_cart_open_api/model/cart_plugin_list_200_response.ex
 lib/api2_cart_open_api/model/cart_plugin_list_200_response_result.ex
 lib/api2_cart_open_api/model/cart_script_add_200_response.ex
