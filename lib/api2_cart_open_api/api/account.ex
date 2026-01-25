@@ -52,6 +52,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:store_key` (String.t): Find store by store key
     - `:request_from_date` (String.t): Retrieve entities from their creation date
     - `:request_to_date` (String.t): Retrieve entities to their creation date
+    - `:custom_label` (String.t): Defines a custom label for the store in the app
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
@@ -67,6 +68,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :store_key => :query,
       :request_from_date => :query,
       :request_to_date => :query,
+      :custom_label => :query,
       :params => :query,
       :exclude => :query
     }
@@ -96,6 +98,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:replace_parameters` (boolean()): Identifies if there is a necessity to replace parameters
     - `:new_store_url` (String.t): The web address of the store you want to update to connect to API2Cart
     - `:new_store_key` (String.t): Update store key
+    - `:custom_label` (String.t): Defines a custom label for the store in the app
     - `:bridge_url` (String.t): This parameter allows to set up store with custom bridge url (also you must use store_root parameter if a bridge folder is not in the root folder of the store)
     - `:store_root` (String.t): Absolute path to the store root directory (used with \"bridge_url\" parameter)
     - `:db_tables_prefix` (String.t): DB tables prefix
@@ -225,6 +228,11 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:zid_access_token` (String.t): Zid Access Token
     - `:zid_authorization` (String.t): Zid Authorization
     - `:zid_refresh_token` (String.t): Zid refresh token
+    - `:jumpseller_client_id` (String.t): Jumpseller OAuth2 Client ID
+    - `:jumpseller_client_secret` (String.t): Jumpseller OAuth2 Client Secret
+    - `:jumpseller_refresh_token` (String.t): Jumpseller OAuth2 refresh token
+    - `:jumpseller_login` (String.t): Jumpseller API login
+    - `:jumpseller_authtoken` (String.t): Jumpseller API auth token
     - `:flipkart_client_id` (String.t): Flipkart Client ID
     - `:flipkart_client_secret` (String.t): Flipkart Client Secret
     - `:allegro_client_id` (String.t): Allegro Client ID
@@ -275,6 +283,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :replace_parameters => :query,
       :new_store_url => :query,
       :new_store_key => :query,
+      :custom_label => :query,
       :bridge_url => :query,
       :store_root => :query,
       :db_tables_prefix => :query,
@@ -404,6 +413,11 @@ defmodule API2CartOpenAPI.Api.Account do
       :zid_access_token => :query,
       :zid_authorization => :query,
       :zid_refresh_token => :query,
+      :jumpseller_client_id => :query,
+      :jumpseller_client_secret => :query,
+      :jumpseller_refresh_token => :query,
+      :jumpseller_login => :query,
+      :jumpseller_authtoken => :query,
       :flipkart_client_id => :query,
       :flipkart_client_secret => :query,
       :allegro_client_id => :query,

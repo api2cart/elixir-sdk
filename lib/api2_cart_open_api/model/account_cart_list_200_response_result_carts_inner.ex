@@ -12,6 +12,8 @@ defmodule API2CartOpenAPI.Model.AccountCartList200ResponseResultCartsInner do
     :url,
     :store_key,
     :cart_id,
+    :custom_label,
+    :bridge_version,
     :total_calls
   ]
 
@@ -20,6 +22,8 @@ defmodule API2CartOpenAPI.Model.AccountCartList200ResponseResultCartsInner do
     :url => String.t | nil,
     :store_key => String.t | nil,
     :cart_id => String.t | nil,
+    :custom_label => String.t | nil,
+    :bridge_version => String.t | nil,
     :total_calls => String.t | nil
   }
 
