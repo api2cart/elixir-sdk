@@ -17,6 +17,8 @@ defmodule API2CartOpenAPI.Model.OrderReturnUpdate do
     :comment,
     :send_notifications,
     :reject_reason,
+    :return_action,
+    :return_reason,
     :idempotency_key,
     :order_products
   ]
@@ -31,6 +33,8 @@ defmodule API2CartOpenAPI.Model.OrderReturnUpdate do
     :comment => String.t | nil,
     :send_notifications => boolean() | nil,
     :reject_reason => String.t | nil,
+    :return_action => String.t | nil,
+    :return_reason => String.t | nil,
     :idempotency_key => String.t | nil,
     :order_products => [API2CartOpenAPI.Model.OrderReturnUpdateOrderProductsInner.t]
   }

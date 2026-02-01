@@ -12,7 +12,7 @@ defmodule API2CartOpenAPI.Model.CartCouponCount200ResponseResult do
   ]
 
   @type t :: %__MODULE__{
-    :coupons_count => String.t | nil
+    :coupons_count => integer() | nil
   }
 
   def decode(value) do
