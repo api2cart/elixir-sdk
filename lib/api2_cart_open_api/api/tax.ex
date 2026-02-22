@@ -63,6 +63,7 @@ defmodule API2CartOpenAPI.Api.Tax do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:store_id` (String.t): Store Id
     - `:find_value` (String.t): Entity search that is specified by some value
@@ -82,6 +83,7 @@ defmodule API2CartOpenAPI.Api.Tax do
   def tax_class_list(connection, opts \\ []) do
     optional_params = %{
       :count => :query,
+      :start => :query,
       :page_cursor => :query,
       :store_id => :query,
       :find_value => :query,

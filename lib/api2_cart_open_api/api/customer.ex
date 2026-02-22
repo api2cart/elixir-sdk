@@ -80,6 +80,7 @@ defmodule API2CartOpenAPI.Api.Customer do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `customer_id` (String.t): Retrieves orders specified by customer id
   - `opts` (keyword): Optional parameters
+    - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:store_id` (String.t): Store Id
@@ -96,6 +97,7 @@ defmodule API2CartOpenAPI.Api.Customer do
   @spec customer_attribute_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerAttributeList.t} | {:error, Tesla.Env.t}
   def customer_attribute_list(connection, customer_id, opts \\ []) do
     optional_params = %{
+      :start => :query,
       :count => :query,
       :page_cursor => :query,
       :store_id => :query,

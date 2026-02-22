@@ -334,6 +334,7 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:label` (String.t): Defines alternative text that has to be attached to the picture
     - `:mime` (String.t): Mime type of image http://en.wikipedia.org/wiki/Internet_media_type.
     - `:position` (integer()): Defines image’s position in the list
+    - `:apply_to_translations` (boolean()): Defines whether to add image to all category translations
     - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
@@ -348,6 +349,7 @@ defmodule API2CartOpenAPI.Api.Category do
       :label => :query,
       :mime => :query,
       :position => :query,
+      :apply_to_translations => :query,
       :idempotency_key => :query
     }
 
@@ -381,6 +383,7 @@ defmodule API2CartOpenAPI.Api.Category do
   - `image_id` (String.t): Define image id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:apply_to_translations` (boolean()): Defines whether to delete image from all category translations
 
   ### Returns
 
@@ -390,7 +393,8 @@ defmodule API2CartOpenAPI.Api.Category do
   @spec category_image_delete(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeDelete200Response.t} | {:error, Tesla.Env.t}
   def category_image_delete(connection, category_id, image_id, opts \\ []) do
     optional_params = %{
-      :store_id => :query
+      :store_id => :query,
+      :apply_to_translations => :query
     }
 
     request =
