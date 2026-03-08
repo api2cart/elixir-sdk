@@ -130,6 +130,7 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :shop_section_id,
     :return_policy_id,
     :personalization_details,
+    :personalization_questions,
     :idempotency_key
   ]
 
@@ -256,6 +257,7 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :shop_section_id => integer() | nil,
     :return_policy_id => integer() | nil,
     :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
+    :personalization_questions => [API2CartOpenAPI.Model.ProductAddPersonalizationQuestionsInner.t] | nil,
     :idempotency_key => String.t | nil
   }
 
@@ -277,6 +279,7 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
      |> Deserializer.deserialize(:seller_profiles, :struct, API2CartOpenAPI.Model.ProductAddSellerProfiles)
      |> Deserializer.deserialize(:best_offer, :struct, API2CartOpenAPI.Model.ProductAddBestOffer)
      |> Deserializer.deserialize(:personalization_details, :struct, API2CartOpenAPI.Model.ProductAddPersonalizationDetails)
+     |> Deserializer.deserialize(:personalization_questions, :list, API2CartOpenAPI.Model.ProductAddPersonalizationQuestionsInner)
   end
 end
 

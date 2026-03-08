@@ -99,6 +99,7 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :specifics,
     :shop_section_id,
     :personalization_details,
+    :personalization_questions,
     :external_product_link,
     :marketplace_item_properties,
     :min_order_quantity,
@@ -197,6 +198,7 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :specifics => [API2CartOpenAPI.Model.ProductAddSpecificsInner.t] | nil,
     :shop_section_id => integer() | nil,
     :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
+    :personalization_questions => [API2CartOpenAPI.Model.ProductAddPersonalizationQuestionsInner.t] | nil,
     :external_product_link => String.t | nil,
     :marketplace_item_properties => String.t | nil,
     :min_order_quantity => float() | nil,
@@ -212,6 +214,7 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
      |> Deserializer.deserialize(:manufacturer_info, :struct, API2CartOpenAPI.Model.ProductAddManufacturerInfo)
      |> Deserializer.deserialize(:specifics, :list, API2CartOpenAPI.Model.ProductAddSpecificsInner)
      |> Deserializer.deserialize(:personalization_details, :struct, API2CartOpenAPI.Model.ProductAddPersonalizationDetails)
+     |> Deserializer.deserialize(:personalization_questions, :list, API2CartOpenAPI.Model.ProductAddPersonalizationQuestionsInner)
   end
 end
 

@@ -3,7 +3,7 @@
 
 defmodule API2CartOpenAPI.Model.ProductAddPersonalizationDetails do
   @moduledoc """
-  Defines personalization settings for the listing. To enable personalization, is_personalizable must be set to true. When enabled, additional fields may be used to configure the personalization experience, including whether it is required (personalization_is_required), the maximum character limit (personalization_char_count_max), and buyer instructions (personalization_instructions). All related fields are only applicable if personalization is enabled.
+  <strong>Deprecated.</strong> Use <strong>personalization_questions</strong> instead for setting personalization questions. Defines legacy personalization settings for the listing. To enable personalization, is_personalizable must be set to true. When enabled, additional fields may be used to configure the personalization experience, including whether it is required (personalization_is_required), the maximum character limit (personalization_char_count_max), and buyer instructions (personalization_instructions). All related fields are only applicable if personalization is enabled.
   """
 
   @derive Jason.Encoder
