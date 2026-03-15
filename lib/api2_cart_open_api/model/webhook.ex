@@ -20,6 +20,7 @@ defmodule API2CartOpenAPI.Model.Webhook do
     :updated_at,
     :entity,
     :action,
+    :filtering_conditions,
     :additional_fields,
     :custom_fields
   ]
@@ -37,6 +38,7 @@ defmodule API2CartOpenAPI.Model.Webhook do
     :updated_at => String.t | nil,
     :entity => String.t | nil,
     :action => String.t | nil,
+    :filtering_conditions => map() | nil,
     :additional_fields => map() | nil,
     :custom_fields => map() | nil
   }

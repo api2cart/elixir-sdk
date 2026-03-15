@@ -160,6 +160,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
 
@@ -188,7 +189,8 @@ defmodule API2CartOpenAPI.Api.Order do
       :created_from => :query,
       :created_to => :query,
       :modified_from => :query,
-      :modified_to => :query
+      :modified_to => :query,
+      :use_latest_api_version => :query
     }
 
     request =

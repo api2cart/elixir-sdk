@@ -9,6 +9,7 @@ defmodule API2CartOpenAPI.Model.Plugin do
   @derive Jason.Encoder
   defstruct [
     :name,
+    :code,
     :active,
     :additional_fields,
     :custom_fields
@@ -16,6 +17,7 @@ defmodule API2CartOpenAPI.Model.Plugin do
 
   @type t :: %__MODULE__{
     :name => String.t | nil,
+    :code => String.t | nil,
     :active => boolean() | nil,
     :additional_fields => map() | nil,
     :custom_fields => map() | nil

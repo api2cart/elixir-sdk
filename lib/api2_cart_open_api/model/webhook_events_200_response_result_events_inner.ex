@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.WebhookEvents200ResponseResultEventsInner do
   defstruct [
     :webhook_name,
     :entity,
-    :action
+    :action,
+    :filterable_fields
   ]
 
   @type t :: %__MODULE__{
     :webhook_name => String.t | nil,
     :entity => String.t | nil,
-    :action => String.t | nil
+    :action => String.t | nil,
+    :filterable_fields => map() | nil
   }
 
   def decode(value) do

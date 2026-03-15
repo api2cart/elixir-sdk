@@ -273,6 +273,10 @@ lib/api2_cart_open_api/model/order_totals.ex
 lib/api2_cart_open_api/model/order_totals_new_discount.ex
 lib/api2_cart_open_api/model/order_transaction.ex
 lib/api2_cart_open_api/model/pagination.ex
+lib/api2_cart_open_api/model/param_definition_filtering_conditions_filter_condition.ex
+lib/api2_cart_open_api/model/param_definition_filtering_conditions_filter_group.ex
+lib/api2_cart_open_api/model/param_definition_filtering_conditions_filter_rule.ex
+lib/api2_cart_open_api/model/param_definition_filtering_conditions_filter_rule_value.ex
 lib/api2_cart_open_api/model/plugin.ex
 lib/api2_cart_open_api/model/plugin_list.ex
 lib/api2_cart_open_api/model/product.ex
@@ -450,11 +454,13 @@ lib/api2_cart_open_api/model/tax_class_zip_codes_range.ex
 lib/api2_cart_open_api/model/webhook.ex
 lib/api2_cart_open_api/model/webhook_count_200_response.ex
 lib/api2_cart_open_api/model/webhook_count_200_response_result.ex
+lib/api2_cart_open_api/model/webhook_create.ex
 lib/api2_cart_open_api/model/webhook_events_200_response.ex
 lib/api2_cart_open_api/model/webhook_events_200_response_result.ex
 lib/api2_cart_open_api/model/webhook_events_200_response_result_events_inner.ex
 lib/api2_cart_open_api/model/webhook_list_200_response.ex
 lib/api2_cart_open_api/model/webhook_list_200_response_result.ex
+lib/api2_cart_open_api/model/webhook_update.ex
 lib/api2_cart_open_api/request_builder.ex
 mix.exs
 test/test_helper.exs

@@ -55,44 +55,21 @@ defmodule API2CartOpenAPI.Api.Webhook do
   ### Parameters
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `entity` (String.t): Specify the entity that you want to enable webhooks for (e.g product, order, customer, category)
-  - `action` (String.t): Specify what action (event) will trigger the webhook (e.g add, delete, or update)
+  - `webhook_create` (WebhookCreate): 
   - `opts` (keyword): Optional parameters
-    - `:callback` (String.t): Callback url that returns shipping rates. It should be able to accept POST requests with json data.
-    - `:label` (String.t): The name you give to the webhook
-    - `:fields` (String.t): Fields the webhook should send
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:active` (boolean()): Webhook status
-    - `:lang_id` (String.t): Language id
-    - `:store_id` (String.t): Defines store id where the webhook should be assigned
-    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
   - `{:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceCreate200Response.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec webhook_create(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceCreate200Response.t} | {:error, Tesla.Env.t}
-  def webhook_create(connection, entity, action, opts \\ []) do
-    optional_params = %{
-      :callback => :query,
-      :label => :query,
-      :fields => :query,
-      :response_fields => :query,
-      :active => :query,
-      :lang_id => :query,
-      :store_id => :query,
-      :idempotency_key => :query
-    }
-
+  @spec webhook_create(Tesla.Env.client, API2CartOpenAPI.Model.WebhookCreate.t, keyword()) :: {:ok, API2CartOpenAPI.Model.BasketLiveShippingServiceCreate200Response.t} | {:error, Tesla.Env.t}
+  def webhook_create(connection, webhook_create, _opts \\ []) do
     request =
       %{}
       |> method(:post)
       |> url("/webhook.create.json")
-      |> add_param(:query, :entity, entity)
-      |> add_param(:query, :action, action)
-      |> add_optional_params(optional_params, opts)
-      |> ensure_body()
+      |> add_param(:body, :body, webhook_create)
       |> Enum.into([])
 
     connection
@@ -216,40 +193,21 @@ defmodule API2CartOpenAPI.Api.Webhook do
   ### Parameters
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
-  - `id` (String.t): Webhook id
+  - `webhook_update` (WebhookUpdate): 
   - `opts` (keyword): Optional parameters
-    - `:callback` (String.t): Callback url that returns shipping rates. It should be able to accept POST requests with json data.
-    - `:label` (String.t): The name you give to the webhook
-    - `:fields` (String.t): Fields the webhook should send
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:active` (boolean()): Webhook status
-    - `:lang_id` (String.t): Language id
-    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
   - `{:ok, API2CartOpenAPI.Model.ProductImageUpdate200Response.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec webhook_update(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductImageUpdate200Response.t} | {:error, Tesla.Env.t}
-  def webhook_update(connection, id, opts \\ []) do
-    optional_params = %{
-      :callback => :query,
-      :label => :query,
-      :fields => :query,
-      :response_fields => :query,
-      :active => :query,
-      :lang_id => :query,
-      :idempotency_key => :query
-    }
-
+  @spec webhook_update(Tesla.Env.client, API2CartOpenAPI.Model.WebhookUpdate.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductImageUpdate200Response.t} | {:error, Tesla.Env.t}
+  def webhook_update(connection, webhook_update, _opts \\ []) do
     request =
       %{}
       |> method(:put)
       |> url("/webhook.update.json")
-      |> add_param(:query, :id, id)
-      |> add_optional_params(optional_params, opts)
-      |> ensure_body()
+      |> add_param(:body, :body, webhook_update)
       |> Enum.into([])
 
     connection
