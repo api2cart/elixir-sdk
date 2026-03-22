@@ -185,6 +185,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:bricklink_consumer_secret` (String.t): Bricklink Consumer Secret
     - `:bricklink_token` (String.t): Bricklink Access Token
     - `:bricklink_token_secret` (String.t): Bricklink Access Token Secret
+    - `:nopcommerce_token` (String.t): Access token authorizing the app to access resources on behalf of a user
     - `:volusion_login` (String.t): It's a Volusion account for which API is enabled
     - `:volusion_password` (String.t): Volusion API Password
     - `:walmart_client_id` (String.t): Walmart client ID. For the region 'ca' use Consumer ID
@@ -370,6 +371,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :bricklink_consumer_secret => :query,
       :bricklink_token => :query,
       :bricklink_token_secret => :query,
+      :nopcommerce_token => :query,
       :volusion_login => :query,
       :volusion_password => :query,
       :walmart_client_id => :query,

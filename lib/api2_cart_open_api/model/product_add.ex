@@ -131,6 +131,8 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :return_policy_id,
     :personalization_details,
     :personalization_questions,
+    :manufacturer_ids,
+    :responsible_person_ids,
     :idempotency_key
   ]
 
@@ -258,6 +260,8 @@ defmodule API2CartOpenAPI.Model.ProductAdd do
     :return_policy_id => integer() | nil,
     :personalization_details => API2CartOpenAPI.Model.ProductAddPersonalizationDetails.t | nil,
     :personalization_questions => [API2CartOpenAPI.Model.ProductAddPersonalizationQuestionsInner.t] | nil,
+    :manufacturer_ids => String.t | nil,
+    :responsible_person_ids => String.t | nil,
     :idempotency_key => String.t | nil
   }
 

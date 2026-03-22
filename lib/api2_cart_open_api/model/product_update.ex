@@ -103,6 +103,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :external_product_link,
     :marketplace_item_properties,
     :min_order_quantity,
+    :manufacturer_ids,
+    :responsible_person_ids,
     :idempotency_key
   ]
 
@@ -202,6 +204,8 @@ defmodule API2CartOpenAPI.Model.ProductUpdate do
     :external_product_link => String.t | nil,
     :marketplace_item_properties => String.t | nil,
     :min_order_quantity => float() | nil,
+    :manufacturer_ids => String.t | nil,
+    :responsible_person_ids => String.t | nil,
     :idempotency_key => String.t | nil
   }
 
