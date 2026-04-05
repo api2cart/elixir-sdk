@@ -163,6 +163,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
+    - `:vendor_id` (String.t): Counts orders specified by vendor id
 
   ### Returns
 
@@ -192,7 +193,8 @@ defmodule API2CartOpenAPI.Api.Order do
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
-      :use_latest_api_version => :query
+      :use_latest_api_version => :query,
+      :vendor_id => :query
     }
 
     request =
@@ -341,6 +343,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:order_ids` (String.t): Retrieves orders specified by order ids
     - `:since_id` (String.t): Retrieve entities starting from the specified id.
     - `:store_id` (String.t): Store Id
+    - `:vendor_id` (String.t): Retrieves orders specified by vendor id
     - `:customer_id` (String.t): Retrieves orders specified by customer id
     - `:customer_email` (String.t): Retrieves orders specified by customer email
     - `:basket_id` (String.t): Retrieves order’s info specified by basket id.
@@ -390,6 +393,7 @@ defmodule API2CartOpenAPI.Api.Order do
       :order_ids => :query,
       :since_id => :query,
       :store_id => :query,
+      :vendor_id => :query,
       :customer_id => :query,
       :customer_email => :query,
       :basket_id => :query,

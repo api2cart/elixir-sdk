@@ -256,6 +256,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:avail` (boolean()): Defines category's visibility status
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
     - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
@@ -282,6 +283,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :created_to => :query,
       :modified_from => :query,
       :modified_to => :query,
+      :avail => :query,
       :response_fields => :query,
       :params => :query,
       :exclude => :query
@@ -486,6 +488,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:categories_ids` (String.t): Defines product add that is specified by comma-separated categories id
     - `:category_id` (String.t): Counts products specified by category id
     - `:store_id` (String.t): Counts products specified by store id
+    - `:vendor_id` (String.t): Counts products specified by vendor id
     - `:lang_id` (String.t): Counts products specified by language id
     - `:avail_view` (boolean()): Specifies the set of visible/invisible products
     - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
@@ -520,6 +523,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :categories_ids => :query,
       :category_id => :query,
       :store_id => :query,
+      :vendor_id => :query,
       :lang_id => :query,
       :avail_view => :query,
       :avail_sale => :query,
@@ -903,6 +907,7 @@ defmodule API2CartOpenAPI.Api.Product do
   - `id` (String.t): Retrieves product's info specified by product id
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Retrieves product info specified by store id
+    - `:vendor_id` (String.t): Vendor Id
     - `:lang_id` (String.t): Retrieves product info specified by language id
     - `:currency_id` (String.t): Currency Id
     - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
@@ -921,6 +926,7 @@ defmodule API2CartOpenAPI.Api.Product do
   def product_info(connection, id, opts \\ []) do
     optional_params = %{
       :store_id => :query,
+      :vendor_id => :query,
       :lang_id => :query,
       :currency_id => :query,
       :response_fields => :query,
@@ -962,6 +968,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:categories_ids` (String.t): Retrieves products specified by categories ids
     - `:category_id` (String.t): Retrieves products specified by category id
     - `:store_id` (String.t): Retrieves products specified by store id
+    - `:vendor_id` (String.t): Retrieves products specified by vendor id
     - `:lang_id` (String.t): Retrieves products specified by language id
     - `:currency_id` (String.t): Currency Id
     - `:avail_view` (boolean()): Specifies the set of visible/invisible products
@@ -1007,6 +1014,7 @@ defmodule API2CartOpenAPI.Api.Product do
       :categories_ids => :query,
       :category_id => :query,
       :store_id => :query,
+      :vendor_id => :query,
       :lang_id => :query,
       :currency_id => :query,
       :avail_view => :query,
