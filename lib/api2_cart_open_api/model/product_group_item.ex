@@ -20,7 +20,7 @@ defmodule API2CartOpenAPI.Model.ProductGroupItem do
   @type t :: %__MODULE__{
     :child_item_id => String.t | nil,
     :product_id => String.t | nil,
-    :default_qty_in_pack => String.t | nil,
+    :default_qty_in_pack => float() | nil,
     :is_qty_in_pack_fixed => boolean() | nil,
     :price => float() | nil,
     :additional_fields => map() | nil,

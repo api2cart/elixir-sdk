@@ -175,6 +175,7 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:shoplazza_shared_secret` (String.t): Shared secret
     - `:miva_access_token` (String.t): Miva access token
     - `:miva_signature` (String.t): Miva signature
+    - `:mirakl_api_key` (String.t): Mirakl API Key
     - `:shopware_access_key` (String.t): Shopware access key
     - `:unas_api_key` (String.t): UNAS API Key
     - `:shopware_api_key` (String.t): Shopware api key
@@ -361,6 +362,7 @@ defmodule API2CartOpenAPI.Api.Account do
       :shoplazza_shared_secret => :query,
       :miva_access_token => :query,
       :miva_signature => :query,
+      :mirakl_api_key => :query,
       :shopware_access_key => :query,
       :unas_api_key => :query,
       :shopware_api_key => :query,
