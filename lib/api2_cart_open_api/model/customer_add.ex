@@ -30,6 +30,9 @@ defmodule API2CartOpenAPI.Model.CustomerAdd do
     :phone,
     :note,
     :country,
+    :currency_id,
+    :is_tax_exempt,
+    :vendor_id,
     :store_id,
     :idempotency_key,
     :address
@@ -58,6 +61,9 @@ defmodule API2CartOpenAPI.Model.CustomerAdd do
     :phone => String.t | nil,
     :note => String.t | nil,
     :country => String.t | nil,
+    :currency_id => String.t | nil,
+    :is_tax_exempt => boolean() | nil,
+    :vendor_id => String.t | nil,
     :store_id => String.t | nil,
     :idempotency_key => String.t | nil,
     :address => [API2CartOpenAPI.Model.CustomerAddAddressInner.t] | nil
