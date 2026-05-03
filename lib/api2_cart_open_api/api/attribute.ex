@@ -402,6 +402,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `opts` (keyword): Optional parameters
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:attribute_ids` (String.t): Filter attributes by ids
     - `:attribute_set_id` (String.t): Filter items by attribute set id
     - `:store_id` (String.t): Store Id
@@ -424,6 +425,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     optional_params = %{
       :start => :query,
       :count => :query,
+      :page_cursor => :query,
       :attribute_ids => :query,
       :attribute_set_id => :query,
       :store_id => :query,
@@ -568,8 +570,10 @@ defmodule API2CartOpenAPI.Api.Attribute do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Entity id
-  - `name` (String.t): Defines new attributes's name
   - `opts` (keyword): Optional parameters
+    - `:name` (String.t): Defines new attributes's name
+    - `:visible` (boolean()): Set visibility status
+    - `:position` (integer()): Attribute`s position
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
     - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
@@ -579,9 +583,12 @@ defmodule API2CartOpenAPI.Api.Attribute do
   - `{:ok, API2CartOpenAPI.Model.AttributeUpdate200Response.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec attribute_update(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeUpdate200Response.t} | {:error, Tesla.Env.t}
-  def attribute_update(connection, id, name, opts \\ []) do
+  @spec attribute_update(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeUpdate200Response.t} | {:error, Tesla.Env.t}
+  def attribute_update(connection, id, opts \\ []) do
     optional_params = %{
+      :name => :query,
+      :visible => :query,
+      :position => :query,
       :store_id => :query,
       :lang_id => :query,
       :idempotency_key => :query
@@ -592,7 +599,6 @@ defmodule API2CartOpenAPI.Api.Attribute do
       |> method(:put)
       |> url("/attribute.update.json")
       |> add_param(:query, :id, id)
-      |> add_param(:query, :name, name)
       |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])

@@ -1070,6 +1070,7 @@ defmodule API2CartOpenAPI.Api.Product do
   - `manufacturer` (String.t): Defines product’s manufacturer's name
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
+    - `:description` (String.t): Defines manufacturer's description
     - `:meta_title` (String.t): Defines unique meta title for each entity
     - `:meta_keywords` (String.t): Defines unique meta keywords for each entity
     - `:meta_description` (String.t): Defines unique meta description of a entity
@@ -1087,6 +1088,7 @@ defmodule API2CartOpenAPI.Api.Product do
   def product_manufacturer_add(connection, product_id, manufacturer, opts \\ []) do
     optional_params = %{
       :store_id => :query,
+      :description => :query,
       :meta_title => :query,
       :meta_keywords => :query,
       :meta_description => :query,

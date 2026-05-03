@@ -24,6 +24,7 @@ defmodule API2CartOpenAPI.Model.CustomerUpdateAddressInner do
     :address_book_tax_id,
     :address_book_identification_number,
     :address_book_gender,
+    :address_book_region,
     :address_book_alias,
     :address_book_type,
     :address_book_default
@@ -46,6 +47,7 @@ defmodule API2CartOpenAPI.Model.CustomerUpdateAddressInner do
     :address_book_tax_id => String.t | nil,
     :address_book_identification_number => String.t | nil,
     :address_book_gender => String.t | nil,
+    :address_book_region => String.t | nil,
     :address_book_alias => String.t | nil,
     :address_book_type => String.t | nil,
     :address_book_default => boolean() | nil
