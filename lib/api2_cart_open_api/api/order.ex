@@ -708,6 +708,84 @@ defmodule API2CartOpenAPI.Api.Order do
   end
 
   @doc """
+  order.shipment.event.add
+  Add a tracking event to the shipment.
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `order_shipment_event_add` (OrderShipmentEventAdd): 
+  - `opts` (keyword): Optional parameters
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.AttributeAdd200Response.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec order_shipment_event_add(Tesla.Env.client, API2CartOpenAPI.Model.OrderShipmentEventAdd.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeAdd200Response.t} | {:error, Tesla.Env.t}
+  def order_shipment_event_add(connection, order_shipment_event_add, _opts \\ []) do
+    request =
+      %{}
+      |> method(:post)
+      |> url("/order.shipment.event.add.json")
+      |> add_param(:body, :body, order_shipment_event_add)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.AttributeAdd200Response}
+    ])
+  end
+
+  @doc """
+  order.shipment.event.list
+  Get list of shipment tracking events.
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `shipment_id` (String.t): Defines the shipment for which tracking events will be retrieved
+  - `opts` (keyword): Optional parameters
+    - `:order_id` (String.t): Defines the order to which the shipment belongs
+    - `:store_id` (String.t): Store Id
+    - `:start` (integer()): This parameter sets the number from which you want to get entities
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseOrderShipmentEventList.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec order_shipment_event_list(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderShipmentEventList.t} | {:error, Tesla.Env.t}
+  def order_shipment_event_list(connection, shipment_id, opts \\ []) do
+    optional_params = %{
+      :order_id => :query,
+      :store_id => :query,
+      :start => :query,
+      :count => :query,
+      :page_cursor => :query,
+      :response_fields => :query
+    }
+
+    request =
+      %{}
+      |> method(:get)
+      |> url("/order.shipment.event.list.json")
+      |> add_param(:query, :shipment_id, shipment_id)
+      |> add_optional_params(optional_params, opts)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.ModelResponseOrderShipmentEventList}
+    ])
+  end
+
+  @doc """
   order.shipment.info
   Get information of shipment.
 

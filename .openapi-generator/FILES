@@ -189,6 +189,7 @@ lib/api2_cart_open_api/model/model_response_marketplace_product_find.ex
 lib/api2_cart_open_api/model/model_response_order_abandoned_list.ex
 lib/api2_cart_open_api/model/model_response_order_list.ex
 lib/api2_cart_open_api/model/model_response_order_preestimate_shipping_list.ex
+lib/api2_cart_open_api/model/model_response_order_shipment_event_list.ex
 lib/api2_cart_open_api/model/model_response_order_shipment_list.ex
 lib/api2_cart_open_api/model/model_response_order_status_list.ex
 lib/api2_cart_open_api/model/model_response_order_transaction_list.ex
@@ -258,6 +259,7 @@ lib/api2_cart_open_api/model/order_shipment_add_items_inner.ex
 lib/api2_cart_open_api/model/order_shipment_add_tracking_numbers_inner.ex
 lib/api2_cart_open_api/model/order_shipment_delete_200_response.ex
 lib/api2_cart_open_api/model/order_shipment_delete_200_response_result.ex
+lib/api2_cart_open_api/model/order_shipment_event_add.ex
 lib/api2_cart_open_api/model/order_shipment_info_200_response.ex
 lib/api2_cart_open_api/model/order_shipment_tracking_add.ex
 lib/api2_cart_open_api/model/order_shipment_tracking_add_200_response.ex
@@ -406,6 +408,7 @@ lib/api2_cart_open_api/model/response_marketplace_product_find_result.ex
 lib/api2_cart_open_api/model/response_order_abandoned_list_result.ex
 lib/api2_cart_open_api/model/response_order_list_result.ex
 lib/api2_cart_open_api/model/response_order_preestimate_shipping_list_result.ex
+lib/api2_cart_open_api/model/response_order_shipment_event_list_result.ex
 lib/api2_cart_open_api/model/response_order_shipment_list_result.ex
 lib/api2_cart_open_api/model/response_order_status_list_result.ex
 lib/api2_cart_open_api/model/response_order_transaction_list_result.ex
@@ -436,6 +439,7 @@ lib/api2_cart_open_api/model/return_status_list_200_response.ex
 lib/api2_cart_open_api/model/return_status_list_200_response_result.ex
 lib/api2_cart_open_api/model/script.ex
 lib/api2_cart_open_api/model/shipment.ex
+lib/api2_cart_open_api/model/shipment_event.ex
 lib/api2_cart_open_api/model/shipment_item.ex
 lib/api2_cart_open_api/model/shipment_tracking_number.ex
 lib/api2_cart_open_api/model/special_price.ex
