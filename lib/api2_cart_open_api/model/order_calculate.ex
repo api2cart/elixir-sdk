@@ -9,6 +9,7 @@ defmodule API2CartOpenAPI.Model.OrderCalculate do
   @derive Jason.Encoder
   defstruct [
     :customer_email,
+    :currency,
     :currency_id,
     :store_id,
     :coupons,
@@ -40,6 +41,7 @@ defmodule API2CartOpenAPI.Model.OrderCalculate do
 
   @type t :: %__MODULE__{
     :customer_email => String.t,
+    :currency => String.t | nil,
     :currency_id => String.t | nil,
     :store_id => String.t | nil,
     :coupons => [String.t] | nil,

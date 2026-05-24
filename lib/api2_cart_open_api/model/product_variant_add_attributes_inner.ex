@@ -10,15 +10,13 @@ defmodule API2CartOpenAPI.Model.ProductVariantAddAttributesInner do
   defstruct [
     :attribute_name,
     :attribute_value,
-    :attribute_price,
-    :attribute_weight
+    :attribute_price
   ]
 
   @type t :: %__MODULE__{
     :attribute_name => String.t | nil,
     :attribute_value => String.t | nil,
-    :attribute_price => float() | nil,
-    :attribute_weight => float() | nil
+    :attribute_price => float() | nil
   }
 
   def decode(value) do

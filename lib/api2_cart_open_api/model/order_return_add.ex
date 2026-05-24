@@ -18,8 +18,12 @@ defmodule API2CartOpenAPI.Model.OrderReturnAdd do
     :item_restock,
     :staff_note,
     :comment,
+    :message,
     :send_notifications,
     :reject_reason,
+    :is_online,
+    :fee_price,
+    :shipping_price,
     :idempotency_key,
     :order_products
   ]
@@ -35,8 +39,12 @@ defmodule API2CartOpenAPI.Model.OrderReturnAdd do
     :item_restock => boolean() | nil,
     :staff_note => String.t | nil,
     :comment => String.t | nil,
+    :message => String.t | nil,
     :send_notifications => boolean() | nil,
     :reject_reason => String.t | nil,
+    :is_online => boolean() | nil,
+    :fee_price => float() | nil,
+    :shipping_price => float() | nil,
     :idempotency_key => String.t | nil,
     :order_products => [API2CartOpenAPI.Model.OrderReturnAddOrderProductsInner.t]
   }

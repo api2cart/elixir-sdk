@@ -23,6 +23,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :check_process_status,
     :tracking_provider,
     :use_latest_api_version,
+    :admin_comment,
     :idempotency_key
   ]
 
@@ -42,6 +43,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd do
     :check_process_status => boolean() | nil,
     :tracking_provider => String.t | nil,
     :use_latest_api_version => boolean() | nil,
+    :admin_comment => String.t | nil,
     :idempotency_key => String.t | nil
   }
 

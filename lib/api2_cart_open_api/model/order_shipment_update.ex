@@ -20,6 +20,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :send_notifications,
     :tracking_provider,
     :items,
+    :admin_comment,
     :idempotency_key
   ]
 
@@ -36,6 +37,7 @@ defmodule API2CartOpenAPI.Model.OrderShipmentUpdate do
     :send_notifications => boolean() | nil,
     :tracking_provider => String.t | nil,
     :items => [API2CartOpenAPI.Model.OrderShipmentAddItemsInner.t] | nil,
+    :admin_comment => String.t | nil,
     :idempotency_key => String.t | nil
   }
 
