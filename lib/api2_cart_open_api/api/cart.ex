@@ -20,10 +20,10 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartCatalogPriceRulesCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCartCatalogPriceRulesCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec cart_catalog_price_rules_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartCatalogPriceRulesCount200Response.t} | {:error, Tesla.Env.t}
+  @spec cart_catalog_price_rules_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartCatalogPriceRulesCount.t} | {:error, Tesla.Env.t}
   def cart_catalog_price_rules_count(connection, _opts \\ []) do
     request =
       %{}
@@ -34,7 +34,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartCatalogPriceRulesCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCartCatalogPriceRulesCount}
     ])
   end
 
@@ -187,10 +187,10 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartCouponCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCartCouponCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec cart_coupon_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartCouponCount200Response.t} | {:error, Tesla.Env.t}
+  @spec cart_coupon_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartCouponCount.t} | {:error, Tesla.Env.t}
   def cart_coupon_count(connection, opts \\ []) do
     optional_params = %{
       :store_id => :query,
@@ -211,7 +211,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartCouponCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCartCouponCount}
     ])
   end
 
@@ -359,11 +359,15 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `amount` (float()): Defines the gift card amount value.
   - `opts` (keyword): Optional parameters
+    - `:currency` (String.t): Defines currency code
+    - `:store_id` (String.t): Store Id
     - `:code` (String.t): Gift card code
+    - `:name` (String.t): Entity name
     - `:owner_email` (String.t): Gift card owner email
+    - `:owner_name` (String.t): Gift card owner name
     - `:recipient_email` (String.t): Gift card recipient email
     - `:recipient_name` (String.t): Gift card recipient name
-    - `:owner_name` (String.t): Gift card owner name
+    - `:message` (String.t): Free-form message attached to the entity.
     - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
@@ -374,11 +378,15 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_giftcard_add(Tesla.Env.client, float(), keyword()) :: {:ok, API2CartOpenAPI.Model.CartGiftcardAdd200Response.t} | {:error, Tesla.Env.t}
   def cart_giftcard_add(connection, amount, opts \\ []) do
     optional_params = %{
+      :currency => :query,
+      :store_id => :query,
       :code => :query,
+      :name => :query,
       :owner_email => :query,
+      :owner_name => :query,
       :recipient_email => :query,
       :recipient_name => :query,
-      :owner_name => :query,
+      :message => :query,
       :idempotency_key => :query
     }
 
@@ -410,10 +418,10 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartGiftcardCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCartGiftcardCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec cart_giftcard_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartGiftcardCount200Response.t} | {:error, Tesla.Env.t}
+  @spec cart_giftcard_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartGiftcardCount.t} | {:error, Tesla.Env.t}
   def cart_giftcard_count(connection, opts \\ []) do
     optional_params = %{
       :store_id => :query
@@ -429,7 +437,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartGiftcardCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCartGiftcardCount}
     ])
   end
 
@@ -442,6 +450,7 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `id` (String.t): Entity id
   - `opts` (keyword): Optional parameters
+    - `:store_id` (String.t): Store Id
 
   ### Returns
 
@@ -449,12 +458,17 @@ defmodule API2CartOpenAPI.Api.Cart do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec cart_giftcard_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeDelete200Response.t} | {:error, Tesla.Env.t}
-  def cart_giftcard_delete(connection, id, _opts \\ []) do
+  def cart_giftcard_delete(connection, id, opts \\ []) do
+    optional_params = %{
+      :store_id => :query
+    }
+
     request =
       %{}
       |> method(:delete)
       |> url("/cart.giftcard.delete.json")
       |> add_param(:query, :id, id)
+      |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
     connection
@@ -472,6 +486,7 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:ids` (String.t): Retrieves gift cards specified by ids
     - `:start` (integer()): This parameter sets the number from which you want to get entities
     - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
@@ -488,6 +503,7 @@ defmodule API2CartOpenAPI.Api.Cart do
   @spec cart_giftcard_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartGiftCardList.t} | {:error, Tesla.Env.t}
   def cart_giftcard_list(connection, opts \\ []) do
     optional_params = %{
+      :ids => :query,
       :start => :query,
       :count => :query,
       :page_cursor => :query,
@@ -554,7 +570,7 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   @doc """
   cart.meta_data.list
-  Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
+  Using this method, you can get a list of metadata for various entities. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
 
   ### Parameters
 
@@ -607,7 +623,7 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   @doc """
   cart.meta_data.set
-  Set meta data for a specific entity
+  Set metadata for a specific entity. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
 
   ### Parameters
 
@@ -709,10 +725,10 @@ defmodule API2CartOpenAPI.Api.Cart do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CartMethods200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCartMethods.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec cart_methods(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CartMethods200Response.t} | {:error, Tesla.Env.t}
+  @spec cart_methods(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCartMethods.t} | {:error, Tesla.Env.t}
   def cart_methods(connection, _opts \\ []) do
     request =
       %{}
@@ -723,7 +739,7 @@ defmodule API2CartOpenAPI.Api.Cart do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CartMethods200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCartMethods}
     ])
   end
 

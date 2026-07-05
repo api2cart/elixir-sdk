@@ -23,10 +23,10 @@ defmodule API2CartOpenAPI.Api.Webhook do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.WebhookCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseWebhookCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec webhook_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.WebhookCount200Response.t} | {:error, Tesla.Env.t}
+  @spec webhook_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseWebhookCount.t} | {:error, Tesla.Env.t}
   def webhook_count(connection, opts \\ []) do
     optional_params = %{
       :entity => :query,
@@ -44,7 +44,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.WebhookCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseWebhookCount}
     ])
   end
 
@@ -121,10 +121,10 @@ defmodule API2CartOpenAPI.Api.Webhook do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.WebhookEvents200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseWebhookEvents.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec webhook_events(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.WebhookEvents200Response.t} | {:error, Tesla.Env.t}
+  @spec webhook_events(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseWebhookEvents.t} | {:error, Tesla.Env.t}
   def webhook_events(connection, _opts \\ []) do
     request =
       %{}
@@ -135,7 +135,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.WebhookEvents200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseWebhookEvents}
     ])
   end
 

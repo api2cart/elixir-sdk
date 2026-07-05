@@ -232,10 +232,10 @@ defmodule API2CartOpenAPI.Api.Attribute do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.AttributeCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseAttributeCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec attribute_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeCount200Response.t} | {:error, Tesla.Env.t}
+  @spec attribute_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseAttributeCount.t} | {:error, Tesla.Env.t}
   def attribute_count(connection, opts \\ []) do
     optional_params = %{
       :type => :query,
@@ -257,7 +257,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.AttributeCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseAttributeCount}
     ])
   end
 
@@ -464,10 +464,10 @@ defmodule API2CartOpenAPI.Api.Attribute do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.AttributeTypeList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseAttributeTypeList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec attribute_type_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeTypeList200Response.t} | {:error, Tesla.Env.t}
+  @spec attribute_type_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseAttributeTypeList.t} | {:error, Tesla.Env.t}
   def attribute_type_list(connection, _opts \\ []) do
     request =
       %{}
@@ -478,7 +478,7 @@ defmodule API2CartOpenAPI.Api.Attribute do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.AttributeTypeList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseAttributeTypeList}
     ])
   end
 

@@ -167,10 +167,10 @@ defmodule API2CartOpenAPI.Api.Order do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.OrderCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseOrderCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec order_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderCount200Response.t} | {:error, Tesla.Env.t}
+  @spec order_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderCount.t} | {:error, Tesla.Env.t}
   def order_count(connection, opts \\ []) do
     optional_params = %{
       :order_ids => :query,
@@ -207,7 +207,7 @@ defmodule API2CartOpenAPI.Api.Order do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.OrderCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseOrderCount}
     ])
   end
 
@@ -222,10 +222,10 @@ defmodule API2CartOpenAPI.Api.Order do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.OrderFinancialStatusList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseOrderFinancialStatusList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec order_financial_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderFinancialStatusList200Response.t} | {:error, Tesla.Env.t}
+  @spec order_financial_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderFinancialStatusList.t} | {:error, Tesla.Env.t}
   def order_financial_status_list(connection, _opts \\ []) do
     request =
       %{}
@@ -236,7 +236,7 @@ defmodule API2CartOpenAPI.Api.Order do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.OrderFinancialStatusList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseOrderFinancialStatusList}
     ])
   end
 
@@ -252,10 +252,10 @@ defmodule API2CartOpenAPI.Api.Order do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.OrderFulfillmentStatusList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseOrderFulfillmentStatusList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec order_fulfillment_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.OrderFulfillmentStatusList200Response.t} | {:error, Tesla.Env.t}
+  @spec order_fulfillment_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderFulfillmentStatusList.t} | {:error, Tesla.Env.t}
   def order_fulfillment_status_list(connection, opts \\ []) do
     optional_params = %{
       :action => :query
@@ -271,7 +271,7 @@ defmodule API2CartOpenAPI.Api.Order do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.OrderFulfillmentStatusList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseOrderFulfillmentStatusList}
     ])
   end
 

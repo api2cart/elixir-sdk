@@ -529,10 +529,10 @@ defmodule API2CartOpenAPI.Api.Account do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.AccountSupportedPlatforms200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseAccountSupportedPlatforms.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec account_supported_platforms(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AccountSupportedPlatforms200Response.t} | {:error, Tesla.Env.t}
+  @spec account_supported_platforms(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseAccountSupportedPlatforms.t} | {:error, Tesla.Env.t}
   def account_supported_platforms(connection, _opts \\ []) do
     request =
       %{}
@@ -543,7 +543,7 @@ defmodule API2CartOpenAPI.Api.Account do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.AccountSupportedPlatforms200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseAccountSupportedPlatforms}
     ])
   end
 end

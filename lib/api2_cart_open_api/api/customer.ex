@@ -146,10 +146,10 @@ defmodule API2CartOpenAPI.Api.Customer do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CustomerCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCustomerCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec customer_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.CustomerCount200Response.t} | {:error, Tesla.Env.t}
+  @spec customer_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerCount.t} | {:error, Tesla.Env.t}
   def customer_count(connection, opts \\ []) do
     optional_params = %{
       :ids => :query,
@@ -177,7 +177,7 @@ defmodule API2CartOpenAPI.Api.Customer do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CustomerCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCustomerCount}
     ])
   end
 
@@ -234,10 +234,10 @@ defmodule API2CartOpenAPI.Api.Customer do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.CustomerFind200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseCustomerFind.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec customer_find(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.CustomerFind200Response.t} | {:error, Tesla.Env.t}
+  @spec customer_find(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseCustomerFind.t} | {:error, Tesla.Env.t}
   def customer_find(connection, find_value, opts \\ []) do
     optional_params = %{
       :find_where => :query,
@@ -257,7 +257,7 @@ defmodule API2CartOpenAPI.Api.Customer do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.CustomerFind200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseCustomerFind}
     ])
   end
 

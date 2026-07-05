@@ -20,10 +20,10 @@ defmodule API2CartOpenAPI.Api.Return do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ReturnActionList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseReturnActionList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec return_action_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ReturnActionList200Response.t} | {:error, Tesla.Env.t}
+  @spec return_action_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseReturnActionList.t} | {:error, Tesla.Env.t}
   def return_action_list(connection, _opts \\ []) do
     request =
       %{}
@@ -34,7 +34,7 @@ defmodule API2CartOpenAPI.Api.Return do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ReturnActionList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseReturnActionList}
     ])
   end
 
@@ -60,10 +60,10 @@ defmodule API2CartOpenAPI.Api.Return do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ReturnCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseReturnCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec return_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ReturnCount200Response.t} | {:error, Tesla.Env.t}
+  @spec return_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseReturnCount.t} | {:error, Tesla.Env.t}
   def return_count(connection, opts \\ []) do
     optional_params = %{
       :order_ids => :query,
@@ -89,7 +89,7 @@ defmodule API2CartOpenAPI.Api.Return do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ReturnCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseReturnCount}
     ])
   end
 
@@ -219,10 +219,10 @@ defmodule API2CartOpenAPI.Api.Return do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ReturnReasonList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseReturnReasonList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec return_reason_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ReturnReasonList200Response.t} | {:error, Tesla.Env.t}
+  @spec return_reason_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseReturnReasonList.t} | {:error, Tesla.Env.t}
   def return_reason_list(connection, opts \\ []) do
     optional_params = %{
       :store_id => :query
@@ -238,7 +238,7 @@ defmodule API2CartOpenAPI.Api.Return do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ReturnReasonList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseReturnReasonList}
     ])
   end
 
@@ -253,10 +253,10 @@ defmodule API2CartOpenAPI.Api.Return do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ReturnStatusList200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseReturnStatusList.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec return_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ReturnStatusList200Response.t} | {:error, Tesla.Env.t}
+  @spec return_status_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseReturnStatusList.t} | {:error, Tesla.Env.t}
   def return_status_list(connection, _opts \\ []) do
     request =
       %{}
@@ -267,7 +267,7 @@ defmodule API2CartOpenAPI.Api.Return do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ReturnStatusList200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseReturnStatusList}
     ])
   end
 end

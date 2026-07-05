@@ -318,10 +318,10 @@ defmodule API2CartOpenAPI.Api.Product do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ProductChildItemFind200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseProductChildItemFind.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec product_child_item_find(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductChildItemFind200Response.t} | {:error, Tesla.Env.t}
+  @spec product_child_item_find(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductChildItemFind.t} | {:error, Tesla.Env.t}
   def product_child_item_find(connection, opts \\ []) do
     optional_params = %{
       :find_value => :query,
@@ -340,7 +340,7 @@ defmodule API2CartOpenAPI.Api.Product do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductChildItemFind200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseProductChildItemFind}
     ])
   end
 
@@ -511,10 +511,10 @@ defmodule API2CartOpenAPI.Api.Product do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ProductCount200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseProductCount.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec product_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductCount200Response.t} | {:error, Tesla.Env.t}
+  @spec product_count(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductCount.t} | {:error, Tesla.Env.t}
   def product_count(connection, opts \\ []) do
     optional_params = %{
       :sku => :query,
@@ -555,7 +555,7 @@ defmodule API2CartOpenAPI.Api.Product do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductCount200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseProductCount}
     ])
   end
 
@@ -743,10 +743,10 @@ defmodule API2CartOpenAPI.Api.Product do
 
   ### Returns
 
-  - `{:ok, API2CartOpenAPI.Model.ProductFind200Response.t}` on success
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseProductFind.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec product_find(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ProductFind200Response.t} | {:error, Tesla.Env.t}
+  @spec product_find(Tesla.Env.client, String.t, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseProductFind.t} | {:error, Tesla.Env.t}
   def product_find(connection, find_value, opts \\ []) do
     optional_params = %{
       :find_where => :query,
@@ -767,7 +767,7 @@ defmodule API2CartOpenAPI.Api.Product do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {200, API2CartOpenAPI.Model.ProductFind200Response}
+      {200, API2CartOpenAPI.Model.ModelResponseProductFind}
     ])
   end
 
