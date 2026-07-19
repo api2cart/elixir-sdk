@@ -5,6 +5,7 @@ README.md
 config/config.exs
 config/runtime.exs
 lib/api2_cart_open_api/api/account.ex
+lib/api2_cart_open_api/api/analytics.ex
 lib/api2_cart_open_api/api/attribute.ex
 lib/api2_cart_open_api/api/basket.ex
 lib/api2_cart_open_api/api/batch.ex
@@ -37,6 +38,13 @@ lib/api2_cart_open_api/model/account_failed_webhooks_200_response_result_webhook
 lib/api2_cart_open_api/model/account_supported_platform.ex
 lib/api2_cart_open_api/model/account_supported_platform_params.ex
 lib/api2_cart_open_api/model/account_supported_platform_params_required_inner_inner.ex
+lib/api2_cart_open_api/model/analytics_customer.ex
+lib/api2_cart_open_api/model/analytics_customer_metric.ex
+lib/api2_cart_open_api/model/analytics_interval.ex
+lib/api2_cart_open_api/model/analytics_metric.ex
+lib/api2_cart_open_api/model/analytics_period.ex
+lib/api2_cart_open_api/model/analytics_product.ex
+lib/api2_cart_open_api/model/analytics_product_metric.ex
 lib/api2_cart_open_api/model/attribute_add_200_response.ex
 lib/api2_cart_open_api/model/attribute_add_200_response_result.ex
 lib/api2_cart_open_api/model/attribute_assign_group_200_response.ex
@@ -376,6 +384,9 @@ lib/api2_cart_open_api/model/product_variant_update_batch.ex
 lib/api2_cart_open_api/model/product_variant_update_batch_payload_inner.ex
 lib/api2_cart_open_api/model/product_variant_update_options_inner.ex
 lib/api2_cart_open_api/model/response_account_supported_platforms_result.ex
+lib/api2_cart_open_api/model/response_analytics_customer_report_result.ex
+lib/api2_cart_open_api/model/response_analytics_product_report_result.ex
+lib/api2_cart_open_api/model/response_analytics_report_result.ex
 lib/api2_cart_open_api/model/response_attribute_attributeset_list_result.ex
 lib/api2_cart_open_api/model/response_attribute_count_result.ex
 lib/api2_cart_open_api/model/response_attribute_group_list_result.ex
