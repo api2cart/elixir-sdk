@@ -24,7 +24,7 @@ defmodule API2CartOpenAPI.Model.WebhookCreate do
   @type t :: %__MODULE__{
     :entity => String.t,
     :action => String.t,
-    :callback => String.t | nil,
+    :callback => String.t,
     :label => String.t | nil,
     :fields => String.t | nil,
     :response_fields => String.t | nil,

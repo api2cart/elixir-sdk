@@ -28,9 +28,9 @@ defmodule API2CartOpenAPI.Api.Marketplace do
     - `:upc` (String.t): Universal Product Code. A UPC (UPC-A) is a commonly used identifer for many different products.
     - `:mpn` (String.t): Manufacturer Part Number. A MPN is an identifier of a particular part design or material used.
     - `:isbn` (String.t): International Standard Book Number. An ISBN is a unique identifier for books.
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 

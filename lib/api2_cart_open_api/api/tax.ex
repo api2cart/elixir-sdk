@@ -20,9 +20,9 @@ defmodule API2CartOpenAPI.Api.Tax do
   - `opts` (keyword): Optional parameters
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -72,7 +72,7 @@ defmodule API2CartOpenAPI.Api.Tax do
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:modified_from` (String.t): Retrieve entities from their modification date
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 
   ### Returns
 

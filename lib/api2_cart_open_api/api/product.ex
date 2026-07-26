@@ -91,9 +91,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:set_name` (String.t): Retrieves attributes specified by set_name in Magento
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -257,9 +257,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:avail` (boolean()): Defines category's visibility status
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -357,9 +357,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:store_id` (String.t): Store Id
     - `:lang_id` (String.t): Language id
     - `:currency_id` (String.t): Currency Id
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
 
   ### Returns
@@ -420,9 +420,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:modified_from` (String.t): Retrieve entities from their modification date
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
@@ -622,9 +622,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
     - `:default` (boolean()): Specifies the set of default/not default currencies
     - `:avail` (boolean()): Specifies the set of available/not available currencies
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -910,9 +910,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:vendor_id` (String.t): Vendor Id
     - `:lang_id` (String.t): Retrieves product info specified by language id
     - `:currency_id` (String.t): Currency Id
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
@@ -987,9 +987,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Product search that is specified by field
     - `:return_global` (boolean()): Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned.
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
     - `:report_request_id` (String.t): Report request id
@@ -1246,9 +1246,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:product_id` (String.t): Retrieves products' options specified by product id
     - `:lang_id` (String.t): Language id
     - `:store_id` (String.t): Store Id
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -1589,9 +1589,9 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:customer_id` (String.t): Retrieves orders specified by customer id
     - `:sort_by` (String.t): Set field to sort by
     - `:sort_direction` (String.t): Set sorting direction
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 

@@ -425,9 +425,9 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:store_id` (String.t): Retrieves category info  specified by store id
     - `:lang_id` (String.t): Retrieves category info  specified by language id
     - `:schema_type` (String.t): The name of the requirements set for the provided schema.
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:use_latest_api_version` (boolean()): Use the latest platform API version
@@ -488,9 +488,9 @@ defmodule API2CartOpenAPI.Api.Category do
     - `:modified_to` (String.t): Retrieve entities to their modification date
     - `:find_value` (String.t): Entity search that is specified by some value
     - `:find_where` (String.t): Category search that is specified by field
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
     - `:report_request_id` (String.t): Report request id
     - `:disable_report_cache` (boolean()): Disable report cache for current request
     - `:disable_cache` (boolean()): Disable cache for current request

@@ -153,7 +153,7 @@ defmodule API2CartOpenAPI.Api.Webhook do
     - `:action` (String.t): The action you want to filter webhooks by (e.g. add, update, or delete)
     - `:active` (boolean()): The webhook status you want to filter webhooks by
     - `:ids` (String.t): List of сomma-separated webhook ids
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 
   ### Returns
 

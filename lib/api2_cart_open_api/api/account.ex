@@ -49,12 +49,12 @@ defmodule API2CartOpenAPI.Api.Account do
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
     - `:store_url` (String.t): A web address of a store
-    - `:store_key` (String.t): Find store by store key
-    - `:request_from_date` (String.t): Retrieve entities from their creation date
-    - `:request_to_date` (String.t): Retrieve entities to their creation date
+    - `:store_key` (String.t): Optional filter: return only the connected store whose store key matches this value. A store key is the unique 32-character identifier of a connected store, returned as store_key here and by account.cart.add.
+    - `:request_from_date` (String.t): Start date of the period for counting API requests made to each connection. Set together with request_to_date to include each store's total_calls (number of API requests in that period) in the response.
+    - `:request_to_date` (String.t): End date of the period for counting API requests made to each connection. Set together with request_from_date to include each store's total_calls (number of API requests in that period) in the response.
     - `:custom_label` (String.t): Defines a custom label for the store in the app
-    - `:params` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
-    - `:exclude` (String.t): Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
+    - `:params` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
+    - `:exclude` (String.t): Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all
 
   ### Returns
 
@@ -526,6 +526,7 @@ defmodule API2CartOpenAPI.Api.Account do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:cart_id` (String.t): Filter by integration identifier (e.g. 'Shopify'). If omitted, the method returns all integrations.
 
   ### Returns
 
@@ -533,11 +534,16 @@ defmodule API2CartOpenAPI.Api.Account do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec account_supported_platforms(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseAccountSupportedPlatforms.t} | {:error, Tesla.Env.t}
-  def account_supported_platforms(connection, _opts \\ []) do
+  def account_supported_platforms(connection, opts \\ []) do
+    optional_params = %{
+      :cart_id => :query
+    }
+
     request =
       %{}
       |> method(:get)
       |> url("/account.supported_platforms.json")
+      |> add_optional_params(optional_params, opts)
       |> Enum.into([])
 
     connection

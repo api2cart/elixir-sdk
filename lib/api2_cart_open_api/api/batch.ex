@@ -24,7 +24,7 @@ defmodule API2CartOpenAPI.Api.Batch do
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:processed_from` (String.t): Retrieve entities according to their processing datetime
     - `:processed_to` (String.t): Retrieve entities according to their processing datetime
-    - `:response_fields` (String.t): Set this parameter in order to choose which entity fields you want to retrieve
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 
   ### Returns
 
