@@ -195,6 +195,8 @@ defmodule API2CartOpenAPI.Api.Account do
     - `:walmart_environment` (String.t): Walmart environment
     - `:walmart_channel_type` (String.t): Walmart WM_CONSUMER.CHANNEL.TYPE header
     - `:walmart_region` (String.t): Walmart region
+    - `:walmart_refresh_token` (String.t): Walmart refresh token received by a Solution Provider application through the Walmart App Store authorization. When it is set, walmart_client_id and walmart_client_secret are the credentials of that application, not of the seller. Must be used together with walmart_seller_id and is supported only for walmart_region = 'us'
+    - `:walmart_seller_id` (String.t): Walmart seller id the refresh token was issued for, sent as the WM_PARTNER.ID header. Must be used together with walmart_refresh_token and is supported only for walmart_region = 'us'
     - `:square_client_id` (String.t): Square (Weebly) Client ID
     - `:square_client_secret` (String.t): Square (Weebly) Client Secret
     - `:square_refresh_token` (String.t): Square (Weebly) Refresh Token
@@ -383,6 +385,8 @@ defmodule API2CartOpenAPI.Api.Account do
       :walmart_environment => :query,
       :walmart_channel_type => :query,
       :walmart_region => :query,
+      :walmart_refresh_token => :query,
+      :walmart_seller_id => :query,
       :square_client_id => :query,
       :square_client_secret => :query,
       :square_refresh_token => :query,

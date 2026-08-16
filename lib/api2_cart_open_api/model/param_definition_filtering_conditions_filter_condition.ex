@@ -13,7 +13,8 @@ defmodule API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterConditio
     :not,
     :field,
     :operator,
-    :value
+    :value,
+    :match_items
   ]
 
   @type t :: %__MODULE__{
@@ -22,7 +23,8 @@ defmodule API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterConditio
     :not => map() | nil,
     :field => String.t | nil,
     :operator => String.t | nil,
-    :value => API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterRuleValue.t | nil
+    :value => API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterRuleValue.t | nil,
+    :match_items => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer

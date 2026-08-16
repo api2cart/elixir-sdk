@@ -10,13 +10,15 @@ defmodule API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterRule do
   defstruct [
     :field,
     :operator,
-    :value
+    :value,
+    :match_items
   ]
 
   @type t :: %__MODULE__{
     :field => String.t | nil,
     :operator => String.t | nil,
-    :value => API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterRuleValue.t | nil
+    :value => API2CartOpenAPI.Model.ParamDefinitionFilteringConditionsFilterRuleValue.t | nil,
+    :match_items => String.t | nil
   }
 
   alias API2CartOpenAPI.Deserializer
