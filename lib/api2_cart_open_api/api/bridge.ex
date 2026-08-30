@@ -17,6 +17,7 @@ defmodule API2CartOpenAPI.Api.Bridge do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -24,11 +25,16 @@ defmodule API2CartOpenAPI.Api.Bridge do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec bridge_delete(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeValueDelete200Response.t} | {:error, Tesla.Env.t}
-  def bridge_delete(connection, _opts \\ []) do
+  def bridge_delete(connection, opts \\ []) do
+    optional_params = %{
+      :idempotency_key => :query
+    }
+
     request =
       %{}
       |> method(:post)
       |> url("/bridge.delete.json")
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 
@@ -82,6 +88,7 @@ defmodule API2CartOpenAPI.Api.Bridge do
 
   - `connection` (API2CartOpenAPI.Connection): Connection to server
   - `opts` (keyword): Optional parameters
+    - `:idempotency_key` (String.t): A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 
   ### Returns
 
@@ -89,11 +96,16 @@ defmodule API2CartOpenAPI.Api.Bridge do
   - `{:error, Tesla.Env.t}` on failure
   """
   @spec bridge_update(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeUpdate200Response.t} | {:error, Tesla.Env.t}
-  def bridge_update(connection, _opts \\ []) do
+  def bridge_update(connection, opts \\ []) do
+    optional_params = %{
+      :idempotency_key => :query
+    }
+
     request =
       %{}
       |> method(:post)
       |> url("/bridge.update.json")
+      |> add_optional_params(optional_params, opts)
       |> ensure_body()
       |> Enum.into([])
 
