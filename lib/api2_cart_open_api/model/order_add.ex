@@ -80,6 +80,9 @@ defmodule API2CartOpenAPI.Model.OrderAdd do
     :clear_cache,
     :origin,
     :fee_price,
+    :shipp_national_address,
+    :shipp_building_number,
+    :shipp_additional_number,
     :idempotency_key,
     :order_item
   ]
@@ -157,6 +160,9 @@ defmodule API2CartOpenAPI.Model.OrderAdd do
     :clear_cache => boolean() | nil,
     :origin => String.t | nil,
     :fee_price => float() | nil,
+    :shipp_national_address => String.t | nil,
+    :shipp_building_number => String.t | nil,
+    :shipp_additional_number => String.t | nil,
     :idempotency_key => String.t | nil,
     :order_item => [API2CartOpenAPI.Model.OrderAddOrderItemInner.t]
   }
