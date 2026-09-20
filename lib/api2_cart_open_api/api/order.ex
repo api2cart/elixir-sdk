@@ -1060,7 +1060,7 @@ defmodule API2CartOpenAPI.Api.Order do
     - `:invoice_admin_comment` (String.t): Specifies admin's order invoice comment
     - `:date_modified` (String.t): Specifies order's  modification date
     - `:date_finished` (String.t): Specifies order's  finished date
-    - `:send_notifications` (boolean()): Send notifications to customer after order was created
+    - `:send_notifications` (boolean()): Send notifications to customer after order status was changed
     - `:create_invoice` (boolean()): Determines whether an invoice should be created if it has not already been created
     - `:origin` (String.t): The source of the order
     - `:tags` (String.t): Order tags
