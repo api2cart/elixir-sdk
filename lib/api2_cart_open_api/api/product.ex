@@ -491,7 +491,7 @@ defmodule API2CartOpenAPI.Api.Product do
     - `:vendor_id` (String.t): Counts products specified by vendor id
     - `:lang_id` (String.t): Counts products specified by language id
     - `:avail_view` (boolean()): Specifies the set of visible/invisible products
-    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale
+    - `:avail_sale` (boolean()): Specifies the set of available/not available products for sale.<br/>On BigCommerce the count checks only whether the product is set as purchasable and ignores stock (pre-order products are counted neither as true nor as false), so it can differ from product.list with the same value, which also checks stock at all inventory locations
     - `:created_from` (String.t): Retrieve entities from their creation date
     - `:created_to` (String.t): Retrieve entities to their creation date
     - `:modified_from` (String.t): Retrieve entities from their modification date
