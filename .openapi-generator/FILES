@@ -233,6 +233,7 @@ lib/api2_cart_open_api/model/order_calculate_shipping_rate.ex
 lib/api2_cart_open_api/model/order_calculate_subtotal.ex
 lib/api2_cart_open_api/model/order_calculate_tax.ex
 lib/api2_cart_open_api/model/order_info_200_response.ex
+lib/api2_cart_open_api/model/order_invoice_add.ex
 lib/api2_cart_open_api/model/order_item.ex
 lib/api2_cart_open_api/model/order_item_option.ex
 lib/api2_cart_open_api/model/order_payment_method.ex

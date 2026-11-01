@@ -329,6 +329,37 @@ defmodule API2CartOpenAPI.Api.Order do
   end
 
   @doc """
+  order.invoice.add
+  Upload a PDF invoice or credit note of the order to the store. The store checks the document after the upload, so a successful response means it was received, not accepted. Use the returned id to find the result of the check in the store.
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `order_invoice_add` (OrderInvoiceAdd): 
+  - `opts` (keyword): Optional parameters
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.AttributeAdd200Response.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec order_invoice_add(Tesla.Env.client, API2CartOpenAPI.Model.OrderInvoiceAdd.t, keyword()) :: {:ok, API2CartOpenAPI.Model.AttributeAdd200Response.t} | {:error, Tesla.Env.t}
+  def order_invoice_add(connection, order_invoice_add, _opts \\ []) do
+    request =
+      %{}
+      |> method(:post)
+      |> url("/order.invoice.add.json")
+      |> add_param(:body, :body, order_invoice_add)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.AttributeAdd200Response}
+    ])
+  end
+
+  @doc """
   order.list
   Get list of orders from store.
 
