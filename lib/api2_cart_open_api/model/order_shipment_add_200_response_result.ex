@@ -8,11 +8,13 @@ defmodule API2CartOpenAPI.Model.OrderShipmentAdd200ResponseResult do
 
   @derive Jason.Encoder
   defstruct [
-    :shipment_id
+    :shipment_id,
+    :additional_fields
   ]
 
   @type t :: %__MODULE__{
-    :shipment_id => String.t | nil
+    :shipment_id => String.t | nil,
+    :additional_fields => map() | nil
   }
 
   def decode(value) do

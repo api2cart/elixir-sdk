@@ -360,6 +360,59 @@ defmodule API2CartOpenAPI.Api.Order do
   end
 
   @doc """
+  order.invoice.list
+  Get list of invoices the store issued for orders. Only the invoices of one store are returned, also when filtered by order_ids or ids: the store given in store_id, or the default store when store_id is not given.
+
+  ### Parameters
+
+  - `connection` (API2CartOpenAPI.Connection): Connection to server
+  - `opts` (keyword): Optional parameters
+    - `:count` (integer()): This parameter sets the entity amount that has to be retrieved. Max allowed count=250
+    - `:page_cursor` (String.t): Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter)
+    - `:order_ids` (String.t): Retrieves invoices of the orders specified by order ids
+    - `:ids` (String.t): Retrieves invoices specified by ids
+    - `:store_id` (String.t): Retrieves invoices of the store specified by store id. The default store is taken when not specified
+    - `:created_from` (String.t): Retrieve entities from their creation date
+    - `:created_to` (String.t): Retrieve entities to their creation date
+    - `:modified_from` (String.t): Retrieve entities from their modification date
+    - `:modified_to` (String.t): Retrieve entities to their modification date
+    - `:response_fields` (String.t): Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+
+  ### Returns
+
+  - `{:ok, API2CartOpenAPI.Model.ModelResponseOrderInvoiceList.t}` on success
+  - `{:error, Tesla.Env.t}` on failure
+  """
+  @spec order_invoice_list(Tesla.Env.client, keyword()) :: {:ok, API2CartOpenAPI.Model.ModelResponseOrderInvoiceList.t} | {:error, Tesla.Env.t}
+  def order_invoice_list(connection, opts \\ []) do
+    optional_params = %{
+      :count => :query,
+      :page_cursor => :query,
+      :order_ids => :query,
+      :ids => :query,
+      :store_id => :query,
+      :created_from => :query,
+      :created_to => :query,
+      :modified_from => :query,
+      :modified_to => :query,
+      :response_fields => :query
+    }
+
+    request =
+      %{}
+      |> method(:get)
+      |> url("/order.invoice.list.json")
+      |> add_optional_params(optional_params, opts)
+      |> Enum.into([])
+
+    connection
+    |> Connection.request(request)
+    |> evaluate_response([
+      {200, API2CartOpenAPI.Model.ModelResponseOrderInvoiceList}
+    ])
+  end
+
+  @doc """
   order.list
   Get list of orders from store.
 

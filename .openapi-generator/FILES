@@ -187,6 +187,7 @@ lib/api2_cart_open_api/model/model_response_order_abandoned_list.ex
 lib/api2_cart_open_api/model/model_response_order_count.ex
 lib/api2_cart_open_api/model/model_response_order_financial_status_list.ex
 lib/api2_cart_open_api/model/model_response_order_fulfillment_status_list.ex
+lib/api2_cart_open_api/model/model_response_order_invoice_list.ex
 lib/api2_cart_open_api/model/model_response_order_list.ex
 lib/api2_cart_open_api/model/model_response_order_preestimate_shipping_list.ex
 lib/api2_cart_open_api/model/model_response_order_shipment_event_list.ex
@@ -233,7 +234,11 @@ lib/api2_cart_open_api/model/order_calculate_shipping_rate.ex
 lib/api2_cart_open_api/model/order_calculate_subtotal.ex
 lib/api2_cart_open_api/model/order_calculate_tax.ex
 lib/api2_cart_open_api/model/order_info_200_response.ex
+lib/api2_cart_open_api/model/order_invoice.ex
 lib/api2_cart_open_api/model/order_invoice_add.ex
+lib/api2_cart_open_api/model/order_invoice_comment.ex
+lib/api2_cart_open_api/model/order_invoice_item.ex
+lib/api2_cart_open_api/model/order_invoice_totals.ex
 lib/api2_cart_open_api/model/order_item.ex
 lib/api2_cart_open_api/model/order_item_option.ex
 lib/api2_cart_open_api/model/order_payment_method.ex
@@ -421,6 +426,7 @@ lib/api2_cart_open_api/model/response_order_abandoned_list_result.ex
 lib/api2_cart_open_api/model/response_order_count_result.ex
 lib/api2_cart_open_api/model/response_order_financial_status_list_result.ex
 lib/api2_cart_open_api/model/response_order_fulfillment_status_list_result.ex
+lib/api2_cart_open_api/model/response_order_invoice_list_result.ex
 lib/api2_cart_open_api/model/response_order_list_result.ex
 lib/api2_cart_open_api/model/response_order_preestimate_shipping_list_result.ex
 lib/api2_cart_open_api/model/response_order_shipment_event_list_result.ex
